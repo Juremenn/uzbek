@@ -105,6 +105,7 @@ const flipbookStage = document.getElementById("flipbookStage");
 const flipPrev = document.getElementById("flipPrev");
 const flipNext = document.getElementById("flipNext");
 const flipMeta = document.getElementById("flipbookMeta");
+const flipbookLoad = document.getElementById("flipbookLoad");
 const flipbookLink = document.getElementById("flipbookLink");
 const pdfModal = document.getElementById("pdfModal");
 const pdfModalFrame = document.getElementById("pdfModalFrame");
@@ -125,6 +126,7 @@ const pdfCandidates = [
 ];
 
 async function pickPdfUrl() {
+    pdfBlockedByAttachment = false;
     for (const url of pdfCandidates) {
         try {
             const res = await fetch(url, { method: "HEAD" });
@@ -150,6 +152,15 @@ function setFlipbookLinkState(isReady, url) {
 
     flipbookLink.disabled = !isReady;
     flipbookLink.dataset.pdf = isReady && url ? url : "";
+}
+
+function setFlipbookLoadState(isLoading) {
+    if (!flipbookLoad) {
+        return;
+    }
+
+    flipbookLoad.disabled = isLoading;
+    flipbookLoad.textContent = isLoading ? "Memuat..." : "Muat eBook";
 }
 
 async function loadPdfFromUrl(url) {
@@ -253,10 +264,16 @@ window.addEventListener("resize", () => {
     }, 140);
 });
 
-(async function initFlipbook() {
+async function initFlipbook() {
+    if (pdfDoc) {
+        return;
+    }
+
+    setFlipbookLoadState(true);
     if (!window.pdfjsLib) {
         flipMeta.textContent = "PDF engine tidak tersedia.";
         setFlipbookLinkState(false);
+        setFlipbookLoadState(false);
         return;
     }
 
@@ -275,6 +292,10 @@ window.addEventListener("resize", () => {
         setCanvasRoles();
         updateFlipControls();
         setFlipbookLinkState(true, resolvedPdfUrl);
+        if (flipbookLoad) {
+            flipbookLoad.disabled = true;
+            flipbookLoad.textContent = "eBook dimuat";
+        }
     } catch (error) {
         flipMeta.textContent = pdfBlockedByAttachment
             ? "Ebook tidak dapat ditampilkan otomatis dari hosting ini."
@@ -282,8 +303,18 @@ window.addEventListener("resize", () => {
         flipPrev.disabled = true;
         flipNext.disabled = true;
         setFlipbookLinkState(false);
+        setFlipbookLoadState(false);
     }
-})();
+}
+
+if (flipbookLoad) {
+    flipbookLoad.addEventListener("click", () => {
+        initFlipbook().catch(() => {
+            flipMeta.textContent = "Ebook gagal dimuat.";
+            setFlipbookLoadState(false);
+        });
+    });
+}
 
 function openPdfModal(url) {
     if (!pdfModal || !pdfModalFrame) {
