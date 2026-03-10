@@ -132,6 +132,16 @@ async function pickPdfUrl() {
     return pdfCandidates[0];
 }
 
+async function loadPdfFromUrl(url) {
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error("PDF not found");
+    }
+    const data = await res.arrayBuffer();
+    const loadingTask = window.pdfjsLib.getDocument({ data });
+    return loadingTask.promise;
+}
+
 function setCanvasRoles() {
     frontCanvas.classList.add("flip-front");
     frontCanvas.classList.remove("flip-back");
@@ -236,8 +246,7 @@ window.addEventListener("resize", () => {
         if (flipbookLink) {
             flipbookLink.href = resolvedPdfUrl;
         }
-        const loadingTask = window.pdfjsLib.getDocument(resolvedPdfUrl);
-        pdfDoc = await loadingTask.promise;
+        pdfDoc = await loadPdfFromUrl(resolvedPdfUrl);
         currentPage = 1;
 
         await renderPage(currentPage, frontCanvas);
