@@ -114,6 +114,7 @@ let currentPage = 1;
 let isFlipping = false;
 
 const pdfCandidates = [
+    "/assets/ebook/UZBEKISTAN.pdf",
     "assets/ebook/UZBEKISTAN.pdf",
     "../assets/ebook/UZBEKISTAN.pdf"
 ];
