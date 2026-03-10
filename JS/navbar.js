@@ -238,4 +238,15 @@
 
         setLang(getInitialLang());
     }
+
+    // Lightweight perf tweak: lazy-load all images/iframes that aren't explicitly marked
+    window.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("img:not([loading])").forEach((img) => {
+            img.setAttribute("loading", "lazy");
+            img.setAttribute("decoding", "async");
+        });
+        document.querySelectorAll("iframe:not([loading])").forEach((frame) => {
+            frame.setAttribute("loading", "lazy");
+        });
+    });
 })();

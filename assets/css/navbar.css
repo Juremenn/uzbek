@@ -34,8 +34,8 @@
     background: linear-gradient(180deg, var(--nav-bg-top) 0%, var(--nav-bg-bottom) 100%);
     box-shadow: 0 14px 32px rgba(0, 0, 0, 0.26),
                 inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px) saturate(1.2);
-    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(10px) saturate(1.15);
+    -webkit-backdrop-filter: blur(10px) saturate(1.15);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -304,10 +304,10 @@
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     background: linear-gradient(180deg, rgba(245, 250, 249, 0.72) 0%, rgba(230, 240, 237, 0.62) 100%);
-    box-shadow: 0 16px 26px rgba(0, 0, 0, 0.18),
+    box-shadow: 0 14px 22px rgba(0, 0, 0, 0.16),
                 inset 0 1px 0 rgba(255, 255, 255, 0.24);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-item-dropdown.open .dropdown-menu {
