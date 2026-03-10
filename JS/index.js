@@ -69,11 +69,17 @@ function scrollToCityExplanation() {
     });
 }
 
-function openPanelPopup(city, img, desc) {
+function currentLang() {
+    return document.documentElement.getAttribute("lang") === "en" ? "en" : "id";
+}
+
+function openPanelPopup(city, img, desc, descEn) {
     panelPopupImg.src = img;
     panelPopupImg.alt = cityNames[city] || city;
     panelPopupTitle.textContent = cityNames[city] || city;
-    panelPopupDesc.textContent = desc;
+    const lang = currentLang();
+    const chosenDesc = lang === "en" && descEn ? descEn : desc;
+    panelPopupDesc.textContent = chosenDesc;
     citiesSection.classList.add("panel-active");
     rightPanel.classList.add("has-popup");
     panelPopup.setAttribute("aria-hidden", "false");
@@ -87,7 +93,7 @@ function closePanelPopup() {
 
 document.querySelectorAll(".card-button").forEach((btn) => {
     btn.addEventListener("click", () => {
-        openPanelPopup(btn.dataset.city, btn.dataset.img, btn.dataset.desc);
+        openPanelPopup(btn.dataset.city, btn.dataset.img, btn.dataset.desc, btn.dataset.descEn);
         window.requestAnimationFrame(scrollToCityExplanation);
     });
 });

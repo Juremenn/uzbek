@@ -17,7 +17,7 @@
         <div class="nav-content" id="navContent">
             <a class="nav-brand" href="index.html" aria-label="Beranda Uzbekistan">
                 <img src="../assets/img/logo/uzbekistan.png" alt="Uzbekistan" class="nav-brand-logo">
-                <span class="nav-brand-text">UZBEKISTAN</span>
+                <span class="nav-brand-text" data-i18n="brand.name">UZBEKISTAN</span>
             </a>
             <button class="nav-mobile-toggle" id="navMobileToggle" type="button" aria-expanded="false" aria-controls="navPrimary">
                 <span class="nav-mobile-toggle-label"><i class="fas fa-bars"></i> <span data-i18n="nav.menu">Menu</span></span>
@@ -61,34 +61,34 @@
                 <!-- Slides -->
                 <div class="slide active" style="background-image: url('../assets/img/slides/1.png');">
                     <div class="slide-content">
-                        <p class="welcome-text">SELAMAT DATANG DI</p>
-                        <h1 class="main-title">UZBEKISTAN</h1>
-                        <p class="subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
-                        <a href="../kondisi.html"><button class="explore-btn">JELAJAHI SEKARANG</button></a>
+                        <p class="welcome-text" data-i18n="hero.welcome">SELAMAT DATANG DI</p>
+                        <h1 class="main-title" data-i18n="hero.title">UZBEKISTAN</h1>
+                        <p class="subtitle" data-i18n="hero.subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
+                        <a href="../kondisi.html"><button class="explore-btn" data-i18n="hero.cta">JELAJAHI SEKARANG</button></a>
                     </div>
                 </div>
                 <div class="slide" style="background-image: url('../assets/img/slides/2.png');">
                     <div class="slide-content">
-                        <p class="welcome-text">SELAMAT DATANG DI</p>
-                        <h1 class="main-title">UZBEKISTAN</h1>
-                        <p class="subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
-                       <a href="../kondisi.html"><button class="explore-btn">JELAJAHI SEKARANG</button></a>
+                        <p class="welcome-text" data-i18n="hero.welcome">SELAMAT DATANG DI</p>
+                        <h1 class="main-title" data-i18n="hero.title">UZBEKISTAN</h1>
+                        <p class="subtitle" data-i18n="hero.subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
+                       <a href="../kondisi.html"><button class="explore-btn" data-i18n="hero.cta">JELAJAHI SEKARANG</button></a>
                     </div>
                 </div>
                 <div class="slide" style="background-image: url('../assets/img/slides/3.png');">
                     <div class="slide-content">
-                        <p class="welcome-text">SELAMAT DATANG DI</p>
-                        <h1 class="main-title">UZBEKISTAN</h1>
-                        <p class="subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
-                        <a href="../kondisi.html"><button class="explore-btn">JELAJAHI SEKARANG</button></a>
+                        <p class="welcome-text" data-i18n="hero.welcome">SELAMAT DATANG DI</p>
+                        <h1 class="main-title" data-i18n="hero.title">UZBEKISTAN</h1>
+                        <p class="subtitle" data-i18n="hero.subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
+                        <a href="../kondisi.html"><button class="explore-btn" data-i18n="hero.cta">JELAJAHI SEKARANG</button></a>
                     </div>
                 </div>
                 <div class="slide" style="background-image: url('../assets/img/slides/4.png');">
                     <div class="slide-content">
-                        <p class="welcome-text">SELAMAT DATANG DI</p>
-                        <h1 class="main-title">UZBEKISTAN</h1>
-                        <p class="subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
-                        <a href="../kondisi.html"><button class="explore-btn">JELAJAHI SEKARANG</button></a>
+                        <p class="welcome-text" data-i18n="hero.welcome">SELAMAT DATANG DI</p>
+                        <h1 class="main-title" data-i18n="hero.title">UZBEKISTAN</h1>
+                        <p class="subtitle" data-i18n="hero.subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
+                        <a href="../kondisi.html"><button class="explore-btn" data-i18n="hero.cta">JELAJAHI SEKARANG</button></a>
                     </div>
                 </div>
 
@@ -105,13 +105,22 @@
 
     <!-- Map Section -->
     <section class="map-section">
-        <h2 class="section-title">PETA NEGARA UZBEKISTAN</h2>
+        <h2 class="section-title" data-i18n="map.title">PETA NEGARA UZBEKISTAN</h2>
         <div class="map-content">
-            <div class="map-image">
-                <img src="../assets/img/peta/peta.png" alt="Peta Uzbekistan">
+            <div class="map-embed">
+                <iframe
+                    title="Peta Uzbekistan"
+                    src="https://www.google.com/maps?q=Uzbekistan&output=embed"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
             <div class="map-description">
-                <p>Uzbekistan adalah negara terkurung daratan yang terletak di Asia Tengah, berbatasan dengan Kazakhstan di utara, Kyrgyzstan di timur laut, Tajikistan di tenggara, Afghanistan di selatan, dan Turkmenistan di barat daya. Negara ini dibagi menjadi 12 provinsi dan memiliki sejarah yang kaya sebagai bagian dari Uni Soviet dari tahun 1924 hingga 1991. Ibu kotanya adalah Tashkent, dan bahasa resminya adalah Uzbek.</p>
+                <p data-i18n="map.desc">Uzbekistan adalah negara terkurung daratan yang terletak di Asia Tengah, berbatasan dengan Kazakhstan di utara, Kyrgyzstan di timur laut, Tajikistan di tenggara, Afghanistan di selatan, dan Turkmenistan di barat daya. Negara ini dibagi menjadi 12 provinsi dan memiliki sejarah yang kaya sebagai bagian dari Uni Soviet dari tahun 1924 hingga 1991. Ibu kotanya adalah Tashkent, dan bahasa resminya adalah Uzbek.</p>
+                <a class="map-cta" href="https://www.google.com/maps/place/Uzbekistan/data=!4m2!3m1!1s0x38ae8b20a5d676b1:0xca0a6dad7e841e20?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener">
+                    <span data-i18n="map.cta">Check on Maps</span>
+                </a>
             </div>
         </div>
                 </section>
@@ -127,7 +136,7 @@
     <!-- Cities Section -->
     <section class="cities-section">
         <div class="cities-inner">
-            <h2 class="section-title cities-title">KOTA TERKENAL DI UZBEKISTAN</h2>
+            <h2 class="section-title cities-title" data-i18n="cities.title">KOTA TERKENAL DI UZBEKISTAN</h2>
             <div class="wrapper">
                 <div class="main-grid">
                     <div class="left-panel">
@@ -137,26 +146,26 @@
 
                         <div class="city-grid">
                             <div class="city-card">
-                                <button type="button" class="card-button" data-city="tashkent" data-img="../assets/img/card/taskhen.png" data-desc="Tashkent adalah ibu kota dan kota terbesar di Uzbekistan sekaligus pusat penduduk terpadat di Asia Tengah (lebih dari 3 juta jiwa).">
+                                <button type="button" class="card-button" data-city="tashkent" data-img="../assets/img/card/taskhen.png" data-desc="Tashkent adalah ibu kota dan kota terbesar di Uzbekistan sekaligus pusat penduduk terpadat di Asia Tengah (lebih dari 3 juta jiwa)." data-desc-en="Tashkent is the capital and largest city of Uzbekistan, and the most populous hub in Central Asia (over 3 million people).">
                                     <img src="../assets/img/card/taskhen.png" alt="Tashkent" class="card-image">
                                     <h3 class="card-title">Tashkent</h3>
-                                    <span class="card-detail">Detail</span>
+                                    <span class="card-detail" data-i18n="cities.detail">Detail</span>
                                 </button>
                             </div>
 
                             <div class="city-card">
-                                <button type="button" class="card-button" data-city="samarkand" data-img="../assets/img/card/samarkand.png" data-desc="Samarkand adalah sebuah kota bersejarah di Uzbekistan, salah satu kota tertua yang masih dihuni di dunia, didirikan sekitar 700 SM.">
+                                <button type="button" class="card-button" data-city="samarkand" data-img="../assets/img/card/samarkand.png" data-desc="Samarkand adalah sebuah kota bersejarah di Uzbekistan, salah satu kota tertua yang masih dihuni di dunia, didirikan sekitar 700 SM." data-desc-en="Samarkand is a historic city in Uzbekistan, one of the world’s oldest continuously inhabited cities, founded around 700 BC.">
                                     <img src="../assets/img/card/samarkand.png" alt="Samarkand" class="card-image">
                                     <h3 class="card-title">Samarkand</h3>
-                                    <span class="card-detail">Detail</span>
+                                    <span class="card-detail" data-i18n="cities.detail">Detail</span>
                                 </button>
                             </div>
 
                             <div class="city-card">
-                                <button type="button" class="card-button" data-city="bukhara" data-img="../assets/img/card/bukhara.png" data-desc="Bukhara adalah kota tertua di Uzbekistan dan menjadi pusat intelektual, kebudayaan, dan perdagangan penting di dunia muslim pada masa lampau; sejarahnya mencapai ribuan tahun.">
+                                <button type="button" class="card-button" data-city="bukhara" data-img="../assets/img/card/bukhara.png" data-desc="Bukhara adalah kota tertua di Uzbekistan dan menjadi pusat intelektual, kebudayaan, dan perdagangan penting di dunia muslim pada masa lampau; sejarahnya mencapai ribuan tahun." data-desc-en="Bukhara is one of Uzbekistan’s oldest cities and was a major intellectual, cultural, and trade center in the Islamic world for centuries.">
                                     <img src="../assets/img/card/bukhara.png" alt="Bukhara" class="card-image">
                                     <h3 class="card-title">Bukhara</h3>
-                                    <span class="card-detail">Detail</span>
+                                    <span class="card-detail" data-i18n="cities.detail">Detail</span>
                                 </button>
                             </div>
                         </div>
@@ -190,12 +199,12 @@
 
     <section class="ebook-section" aria-labelledby="ebookTitle">
         <div class="ebook-shell">
-            <h2 class="section-title ebook-title" id="ebookTitle">E-BOOK UZBEKISTAN</h2>
+            <h2 class="section-title ebook-title" id="ebookTitle" data-i18n="ebook.title">E-BOOK UZBEKISTAN</h2>
 
             <div class="flipbook-wrap">
                 <button class="flipbook-nav" id="flipPrev" type="button" aria-label="Halaman sebelumnya" disabled>
                     <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-                    <span class="flipbook-nav-label">Sebelumnya</span>
+                    <span class="flipbook-nav-label" data-i18n="ebook.prev">Sebelumnya</span>
                 </button>
 
                 <div class="flipbook-stage" id="flipbookStage">
@@ -204,14 +213,14 @@
                 </div>
 
                 <button class="flipbook-nav" id="flipNext" type="button" aria-label="Halaman berikutnya" disabled>
-                    <span class="flipbook-nav-label">Berikutnya</span>
+                    <span class="flipbook-nav-label" data-i18n="ebook.next">Berikutnya</span>
                     <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                 </button>
             </div>
 
-            <p class="flipbook-meta" id="flipbookMeta">Klik tombol untuk memuat pratinjau ebook.</p>
-            <button class="flipbook-link" id="flipbookLoad" type="button">Muat eBook</button>
-            <button class="flipbook-link" id="flipbookLink" type="button" data-pdf="" disabled>Buka PDF penuh</button>
+            <p class="flipbook-meta" id="flipbookMeta" data-i18n="ebook.meta">Klik tombol untuk memuat pratinjau ebook.</p>
+            <button class="flipbook-link" id="flipbookLoad" type="button" data-i18n="ebook.load">Muat eBook</button>
+            <button class="flipbook-link" id="flipbookLink" type="button" data-pdf="" disabled data-i18n="ebook.open">Buka PDF penuh</button>
         </div>
     </section>
 
@@ -227,7 +236,7 @@
         <div class="footer-shell">
             <div class="footer-layout" aria-label="Footer">
                 <section class="footer-block footer-about" aria-label="Tentang kami">
-                    <h3 class="footer-heading">Tentang kami</h3>
+                    <h3 class="footer-heading" data-i18n="footer.about">Tentang kami</h3>
                     <ul class="footer-list">
                         <li><a href="#">PPLG</a></li>
                         <li><a href="#">Perhotelan</a></li>
@@ -238,19 +247,19 @@
                 </section>
 
                 <section class="footer-block footer-info" aria-label="Uzbekistan info">
-                    <h3 class="footer-heading">Uzbekistan info</h3>
+                    <h3 class="footer-heading" data-i18n="footer.info">Uzbekistan info</h3>
                     <div class="footer-links-grid">
                         <ul class="footer-list">
-                            <li><a href="index.html">Beranda</a></li>
-                            <li><a href="../kondisi.html">Kondisi geografis</a></li>
-                            <li><a href="../destinasi.html">Destinasi wisata</a></li>
-                            <li><a href="../tokoh.html">Tokoh inspiratif</a></li>
-                            <li><a href="../paketwisata.html">Paket wisata</a></li>
+                            <li><a href="index.html" data-i18n="footer.link.home">Beranda</a></li>
+                            <li><a href="../kondisi.html" data-i18n="footer.link.geo">Kondisi geografis</a></li>
+                            <li><a href="../destinasi.html" data-i18n="footer.link.dest">Destinasi wisata</a></li>
+                            <li><a href="../tokoh.html" data-i18n="footer.link.figures">Tokoh inspiratif</a></li>
+                            <li><a href="../paketwisata.html" data-i18n="footer.link.packages">Paket wisata</a></li>
                         </ul>
                         <ul class="footer-list">
-                            <li><a href="../citarasa.html">Cita rasa</a></li>
-                            <li><a href="../nilaiglobal.html">Nilai global</a></li>
-                            <li><a href="../galeri.html">Galeri</a></li>
+                            <li><a href="../citarasa.html" data-i18n="footer.link.cuisine">Cita rasa</a></li>
+                            <li><a href="../nilaiglobal.html" data-i18n="footer.link.values">Nilai global</a></li>
+                            <li><a href="../galeri.html" data-i18n="footer.link.gallery">Galeri</a></li>
                         </ul>
                     </div>
                 </section>
@@ -264,14 +273,14 @@
                 </div>
 
                 <section class="footer-block footer-contact" aria-label="Hubungi kami">
-                    <h3 class="footer-heading">Hubungi kami</h3>
+                    <h3 class="footer-heading" data-i18n="footer.contact">Hubungi kami</h3>
                     <p class="footer-contact-item">
                         <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                        <span>Jl. Kota Taman Metropolitan,<br>Cileungsi Kidul, Kec. Cileungsi,<br>Kabupaten Bogor, Jawa Barat 16820</span>
+                        <span data-i18n-html="footer.addr">Jl. Kota Taman Metropolitan,<br>Cileungsi Kidul, Kec. Cileungsi,<br>Kabupaten Bogor, Jawa Barat 16820</span>
                     </p>
                     <p class="footer-contact-item">
                         <i class="fa-solid fa-globe" aria-hidden="true"></i>
-                        <span>www.smkmetland.net</span>
+                        <span data-i18n="footer.web">www.smkmetland.net</span>
                     </p>
                     <div class="footer-socials" aria-label="Media sosial">
                         <a href="#" class="footer-social footer-social-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -281,15 +290,15 @@
                 </section>
 
                 <section class="footer-block footer-desc" aria-label="Deskripsi website">
-                    <p class="footer-description">
+                    <p class="footer-description" data-i18n="footer.desc">
                         Website ini dibuat sebagai media informasi dan promosi digital yang menghadirkan keindahan serta kekayaan budaya Uzbekistan secara lebih dekat dan interaktif. Melalui tampilan visual yang menarik dan navigasi yang mudah, pengunjung dapat menjelajahi berbagai destinasi populer seperti Tashkent, Samarkand, dan Bukhara.
                     </p>
                 </section>
             </div>
 
             <div class="footer-bottom">
-                <p>Menjelajahi keindahan Uzbekistan dari Asia Tengah</p>
-                <p>&copy; 2026 website wisata uzbekistan | dibuat oleh kelompok 4</p>
+                <p data-i18n="footer.tagline">Menjelajahi keindahan Uzbekistan dari Asia Tengah</p>
+                <p data-i18n="footer.copyright">&copy; 2026 website wisata uzbekistan | dibuat oleh kelompok 4</p>
             </div>
         </div>
     </footer>
