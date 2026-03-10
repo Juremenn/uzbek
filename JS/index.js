@@ -105,6 +105,7 @@ const flipbookStage = document.getElementById("flipbookStage");
 const flipPrev = document.getElementById("flipPrev");
 const flipNext = document.getElementById("flipNext");
 const flipMeta = document.getElementById("flipbookMeta");
+const flipbookLink = document.getElementById("flipbookLink");
 
 let frontCanvas = document.getElementById("flipCanvasFront");
 let backCanvas = document.getElementById("flipCanvasBack");
@@ -112,7 +113,24 @@ let pdfDoc = null;
 let currentPage = 1;
 let isFlipping = false;
 
-const pdfUrl = "../assets/ebook/UZBEKISTAN.pdf";
+const pdfCandidates = [
+    "../assets/ebook/UZBEKISTAN.pdf",
+    "assets/ebook/UZBEKISTAN.pdf"
+];
+
+async function pickPdfUrl() {
+    for (const url of pdfCandidates) {
+        try {
+            const res = await fetch(url, { method: "HEAD" });
+            if (res.ok) {
+                return url;
+            }
+        } catch (error) {
+            // Try next candidate.
+        }
+    }
+    return pdfCandidates[0];
+}
 
 function setCanvasRoles() {
     frontCanvas.classList.add("flip-front");
@@ -214,7 +232,11 @@ window.addEventListener("resize", () => {
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
     try {
-        const loadingTask = window.pdfjsLib.getDocument(pdfUrl);
+        const resolvedPdfUrl = await pickPdfUrl();
+        if (flipbookLink) {
+            flipbookLink.href = resolvedPdfUrl;
+        }
+        const loadingTask = window.pdfjsLib.getDocument(resolvedPdfUrl);
         pdfDoc = await loadingTask.promise;
         currentPage = 1;
 
