@@ -916,7 +916,8 @@ html {
 
 @media (max-width: 760px) {
     .pdf-modal-card {
-        height: 84vh;
+        width: calc(100% - 16px);
+        height: 88vh;
     }
 }
 
