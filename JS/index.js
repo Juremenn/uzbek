@@ -116,6 +116,7 @@ let pdfDoc = null;
 let currentPage = 1;
 let isFlipping = false;
 let resolvedPdfUrl = null;
+let pdfBlockedByAttachment = false;
 
 const pdfCandidates = [
     "/assets/ebook/UZBEKISTAN.pdf",
@@ -128,6 +129,11 @@ async function pickPdfUrl() {
         try {
             const res = await fetch(url, { method: "HEAD" });
             if (res.ok) {
+                const contentDisposition = res.headers.get("content-disposition") || "";
+                if (/attachment/i.test(contentDisposition)) {
+                    pdfBlockedByAttachment = true;
+                    continue;
+                }
                 return url;
             }
         } catch (error) {
@@ -270,7 +276,9 @@ window.addEventListener("resize", () => {
         updateFlipControls();
         setFlipbookLinkState(true, resolvedPdfUrl);
     } catch (error) {
-        flipMeta.textContent = "Ebook gagal dimuat.";
+        flipMeta.textContent = pdfBlockedByAttachment
+            ? "Ebook tidak dapat ditampilkan otomatis dari hosting ini."
+            : "Ebook gagal dimuat.";
         flipPrev.disabled = true;
         flipNext.disabled = true;
         setFlipbookLinkState(false);
