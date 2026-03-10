@@ -14,28 +14,39 @@
 <body class="paket-page">
     <nav class="navbar">
         <div class="nav-content" id="navContent">
+            <a class="nav-brand" href="beranda/index.html" aria-label="Beranda Uzbekistan">
+                <img src="assets/img/logo/uzbekistan.png" alt="Uzbekistan" class="nav-brand-logo">
+                <span class="nav-brand-text">UZBEKISTAN</span>
+            </a>
             <button class="nav-mobile-toggle" id="navMobileToggle" type="button" aria-expanded="false" aria-controls="navPrimary">
-                <span class="nav-mobile-toggle-label"><i class="fas fa-bars"></i> Menu</span>
+                <span class="nav-mobile-toggle-label"><i class="fas fa-bars"></i> <span data-i18n="nav.menu">Menu</span></span>
                 <i class="fas fa-chevron-down nav-mobile-icon" aria-hidden="true"></i>
             </button>
 
             <div class="nav-links" id="navPrimary">
-                <a href="beranda/index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a>
+                <a href="beranda/index.html" class="nav-link"><i class="fas fa-home"></i> <span data-i18n="nav.home">Beranda</span></a>
                 <div class="nav-item-dropdown" id="jelajahiDropdown">
                     <button class="nav-link nav-dropdown-toggle nav-link-active" id="jelajahiDropdownToggle" type="button" aria-expanded="false" aria-controls="jelajahiDropdownMenu">
-                        <i class="fas fa-earth-asia"></i> Jelajahi Uzbekistan <i class="fas fa-chevron-down nav-arrow"></i>
+                        <i class="fas fa-earth-asia"></i> <span data-i18n="nav.explore">Jelajahi Uzbekistan</span> <i class="fas fa-chevron-down nav-arrow"></i>
                     </button>
                     <div class="dropdown-menu" id="jelajahiDropdownMenu" role="menu" aria-hidden="true">
-                        <a href="kondisi.html" class="dropdown-item" role="menuitem">Kondisi Geografis</a>
-                        <a href="destinasi.html" class="dropdown-item" role="menuitem">Destinasi &amp; Wisata</a>
-                        <a href="tokoh.html" class="dropdown-item" role="menuitem">Tokoh Inspiratif</a>
-                        <a href="paketwisata.html" class="dropdown-item" role="menuitem" aria-current="page">Paket Wisata</a>
+                        <a href="kondisi.html" class="dropdown-item" role="menuitem" data-i18n="nav.geo">Kondisi Geografis</a>
+                        <a href="destinasi.html" class="dropdown-item" role="menuitem" data-i18n="nav.dest">Destinasi &amp; Wisata</a>
+                        <a href="tokoh.html" class="dropdown-item" role="menuitem" data-i18n="nav.figures">Tokoh Inspiratif</a>
+                        <a href="paketwisata.html" class="dropdown-item" role="menuitem" aria-current="page" data-i18n="nav.packages">Paket Wisata</a>
                     </div>
                 </div>
-                <a href="citarasa.html" class="nav-link"><i class="fas fa-utensils"></i> Cita Rasa</a>
-                <a href="nilaiglobal.html" class="nav-link"><i class="fas fa-earth-americas"></i> Nilai Global</a>
-                <a href="galeri.html" class="nav-link"><i class="fas fa-camera"></i> Galeri</a>
-                <a href="tentangkami.html" class="nav-link"><i class="fas fa-circle-info"></i> Tentang Kami</a>
+                <a href="citarasa.html" class="nav-link"><i class="fas fa-utensils"></i> <span data-i18n="nav.cuisine">Cita Rasa</span></a>
+                <a href="nilaiglobal.html" class="nav-link"><i class="fas fa-earth-americas"></i> <span data-i18n="nav.values">Nilai Global</span></a>
+                <a href="galeri.html" class="nav-link"><i class="fas fa-camera"></i> <span data-i18n="nav.gallery">Galeri</span></a>
+                <a href="tentangkami.html" class="nav-link"><i class="fas fa-circle-info"></i> <span data-i18n="nav.about">Tentang Kami</span></a>
+            </div>
+
+            <div class="nav-actions" aria-label="Language switch">
+                <div class="lang-switch" role="group" aria-label="Switch language">
+                    <button class="lang-btn is-active" type="button" data-lang="id" aria-pressed="true">ID</button>
+                    <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+                </div>
             </div>
         </div>
     </nav>
