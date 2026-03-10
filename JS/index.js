@@ -106,6 +106,9 @@ const flipPrev = document.getElementById("flipPrev");
 const flipNext = document.getElementById("flipNext");
 const flipMeta = document.getElementById("flipbookMeta");
 const flipbookLink = document.getElementById("flipbookLink");
+const pdfModal = document.getElementById("pdfModal");
+const pdfModalFrame = document.getElementById("pdfModalFrame");
+const pdfModalClose = document.querySelector(".pdf-modal-close");
 
 let frontCanvas = document.getElementById("flipCanvasFront");
 let backCanvas = document.getElementById("flipCanvasBack");
@@ -245,7 +248,7 @@ window.addEventListener("resize", () => {
     try {
         const resolvedPdfUrl = await pickPdfUrl();
         if (flipbookLink) {
-            flipbookLink.href = resolvedPdfUrl;
+            flipbookLink.dataset.pdf = resolvedPdfUrl;
         }
         pdfDoc = await loadPdfFromUrl(resolvedPdfUrl);
         currentPage = 1;
@@ -259,3 +262,46 @@ window.addEventListener("resize", () => {
         flipNext.disabled = true;
     }
 })();
+
+function openPdfModal(url) {
+    if (!pdfModal || !pdfModalFrame) {
+        return;
+    }
+    pdfModalFrame.src = url;
+    pdfModal.classList.add("is-open");
+    pdfModal.setAttribute("aria-hidden", "false");
+}
+
+function closePdfModal() {
+    if (!pdfModal || !pdfModalFrame) {
+        return;
+    }
+    pdfModal.classList.remove("is-open");
+    pdfModal.setAttribute("aria-hidden", "true");
+    pdfModalFrame.src = "";
+}
+
+if (flipbookLink) {
+    flipbookLink.addEventListener("click", () => {
+        const url = flipbookLink.dataset.pdf || "/assets/ebook/UZBEKISTAN.pdf";
+        openPdfModal(url);
+    });
+}
+
+if (pdfModal) {
+    pdfModal.addEventListener("click", (event) => {
+        if (event.target.closest("[data-close='true']")) {
+            closePdfModal();
+        }
+    });
+}
+
+if (pdfModalClose) {
+    pdfModalClose.addEventListener("click", closePdfModal);
+}
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && pdfModal && pdfModal.classList.contains("is-open")) {
+        closePdfModal();
+    }
+});

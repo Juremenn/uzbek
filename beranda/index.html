@@ -198,9 +198,17 @@
             </div>
 
             <p class="flipbook-meta" id="flipbookMeta">Memuat ebook...</p>
-            <a class="flipbook-link" id="flipbookLink" href="/assets/ebook/UZBEKISTAN.pdf" target="_blank" rel="noopener noreferrer">Buka PDF penuh</a>
+            <button class="flipbook-link" id="flipbookLink" type="button" data-pdf="/assets/ebook/UZBEKISTAN.pdf">Buka PDF penuh</button>
         </div>
-                </section>
+    </section>
+
+    <div class="pdf-modal" id="pdfModal" aria-hidden="true">
+        <div class="pdf-modal-backdrop" data-close="true"></div>
+        <div class="pdf-modal-card" role="dialog" aria-modal="true" aria-label="PDF Uzbekistan">
+            <button class="pdf-modal-close" type="button" aria-label="Tutup PDF">&times;</button>
+            <iframe class="pdf-modal-frame" id="pdfModalFrame" title="PDF Uzbekistan"></iframe>
+        </div>
+    </div>
 
     <footer class="site-footer">
         <div class="footer-shell">
