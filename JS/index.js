@@ -106,6 +106,7 @@ const flipPrev = document.getElementById("flipPrev");
 const flipNext = document.getElementById("flipNext");
 const flipMeta = document.getElementById("flipbookMeta");
 const flipbookLink = document.getElementById("flipbookLink");
+const flipbookDownload = document.getElementById("flipbookDownload");
 const pdfModal = document.getElementById("pdfModal");
 const pdfModalFrame = document.getElementById("pdfModalFrame");
 const pdfModalClose = document.querySelector(".pdf-modal-close");
@@ -250,6 +251,9 @@ window.addEventListener("resize", () => {
         if (flipbookLink) {
             flipbookLink.dataset.pdf = resolvedPdfUrl;
         }
+        if (flipbookDownload) {
+            flipbookDownload.dataset.pdf = resolvedPdfUrl;
+        }
         pdfDoc = await loadPdfFromUrl(resolvedPdfUrl);
         currentPage = 1;
 
@@ -260,6 +264,9 @@ window.addEventListener("resize", () => {
         flipMeta.textContent = "Ebook gagal dimuat. Coba buka PDF penuh.";
         flipPrev.disabled = true;
         flipNext.disabled = true;
+        if (flipbookDownload) {
+            flipbookDownload.hidden = false;
+        }
     }
 })();
 
@@ -285,6 +292,13 @@ if (flipbookLink) {
     flipbookLink.addEventListener("click", () => {
         const url = flipbookLink.dataset.pdf || "/assets/ebook/UZBEKISTAN.pdf";
         openPdfModal(url);
+    });
+}
+
+if (flipbookDownload) {
+    flipbookDownload.addEventListener("click", () => {
+        const url = flipbookDownload.dataset.pdf || "/assets/ebook/UZBEKISTAN.pdf";
+        window.open(url, "_blank", "noopener,noreferrer");
     });
 }
 
