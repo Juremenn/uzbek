@@ -115,6 +115,7 @@ let backCanvas = document.getElementById("flipCanvasBack");
 let pdfDoc = null;
 let currentPage = 1;
 let isFlipping = false;
+let resolvedPdfUrl = null;
 
 const pdfCandidates = [
     "/assets/ebook/UZBEKISTAN.pdf",
@@ -133,7 +134,16 @@ async function pickPdfUrl() {
             // Try next candidate.
         }
     }
-    return pdfCandidates[0];
+    return null;
+}
+
+function setFlipbookLinkState(isReady, url) {
+    if (!flipbookLink) {
+        return;
+    }
+
+    flipbookLink.disabled = !isReady;
+    flipbookLink.dataset.pdf = isReady && url ? url : "";
 }
 
 async function loadPdfFromUrl(url) {
@@ -240,15 +250,17 @@ window.addEventListener("resize", () => {
 (async function initFlipbook() {
     if (!window.pdfjsLib) {
         flipMeta.textContent = "PDF engine tidak tersedia.";
+        setFlipbookLinkState(false);
         return;
     }
 
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    setFlipbookLinkState(false);
 
     try {
-        const resolvedPdfUrl = await pickPdfUrl();
-        if (flipbookLink) {
-            flipbookLink.dataset.pdf = resolvedPdfUrl;
+        resolvedPdfUrl = await pickPdfUrl();
+        if (!resolvedPdfUrl) {
+            throw new Error("PDF not found");
         }
         pdfDoc = await loadPdfFromUrl(resolvedPdfUrl);
         currentPage = 1;
@@ -256,10 +268,12 @@ window.addEventListener("resize", () => {
         await renderPage(currentPage, frontCanvas);
         setCanvasRoles();
         updateFlipControls();
+        setFlipbookLinkState(true, resolvedPdfUrl);
     } catch (error) {
-        flipMeta.textContent = "Ebook gagal dimuat. Coba buka PDF penuh.";
+        flipMeta.textContent = "Ebook gagal dimuat.";
         flipPrev.disabled = true;
         flipNext.disabled = true;
+        setFlipbookLinkState(false);
     }
 })();
 
@@ -284,7 +298,10 @@ function closePdfModal() {
 
 if (flipbookLink) {
     flipbookLink.addEventListener("click", () => {
-        const url = flipbookLink.dataset.pdf || "/assets/ebook/UZBEKISTAN.pdf";
+        const url = flipbookLink.dataset.pdf;
+        if (!url) {
+            return;
+        }
         openPdfModal(url);
     });
 }
