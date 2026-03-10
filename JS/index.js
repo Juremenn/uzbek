@@ -164,12 +164,13 @@ function setFlipbookLoadState(isLoading) {
 }
 
 async function loadPdfFromUrl(url) {
-    const res = await fetch(url);
-    if (!res.ok) {
-        throw new Error("PDF not found");
-    }
-    const data = await res.arrayBuffer();
-    const loadingTask = window.pdfjsLib.getDocument({ data });
+    const loadingTask = window.pdfjsLib.getDocument({
+        url,
+        withCredentials: false,
+        disableAutoFetch: true,
+        disableStream: false,
+        disableRange: false
+    });
     return loadingTask.promise;
 }
 

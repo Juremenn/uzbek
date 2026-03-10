@@ -34,7 +34,7 @@
                 </div>
                 <a href="citarasa.html" class="nav-link"><i class="fas fa-utensils"></i> Cita Rasa</a>
                 <a href="nilaiglobal.html" class="nav-link"><i class="fas fa-earth-americas"></i> Nilai Global</a>
-                <a href="#" class="nav-link"><i class="fas fa-camera"></i> Galeri</a>
+                <a href="galeri.html" class="nav-link"><i class="fas fa-camera"></i> Galeri</a>
                 <a href="tentangkami.html" class="nav-link"><i class="fas fa-circle-info"></i> Tentang Kami</a>
             </div>
         </div>
@@ -86,7 +86,7 @@
                         </span>
                     </button>
 
-                    <button class="tokoh-card" type="button" data-name="Jamshid Kuchkarov" data-role="menteri ekonomi dan keuangan Uzbekistan" data-image="assets/img/tokoh/Jamshidkuchkarov.png" data-summary="Jamshid Kuchkarov dikenal sebagai pejabat publik yang berperan penting dalam arah kebijakan ekonomi Uzbekistan. Kiprahnya banyak terkait dengan reformasi fiskal, investasi, dan penguatan sistem keuangan negara." data-fact-one-title="Reformasi ekonomi" data-fact-one-text="Ia berkontribusi dalam kebijakan yang mendorong efisiensi pengelolaan anggaran dan peningkatan iklim investasi nasional." data-fact-two-title="Stabilitas fiskal" data-fact-two-text="Perannya di sektor keuangan membantu menjaga keseimbangan pembangunan dengan kebutuhan pertumbuhan ekonomi jangka panjang." data-fact-three-title="Arah pembangunan" data-fact-three-text="Kebijakan yang ia jalankan ikut membentuk fondasi bagi transformasi ekonomi Uzbekistan yang lebih modern dan terbuka." data-video-playlist="assets/video/1.mp4,assets/video/2.mp4,assets/video/3.mp4">
+                    <button class="tokoh-card" type="button" data-name="Jamshid Kuchkarov" data-role="menteri ekonomi dan keuangan Uzbekistan" data-image="assets/img/tokoh/Jamshidkuchkarov.png" data-summary="Jamshid Kuchkarov dikenal sebagai pejabat publik yang berperan penting dalam arah kebijakan ekonomi Uzbekistan. Kiprahnya banyak terkait dengan reformasi fiskal, investasi, dan penguatan sistem keuangan negara." data-fact-one-title="Reformasi ekonomi" data-fact-one-text="Ia berkontribusi dalam kebijakan yang mendorong efisiensi pengelolaan anggaran dan peningkatan iklim investasi nasional." data-fact-two-title="Stabilitas fiskal" data-fact-two-text="Perannya di sektor keuangan membantu menjaga keseimbangan pembangunan dengan kebutuhan pertumbuhan ekonomi jangka panjang." data-fact-three-title="Arah pembangunan" data-fact-three-text="Kebijakan yang ia jalankan ikut membentuk fondasi bagi transformasi ekonomi Uzbekistan yang lebih modern dan terbuka." data-video-playlist="assets/video/1.mp4,assets/video/2.mp4,assets/video/3.mp4" data-video-subtitles="assets/video/subtitles/jamshid-1.id.vtt,assets/video/subtitles/jamshid-2.id.vtt,assets/video/subtitles/jamshid-3.id.vtt">
                         <span class="tokoh-card-image-wrap"><img src="assets/img/tokoh/Jamshidkuchkarov.png" alt="Jamshid Kuchkarov" class="tokoh-card-image"></span>
                         <span class="tokoh-card-body">
                             <span class="tokoh-card-name">Jamshid Kuchkarov</span>
@@ -138,7 +138,9 @@
                                 <span id="spotlightVideoToggleText">Stop</span>
                             </button>
                         </div>
-                        <video id="spotlightVideo" class="spotlight-video" playsinline preload="metadata"></video>
+                        <video id="spotlightVideo" class="spotlight-video" playsinline preload="metadata">
+                            <track id="spotlightVideoTrack" kind="subtitles" srclang="id" label="Bahasa Indonesia" default>
+                        </video>
                     </aside>
                 </div>
             </div>
@@ -175,7 +177,7 @@
                         <ul class="footer-list">
                             <li><a href="citarasa.html">Cita rasa</a></li>
                             <li><a href="nilaiglobal.html">Nilai global</a></li>
-                            <li><a href="#">Galeri</a></li>
+                            <li><a href="galeri.html">Galeri</a></li>
                             <li><a href="tentangkami.html">Tentang kami</a></li>
                         </ul>
                     </div>
@@ -227,11 +229,26 @@
         const spotlightShell = document.querySelector('.spotlight-shell');
         const spotlightVideoWrap = document.getElementById('spotlightVideoWrap');
         const spotlightVideo = document.getElementById('spotlightVideo');
+        const spotlightVideoTrack = document.getElementById('spotlightVideoTrack');
         const spotlightVideoToggle = document.getElementById('spotlightVideoToggle');
         const spotlightVideoToggleText = document.getElementById('spotlightVideoToggleText');
         const spotlightVideoToggleIcon = spotlightVideoToggle.querySelector('i');
         let videoPlaylist = [];
+        let subtitlePlaylist = [];
         let activeVideoIndex = 0;
+
+        function updateActiveSubtitle(index) {
+            if (!spotlightVideoTrack) {
+                return;
+            }
+
+            const subtitleUrl = subtitlePlaylist[index] || '';
+            spotlightVideoTrack.src = subtitleUrl;
+
+            if (spotlightVideo.textTracks && spotlightVideo.textTracks[0]) {
+                spotlightVideo.textTracks[0].mode = subtitleUrl ? 'showing' : 'disabled';
+            }
+        }
 
         function isCompactTokohLayout() {
             return window.matchMedia('(max-width: 760px)').matches;
@@ -278,8 +295,10 @@
             spotlightVideo.currentTime = 0;
             spotlightVideoWrap.hidden = true;
             videoPlaylist = [];
+            subtitlePlaylist = [];
             activeVideoIndex = 0;
             setVideoToggleState(false);
+            updateActiveSubtitle(0);
 
             if (resetSource) {
                 spotlightVideo.removeAttribute('src');
@@ -295,6 +314,7 @@
 
             activeVideoIndex = index % videoPlaylist.length;
             spotlightVideo.src = videoPlaylist[activeVideoIndex];
+            updateActiveSubtitle(activeVideoIndex);
             spotlightVideoWrap.hidden = false;
             setVideoToggleState(true);
 
@@ -328,7 +348,13 @@
                 return;
             }
 
-            playSpotlightVideo((activeVideoIndex + 1) % videoPlaylist.length);
+            const nextIndex = activeVideoIndex + 1;
+            if (nextIndex < videoPlaylist.length) {
+                playSpotlightVideo(nextIndex);
+                return;
+            }
+
+            setVideoToggleState(false);
         });
 
         spotlightVideo.addEventListener('play', () => setVideoToggleState(true));
@@ -434,6 +460,13 @@
 
             if (card.dataset.videoPlaylist) {
                 videoPlaylist = card.dataset.videoPlaylist.split(',').map((item) => item.trim()).filter(Boolean);
+
+                if (card.dataset.videoSubtitles) {
+                    subtitlePlaylist = card.dataset.videoSubtitles.split(',').map((item) => item.trim()).filter(Boolean);
+                } else {
+                    subtitlePlaylist = [];
+                }
+
                 playSpotlightVideo(0);
                 return;
             }
@@ -468,6 +501,7 @@
     </script>
 </body>
 </html>
+
 
 
 
