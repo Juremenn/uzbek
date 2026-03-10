@@ -949,23 +949,15 @@ html {
     padding: 72px 0 26px;
     color: #f5f5f5;
     overflow: hidden;
+    background: url("../img/background/footer.png") center / cover no-repeat;
 }
 
 .site-footer::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url("../img/background/latarbelakang.png") center / cover no-repeat;
-    filter: brightness(0.28) grayscale(0.1);
-    z-index: -2;
+    content: none;
 }
 
 .site-footer::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(22, 22, 22, 0.68) 0%, rgba(18, 18, 18, 0.72) 100%);
-    z-index: -1;
+    content: none;
 }
 
 .footer-shell {

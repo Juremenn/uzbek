@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/galeri.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@400;700;900&family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 </head>
@@ -125,8 +126,8 @@
 
     <footer class="site-footer">
         <div class="footer-shell">
-            <div class="footer-grid">
-                <section class="footer-col">
+            <div class="footer-layout" aria-label="Footer">
+                <section class="footer-block footer-about" aria-label="Tentang kami">
                     <h3 class="footer-heading">Tentang kami</h3>
                     <ul class="footer-list">
                         <li><a href="#">PPLG</a></li>
@@ -135,12 +136,9 @@
                         <li><a href="#">DKV</a></li>
                         <li><a href="#">Akuntansi</a></li>
                     </ul>
-                    <div class="footer-logo-block">
-                        <img src="assets/img/logo/metland.png" alt="Logo Metland School" class="footer-logo footer-logo-metland">
-                    </div>
                 </section>
 
-                <section class="footer-col">
+                <section class="footer-block footer-info" aria-label="Uzbekistan info">
                     <h3 class="footer-heading">Uzbekistan info</h3>
                     <div class="footer-links-grid">
                         <ul class="footer-list">
@@ -154,29 +152,39 @@
                             <li><a href="citarasa.html">Cita rasa</a></li>
                             <li><a href="nilaiglobal.html">Nilai global</a></li>
                             <li><a href="galeri.html">Galeri</a></li>
-                            <li><a href="tentangkami.html">Tentang kami</a></li>
                         </ul>
                     </div>
                 </section>
 
-                <section class="footer-col footer-col-right">
-                    <div class="footer-logo-block footer-logo-right">
-                        <img src="assets/img/logo/uzbekistan.png" alt="Lambang Uzbekistan" class="footer-logo footer-logo-uzbek">
-                    </div>
+                <div class="footer-block footer-emblem" aria-label="Lambang Uzbekistan">
+                    <img src="assets/img/logo/uzbekistan.png" alt="Lambang Uzbekistan" class="footer-logo footer-logo-uzbek">
+                </div>
 
+                <div class="footer-block footer-metland" aria-label="Logo Metland School">
+                    <img src="assets/img/logo/metland.png" alt="Logo Metland School" class="footer-logo footer-logo-metland">
+                </div>
+
+                <section class="footer-block footer-contact" aria-label="Hubungi kami">
+                    <h3 class="footer-heading">Hubungi kami</h3>
+                    <p class="footer-contact-item">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <span>Jl. Kota Taman Metropolitan,<br>Cileungsi Kidul, Kec. Cileungsi,<br>Kabupaten Bogor, Jawa Barat 16820</span>
+                    </p>
+                    <p class="footer-contact-item">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                        <span>www.smkmetland.net</span>
+                    </p>
+                    <div class="footer-socials" aria-label="Media sosial">
+                        <a href="#" class="footer-social footer-social-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="footer-social footer-social-whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="#" class="footer-social footer-social-tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                    </div>
+                </section>
+
+                <section class="footer-block footer-desc" aria-label="Deskripsi website">
                     <p class="footer-description">
                         Website ini dibuat sebagai media informasi dan promosi digital yang menghadirkan keindahan serta kekayaan budaya Uzbekistan secara lebih dekat dan interaktif. Melalui tampilan visual yang menarik dan navigasi yang mudah, pengunjung dapat menjelajahi berbagai destinasi populer seperti Tashkent, Samarkand, dan Bukhara.
                     </p>
-                    <div class="footer-contact">
-                        <h3 class="footer-heading">Hubungi kami</h3>
-                        <p><i class="fa-solid fa-location-dot"></i> Kota Taman Metropolitan, Cileungsi Kidul, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820</p>
-                        <p><i class="fa-solid fa-globe"></i> www.smkmetland.net</p>
-                        <div class="footer-socials" aria-label="Media sosial">
-                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                        </div>
-                    </div>
                 </section>
             </div>
 
