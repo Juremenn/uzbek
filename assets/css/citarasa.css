@@ -1,0 +1,959 @@
+:root {
+    --text-light: #f7f7f5;
+    --panel-border: rgba(255, 255, 255, 0.55);
+    --nav-bg-top: rgba(180, 196, 200, 0.36);
+    --nav-bg-bottom: rgba(92, 122, 132, 0.42);
+    --dropdown-top: rgba(168, 204, 184, 0.97);
+    --dropdown-bottom: rgba(141, 188, 164, 0.95);
+    --blue: #56a8de;
+    --green: #adca35;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #ece9e6;
+    color: #1f1f1f;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: fixed;
+    top: 16px;
+    left: 0;
+    width: 100%;
+    z-index: 30;
+    padding: 0 22px;
+}
+
+.nav-content {
+    max-width: 1120px;
+    margin: 0 auto;
+    border-radius: 999px;
+    border: 1px solid var(--panel-border);
+    background: linear-gradient(180deg, var(--nav-bg-top) 0%, var(--nav-bg-bottom) 100%);
+    box-shadow: 0 14px 26px rgba(10, 20, 26, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.58);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-height: 56px;
+    padding: 12px 24px;
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: clamp(14px, 1vw, 17px);
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 6px 11px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.48);
+    transition: background-color 0.22s ease, box-shadow 0.22s ease, color 0.22s ease, transform 0.18s ease;
+}
+
+.nav-link:hover,
+.nav-link-active {
+    color: #f5fffb;
+    background: linear-gradient(180deg, rgba(178, 215, 193, 0.94) 0%, rgba(129, 183, 157, 0.9) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46), 0 5px 14px rgba(14, 31, 27, 0.36);
+    transform: translateY(-1px);
+}
+
+.nav-arrow {
+    font-size: 0.67em;
+}
+
+.nav-item-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-dropdown-toggle {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 8px 14px;
+}
+
+.nav-dropdown-toggle:hover {
+    color: #f5fffb;
+    background: linear-gradient(180deg, rgba(178, 215, 193, 0.94) 0%, rgba(129, 183, 157, 0.9) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46), 0 5px 14px rgba(14, 31, 27, 0.36);
+    transform: translateY(-1px);
+}
+
+.nav-item-dropdown.open .nav-dropdown-toggle {
+    background: linear-gradient(180deg, rgba(182, 216, 195, 0.88) 0%, rgba(133, 184, 158, 0.82) 100%);
+    color: #f9fffc;
+}
+
+.nav-item-dropdown.open .nav-dropdown-toggle .nav-arrow {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-toggle .nav-arrow {
+    transition: transform 0.2s ease;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    opacity: 0;
+    pointer-events: none;
+    display: grid;
+    gap: 6px;
+    min-width: 214px;
+    z-index: 30;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-item-dropdown.open .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+    text-decoration: none;
+    text-align: center;
+    color: #eaf8f2;
+    font-size: clamp(14px, 1vw, 16px);
+    line-height: 1.2;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(222, 244, 233, 0.88);
+    background: linear-gradient(180deg, var(--dropdown-top) 0%, var(--dropdown-bottom) 100%);
+    text-shadow: 0 1px 2px rgba(23, 36, 33, 0.22);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 7px 14px rgba(10, 24, 20, 0.25);
+}
+
+.dropdown-item:hover {
+    filter: brightness(1.04);
+}
+
+.cita-hero {
+    position: relative;
+    min-height: 760px;
+    padding: 150px 30px 80px;
+    background: linear-gradient(180deg, rgba(17, 26, 33, 0.28) 0%, rgba(17, 26, 33, 0.44) 100%),
+        url("../img/background/latarcitarasa.png") center/cover no-repeat;
+}
+
+.cita-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(52px, 8vw, 92px);
+    text-align: center;
+    line-height: 0.95;
+    color: #f9f7f3;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.58);
+}
+
+.hero-country {
+    margin-top: 8px;
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(32px, 4vw, 54px);
+    text-align: center;
+    letter-spacing: 1px;
+    color: rgba(246, 245, 241, 0.97);
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.48);
+}
+
+.hero-content {
+    margin-top: 38px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 24px;
+}
+
+.hero-copy {
+    max-width: 580px;
+    background: rgba(23, 26, 31, 0.38);
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    border-radius: 24px;
+    padding: 26px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: riseIn 0.8s ease-out both;
+}
+
+.hero-copy h2 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(26px, 3.8vw, 48px);
+    line-height: 1.1;
+    color: #fff;
+}
+
+.hero-copy p {
+    margin-top: 18px;
+    font-size: clamp(15px, 1.35vw, 22px);
+    line-height: 1.68;
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.hero-dish {
+    justify-self: center;
+    width: min(460px, 88vw);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 4px solid rgba(227, 236, 243, 0.74);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    animation: floatIn 0.9s ease-out both;
+}
+
+.hero-dish img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.color-stripes {
+    width: 100%;
+}
+
+.stripe {
+    width: 100%;
+}
+
+.stripe-blue {
+    height: 12px;
+    background: var(--blue);
+}
+
+.stripe-white {
+    height: 8px;
+    background: #fff;
+}
+
+.stripe-green {
+    height: 10px;
+    background: var(--green);
+}
+
+.stripe-black {
+    height: 3px;
+    background: #1a1a1a;
+}
+
+.cita-cards {
+    max-width: 1180px;
+    margin: 44px auto 80px;
+    padding: 0 24px;
+}
+
+.section-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(44px, 5vw, 66px);
+    color: #6ab995;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.cards-grid {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.food-card {
+    background: #ececec;
+    border: 1px solid rgba(36, 36, 36, 0.09);
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(22, 22, 22, 0.18);
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.food-card:nth-child(1) {
+    animation: riseIn 0.45s ease-out both;
+}
+
+.food-card:nth-child(2) {
+    animation: riseIn 0.6s ease-out both;
+}
+
+.food-card:nth-child(3) {
+    animation: riseIn 0.75s ease-out both;
+}
+
+.food-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(22, 22, 22, 0.24);
+}
+
+.food-card:focus-visible {
+    outline: 3px solid rgba(106, 185, 149, 0.6);
+    outline-offset: 4px;
+}
+
+.food-card img {
+    width: 100%;
+    height: 245px;
+    object-fit: cover;
+    display: block;
+}
+
+.food-card h3 {
+    padding: 12px 14px 14px;
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(24px, 2vw, 34px);
+    color: #121212;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.cita-modal {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 2000;
+}
+
+.cita-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cita-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.cita-modal-card {
+    position: relative;
+    width: min(1080px, calc(100% - 48px));
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    background: #6b6b6b;
+}
+
+.cita-modal-bg {
+    position: absolute;
+    inset: 0;
+    background: center / cover no-repeat;
+    filter: brightness(0.6);
+}
+
+.cita-modal-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.25fr 0.9fr;
+    gap: 24px;
+    padding: 46px 56px 54px;
+    color: #f4f4f4;
+    min-height: 420px;
+}
+
+.cita-modal-text {
+    font-size: clamp(18px, 1.45vw, 24px);
+    line-height: 1.6;
+    text-align: left;
+    max-width: 520px;
+}
+
+.cita-modal-text p {
+    margin: 0;
+}
+
+.cita-modal-image {
+    align-self: start;
+    justify-self: center;
+    width: min(360px, 100%);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.cita-modal-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.cita-modal-btn {
+    grid-column: 2;
+    justify-self: center;
+    align-self: end;
+    border: 0;
+    cursor: pointer;
+    padding: 14px 34px;
+    border-radius: 999px;
+    background: #7aa6b2;
+    color: #0f2b33;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 980px) {
+    .cita-cards {
+        margin: 32px auto 64px;
+        padding: 0 18px;
+    }
+
+    .section-title {
+        font-size: clamp(30px, 6vw, 44px);
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .food-card img {
+        height: 210px;
+    }
+
+    .cita-modal-content {
+        grid-template-columns: 1fr;
+        padding: 32px 28px 36px;
+        gap: 18px;
+    }
+
+    .cita-modal-image {
+        order: -1;
+    }
+
+    .cita-modal-btn {
+        grid-column: auto;
+        justify-self: start;
+    }
+}
+
+@media (max-width: 700px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .food-card img {
+        height: 200px;
+    }
+
+    .food-card h3 {
+        font-size: clamp(20px, 6vw, 26px);
+    }
+
+    .cita-modal-card {
+        width: calc(100% - 24px);
+        border-radius: 20px;
+    }
+
+    .cita-modal-content {
+        padding: 16px 14px 18px;
+        min-height: unset;
+        gap: 12px;
+    }
+
+    .cita-modal-text {
+        font-size: 15px;
+        max-width: 100%;
+    }
+
+    .cita-modal-text p {
+        max-height: 40vh;
+        overflow-y: auto;
+        padding-right: 6px;
+    }
+
+    .cita-modal-image {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 14px;
+    }
+
+    .cita-modal-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cita-modal-card {
+        width: calc(100% - 16px);
+        border-radius: 18px;
+    }
+
+    .cita-modal-content {
+        padding: 14px 12px 16px;
+    }
+
+    .cita-modal-text p {
+        max-height: 34vh;
+    }
+}
+
+.site-footer {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: 8px;
+    padding: 72px 0 26px;
+    color: #f5f5f5;
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../img/background/latarbelakang.png") center / cover no-repeat;
+    filter: brightness(0.28) grayscale(0.1);
+    z-index: -2;
+}
+
+.site-footer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(22, 22, 22, 0.68) 0%, rgba(18, 18, 18, 0.72) 100%);
+    z-index: -1;
+}
+
+.footer-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1.15fr;
+    background: rgba(20, 20, 20, 0.34);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 20px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+}
+
+.footer-col {
+    padding: 32px 30px 28px;
+}
+
+.footer-col + .footer-col {
+    border-left: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.footer-heading {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(28px, 2.6vw, 42px);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.footer-list {
+    list-style: none;
+    display: grid;
+    gap: 5px;
+}
+
+.footer-list a {
+    color: rgba(245, 245, 245, 0.93);
+    text-decoration: none;
+    font-size: clamp(15px, 1.1vw, 22px);
+    line-height: 1.42;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.footer-list a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.72);
+    text-underline-offset: 4px;
+}
+
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+    margin-bottom: 16px;
+}
+
+.footer-logo-block {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.footer-logo-metland {
+    max-width: 158px;
+}
+
+.footer-contact p {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: rgba(245, 245, 245, 0.93);
+    font-size: clamp(14px, 1vw, 19px);
+    line-height: 1.42;
+    margin-bottom: 8px;
+}
+
+.footer-contact p i {
+    width: 18px;
+    margin-top: 3px;
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.footer-socials a {
+    color: #fff;
+    font-size: 28px;
+    text-decoration: none;
+    opacity: 0.94;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-socials a:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.footer-col-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.footer-logo-right {
+    margin-top: 0;
+    justify-content: center;
+}
+
+.footer-logo-uzbek {
+    max-width: 500px;
+}
+
+.footer-description {
+    color: rgba(245, 245, 245, 0.92);
+    font-size: clamp(15px, 1.04vw, 20px);
+    line-height: 1.48;
+    text-align: left;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    color: rgba(248, 248, 248, 0.95);
+}
+
+.footer-bottom p:first-child {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(27px, 2vw, 34px);
+    line-height: 1.1;
+}
+
+.footer-bottom p:last-child {
+    margin-top: 4px;
+    font-size: clamp(14px, 1vw, 17px);
+}
+
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 980px) {
+    .navbar {
+        top: 10px;
+        padding: 0 10px;
+    }
+
+    .nav-content {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 8px;
+        min-height: 58px;
+        padding: 9px 12px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .nav-content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-copy {
+        max-width: 100%;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .site-footer {
+        padding-top: 50px;
+    }
+
+    .footer-shell {
+        padding: 0 16px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-col-right {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .footer-logo-right {
+        justify-content: flex-start;
+    }
+
+    .dropdown-menu {
+        top: 70px;
+        min-width: 170px;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        top: 6px;
+        padding: 0 6px;
+    }
+
+    .nav-content {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 8px;
+        min-height: 54px;
+        padding: 7px 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .nav-content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-link {
+        flex: 0 0 auto;
+        font-size: 12px;
+        gap: 4px;
+        padding: 5px 9px;
+    }
+
+    .nav-dropdown-toggle {
+        padding: 6px 10px;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%) translateY(-6px);
+        opacity: 0;
+        pointer-events: none;
+        display: grid;
+        gap: 6px;
+        min-width: 214px;
+        z-index: 30;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-item-dropdown.open .dropdown-menu {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-item {
+        font-size: 12px;
+        padding: 7px 10px;
+    }
+
+    .site-footer {
+        padding-top: 42px;
+        padding-bottom: 18px;
+    }
+
+    .footer-grid {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        border-radius: 16px;
+    }
+
+    .footer-col {
+        padding: 20px 14px;
+    }
+
+    .footer-col + .footer-col {
+        border-left: 1px solid rgba(255, 255, 255, 0.24);
+        border-top: none;
+    }
+
+    .footer-col-right {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .footer-links-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .footer-col-right .footer-contact {
+        margin-top: 6px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        width: 100%;
+    }
+
+    .footer-col:first-child .footer-list {
+        grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+        column-gap: 8px;
+        row-gap: 2px;
+    }
+
+    .footer-heading {
+        font-size: clamp(26px, 7.8vw, 44px);
+        margin-bottom: 10px;
+    }
+
+    .footer-list a {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+    .footer-contact p {
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
+    .footer-logo-metland {
+        max-width: 132px;
+    }
+
+    .footer-logo-uzbek {
+        max-width: 150px;
+    }
+
+    .footer-bottom {
+        margin-top: 14px;
+    }
+
+    .footer-bottom p:first-child {
+        font-size: clamp(23px, 6.4vw, 28px);
+    }
+
+    .cita-hero {
+        min-height: 690px;
+        padding: 110px 14px 56px;
+    }
+
+    .hero-content {
+        margin-top: 26px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-footer {
+        padding-top: 46px;
+    }
+
+    .footer-shell {
+        padding: 0 12px;
+    }
+
+    .footer-links-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .footer-socials a {
+        font-size: 22px;
+    }
+}

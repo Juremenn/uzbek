@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzbekistan - Beranda</title>
+    <link rel="icon" type="image/png" href="../assets/img/logo/metland.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@400;700;900&family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <button class="nav-mobile-toggle" id="navMobileToggle" type="button" aria-expanded="false" aria-controls="navPrimary">
+                <span class="nav-mobile-toggle-label"><i class="fas fa-bars"></i> Menu</span>
+                <i class="fas fa-chevron-down nav-mobile-icon" aria-hidden="true"></i>
+            </button>
+
+            <div class="nav-links" id="navPrimary">
+                <a href="index.html" class="nav-link nav-link-active" aria-current="page"><i class="fas fa-home"></i> Beranda</a>
+                <div class="nav-item-dropdown" id="jelajahiDropdown">
+                    <button class="nav-link nav-dropdown-toggle" id="jelajahiDropdownToggle" type="button" aria-expanded="false" aria-controls="jelajahiDropdownMenu">
+                        <i class="fas fa-earth-asia"></i> Jelajahi Uzbekistan <i class="fas fa-chevron-down nav-arrow"></i>
+                    </button>
+                    <div class="dropdown-menu" id="jelajahiDropdownMenu" role="menu" aria-hidden="true">
+                        <a href="../kondisi.html" class="dropdown-item" role="menuitem">Kondisi Geografis</a>
+                        <a href="../destinasi.html" class="dropdown-item" role="menuitem">Destinasi &amp; Wisata</a>
+                        <a href="../tokoh.html" class="dropdown-item" role="menuitem">Tokoh Inspiratif</a>
+                        <a href="../paketwisata.html" class="dropdown-item" role="menuitem">Paket Wisata</a>
+                    </div>
+                </div>
+                <a href="../citarasa.html" class="nav-link"><i class="fas fa-utensils"></i> Cita Rasa</a>
+                <a href="../nilaiglobal.html" class="nav-link"><i class="fas fa-earth-americas"></i> Nilai Global</a>
+                <a href="#" class="nav-link"><i class="fas fa-camera"></i> Galeri</a>
+                <a href="../tentangkami.html" class="nav-link"><i class="fas fa-circle-info"></i> Tentang Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay">
+      
+
+            <div class="glass-card">
+                <!-- Slides -->
+                <div class="slide active" style="background-image: url('../assets/img/slides/1.png');">
+                    <div class="slide-content">
+                        <p class="welcome-text">SELAMAT DATANG DI</p>
+                        <h1 class="main-title">UZBEKISTAN</h1>
+                        <p class="subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
+                        <a href="../kondisi.html"><button class="explore-btn">JELAJAHI SEKARANG</button></a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('../assets/img/slides/2.png');">
+                    <div class="slide-content">
+                        <p class="welcome-text">SELAMAT DATANG DI</p>
+                        <h1 class="main-title">UZBEKISTAN</h1>
+                        <p class="subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
+                       <a href="../kondisi.html"><button class="explore-btn">JELAJAHI SEKARANG</button></a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('../assets/img/slides/3.png');">
+                    <div class="slide-content">
+                        <p class="welcome-text">SELAMAT DATANG DI</p>
+                        <h1 class="main-title">UZBEKISTAN</h1>
+                        <p class="subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
+                        <a href="../kondisi.html"><button class="explore-btn">JELAJAHI SEKARANG</button></a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('../assets/img/slides/4.png');">
+                    <div class="slide-content">
+                        <p class="welcome-text">SELAMAT DATANG DI</p>
+                        <h1 class="main-title">UZBEKISTAN</h1>
+                        <p class="subtitle">TEMUKAN HAL MENARIK TENTANG UZBEKISTAN</p>
+                        <a href="../kondisi.html"><button class="explore-btn">JELAJAHI SEKARANG</button></a>
+                    </div>
+                </div>
+
+                <!-- Slide Indicators -->
+                <div class="slide-indicators">
+                    <span class="indicator active" onclick="currentSlide(1)"></span>
+                    <span class="indicator" onclick="currentSlide(2)"></span>
+                    <span class="indicator" onclick="currentSlide(3)"></span>
+                    <span class="indicator" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+        </div>
+                </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <h2 class="section-title">PETA NEGARA UZBEKISTAN</h2>
+        <div class="map-content">
+            <div class="map-image">
+                <img src="../assets/img/peta/peta.png" alt="Peta Uzbekistan">
+            </div>
+            <div class="map-description">
+                <p>Uzbekistan adalah negara terkurung daratan yang terletak di Asia Tengah, berbatasan dengan Kazakhstan di utara, Kyrgyzstan di timur laut, Tajikistan di tenggara, Afghanistan di selatan, dan Turkmenistan di barat daya. Negara ini dibagi menjadi 12 provinsi dan memiliki sejarah yang kaya sebagai bagian dari Uni Soviet dari tahun 1924 hingga 1991. Ibu kotanya adalah Tashkent, dan bahasa resminya adalah Uzbek.</p>
+            </div>
+        </div>
+                </section>
+
+    <!-- Colored Stripes Divider -->
+    <div class="color-stripes">
+        <div class="stripe stripe-blue"></div>
+        <div class="stripe stripe-white"></div>
+        <div class="stripe stripe-green"></div>
+        <div class="stripe stripe-black"></div>
+    </div>
+
+    <!-- Cities Section -->
+    <section class="cities-section">
+        <div class="cities-inner">
+            <h2 class="section-title cities-title">KOTA TERKENAL DI UZBEKISTAN</h2>
+            <div class="wrapper">
+                <div class="main-grid">
+                    <div class="left-panel">
+                        <div class="featured-image">
+                            <video src="https://stream.mux.com/02rhOqGws8jo100fkfTWPpA6z3hmRoU7sgDP5ajOojtGA.m3u8?redundant_streams=true" aria-label="Video kota di Uzbekistan" autoplay muted loop playsinline controls></video>
+                        </div>
+
+                        <div class="city-grid">
+                            <div class="city-card">
+                                <button type="button" class="card-button" data-city="tashkent" data-img="../assets/img/card/taskhen.png" data-desc="Tashkent adalah ibu kota dan kota terbesar di Uzbekistan sekaligus pusat penduduk terpadat di Asia Tengah (lebih dari 3 juta jiwa).">
+                                    <img src="../assets/img/card/taskhen.png" alt="Tashkent" class="card-image">
+                                    <h3 class="card-title">Tashkent</h3>
+                                    <span class="card-detail">Detail</span>
+                                </button>
+                            </div>
+
+                            <div class="city-card">
+                                <button type="button" class="card-button" data-city="samarkand" data-img="../assets/img/card/samarkand.png" data-desc="Samarkand adalah sebuah kota bersejarah di Uzbekistan, salah satu kota tertua yang masih dihuni di dunia, didirikan sekitar 700 SM.">
+                                    <img src="../assets/img/card/samarkand.png" alt="Samarkand" class="card-image">
+                                    <h3 class="card-title">Samarkand</h3>
+                                    <span class="card-detail">Detail</span>
+                                </button>
+                            </div>
+
+                            <div class="city-card">
+                                <button type="button" class="card-button" data-city="bukhara" data-img="../assets/img/card/bukhara.png" data-desc="Bukhara adalah kota tertua di Uzbekistan dan menjadi pusat intelektual, kebudayaan, dan perdagangan penting di dunia muslim pada masa lampau; sejarahnya mencapai ribuan tahun.">
+                                    <img src="../assets/img/card/bukhara.png" alt="Bukhara" class="card-image">
+                                    <h3 class="card-title">Bukhara</h3>
+                                    <span class="card-detail">Detail</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="right-panel" aria-label="Informasi kota">
+                        <div class="panel-placeholder">
+                            <div class="placeholder-image">
+                                <span class="question-mark">?</span>
+                            </div>
+                            <div class="placeholder-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="panel-popup" id="panelPopup" aria-hidden="true">
+                            <button class="panel-popup-close" id="panelPopupClose" aria-label="Tutup pop up">&times;</button>
+                            <div class="panel-popup-image">
+                                <img id="panelPopupImg" src=" alt=">
+                            </div>
+                            <h3 class="panel-popup-title" id="panelPopupTitle"></h3>
+                            <p class="panel-popup-desc" id="panelPopupDesc"></p>
+                        </div>
+                    </aside>
+                </div>
+                <button class="section-overlay" id="sectionOverlay" aria-label="Tutup pop up"></button>
+            </div>
+        </div>
+                </section>
+
+    <section class="ebook-section" aria-labelledby="ebookTitle">
+        <div class="ebook-shell">
+            <h2 class="section-title ebook-title" id="ebookTitle">E-BOOK UZBEKISTAN</h2>
+
+            <div class="flipbook-wrap">
+                <button class="flipbook-nav" id="flipPrev" type="button" aria-label="Halaman sebelumnya">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                    <span class="flipbook-nav-label">Sebelumnya</span>
+                </button>
+
+                <div class="flipbook-stage" id="flipbookStage">
+                    <canvas class="flipbook-canvas flip-front" id="flipCanvasFront" aria-label="Halaman ebook aktif"></canvas>
+                    <canvas class="flipbook-canvas flip-back" id="flipCanvasBack" aria-hidden="true"></canvas>
+                </div>
+
+                <button class="flipbook-nav" id="flipNext" type="button" aria-label="Halaman berikutnya">
+                    <span class="flipbook-nav-label">Berikutnya</span>
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <p class="flipbook-meta" id="flipbookMeta">Memuat ebook...</p>
+            <a class="flipbook-link" href="../assets/ebook/UZBEKISTAN.pdf" target="_blank" rel="noopener noreferrer">Buka PDF penuh</a>
+        </div>
+                </section>
+
+    <footer class="site-footer">
+        <div class="footer-shell">
+            <div class="footer-grid">
+                <section class="footer-col">
+                    <h3 class="footer-heading">Tentang kami</h3>
+                    <ul class="footer-list">
+                        <li><a href="#">PPLG</a></li>
+                        <li><a href="#">Perhotelan</a></li>
+                        <li><a href="#">Kuliner</a></li>
+                        <li><a href="#">DKV</a></li>
+                        <li><a href="#">Akuntansi</a></li>
+                    </ul>
+                    <div class="footer-logo-block">
+                        <img src="../assets/img/logo/metland.png" alt="Logo Metland School" class="footer-logo footer-logo-metland">
+                    </div>
+                </section>
+
+                <section class="footer-col">
+                    <h3 class="footer-heading">Uzbekistan info</h3>
+                    <div class="footer-links-grid">
+                        <ul class="footer-list">
+                            <li><a href="index.html">Beranda</a></li>
+                            <li><a href="../kondisi.html">Kondisi geografis</a></li>
+                            <li><a href="../destinasi.html">Destinasi wisata</a></li>
+                            <li><a href="../tokoh.html">Tokoh inspiratif</a></li>
+                            <li><a href="../paketwisata.html">Paket wisata</a></li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li><a href="../citarasa.html">Cita rasa</a></li>
+                            <li><a href="../nilaiglobal.html">Nilai global</a></li>
+                            <li><a href="#">Galeri</a></li>
+                            <li><a href="../tentangkami.html">Tentang kami</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="footer-col footer-col-right">
+                    <div class="footer-logo-block footer-logo-right">
+                        <img src="../assets/img/logo/uzbekistan.png" alt="Lambang Uzbekistan" class="footer-logo footer-logo-uzbek">
+                    </div>
+                    
+                                        <p class="footer-description">
+                        Website ini dibuat sebagai media informasi dan promosi digital yang menghadirkan keindahan serta kekayaan budaya Uzbekistan secara lebih dekat dan interaktif. Melalui tampilan visual yang menarik dan navigasi yang mudah, pengunjung dapat menjelajahi berbagai destinasi populer seperti Tashkent, Samarkand, dan Bukhara.
+                    </p>
+                    <div class="footer-contact">
+                        <h3 class="footer-heading">Hubungi kami</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Kota Taman Metropolitan, Cileungsi Kidul, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820</p>
+                        <p><i class="fa-solid fa-globe"></i> www.smkmetland.net</p>
+                        <div class="footer-socials" aria-label="Media sosial">
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Menjelajahi keindahan Uzbekistan dari Asia Tengah</p>
+                <p>&copy; 2026 website wisata uzbekistan | dibuat oleh kelompok 4</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/navbar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="../JS/index.js"></script>
+</body>
+</html>
+
+
+
+
+

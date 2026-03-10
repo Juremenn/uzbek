@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzbekistan - Kondisi Geografis</title>
+    <link rel="icon" type="image/png" href="assets/img/logo/metland.png">
+    <link rel="stylesheet" href="assets/css/kondisi.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@400;700;900&family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- gunakan navbar dari halaman cita rasa -->
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <button class="nav-mobile-toggle" id="navMobileToggle" type="button" aria-expanded="false" aria-controls="navPrimary">
+                <span class="nav-mobile-toggle-label"><i class="fas fa-bars"></i> Menu</span>
+                <i class="fas fa-chevron-down nav-mobile-icon" aria-hidden="true"></i>
+            </button>
+
+            <div class="nav-links" id="navPrimary">
+                <a href="beranda/index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a>
+                <div class="nav-item-dropdown" id="jelajahiDropdown">
+                    <button class="nav-link nav-dropdown-toggle nav-link-active" id="jelajahiDropdownToggle" type="button" aria-expanded="false" aria-controls="jelajahiDropdownMenu">
+                        <i class="fas fa-earth-asia"></i> Jelajahi Uzbekistan <i class="fas fa-chevron-down nav-arrow"></i>
+                    </button>
+                    <div class="dropdown-menu" id="jelajahiDropdownMenu" role="menu" aria-hidden="true">
+                        <a href="kondisi.html" class="dropdown-item" role="menuitem" aria-current="page">Kondisi Geografis</a>
+                        <a href="destinasi.html" class="dropdown-item" role="menuitem">Destinasi &amp; Wisata</a>
+                        <a href="tokoh.html" class="dropdown-item" role="menuitem">Tokoh Inspiratif</a>
+                        <a href="paketwisata.html" class="dropdown-item" role="menuitem">Paket Wisata</a>
+                    </div>
+                </div>
+                <a href="citarasa.html" class="nav-link"><i class="fas fa-utensils"></i> Cita Rasa</a>
+                <a href="nilaiglobal.html" class="nav-link"><i class="fas fa-earth-americas"></i> Nilai Global</a>
+                <a href="#" class="nav-link"><i class="fas fa-camera"></i> Galeri</a>
+                <a href="tentangkami.html" class="nav-link"><i class="fas fa-circle-info"></i> Tentang Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-overlay">
+                <h1 class="hero-title">KONDISI GEOGRAFIS</h1>
+                <p class="hero-subtitle">
+                    Uzbekistan adalah negara di jantung Asia Tengah yang dikenal dengan lanskap yang
+                    kontras didominasi oleh gurun pasir yang luas namun memiliki pegunungan tinggi di
+                    bagian timur.
+                </p>
+            </div>
+                </section>
+
+        <section class="mountain-section">
+            <div class="stripe-blue"></div>
+            <div class="mountain-container">
+                <div class="geo-interactive-stage" id="geoInteractiveStage">
+                    <button class="mountain-trigger" id="mountainTrigger" type="button" aria-expanded="false" aria-controls="geoPopupArea geoBoundaryCard">
+                        <img src="assets/img/background/mountainremovebg.png" alt="Ilustrasi pegunungan Uzbekistan" class="mountain-img">
+                    </button>
+
+                    <article class="geo-popup geo-popup-area" id="geoPopupArea" aria-label="Luas wilayah Uzbekistan">
+                        <div class="geo-popup-shell geo-popup-shell-area">
+                            <h2 class="geo-popup-title">LUAS WILAYAH UZBEKISTAN</h2>
+                            <p class="geo-area-primary">448.978 KM<sup>2</sup></p>
+                            <p class="geo-area-secondary">173.351 MI<sup>2</sup></p>
+                        </div>
+                    </article>
+
+                    <article class="geo-popup geo-popup-boundary" id="geoBoundaryCard" aria-labelledby="boundaryTitle">
+                        <div class="geo-popup-shell geo-popup-shell-boundary">
+                            <div class="geo-boundary-tabs" role="tablist" aria-label="Jenis batas wilayah Uzbekistan">
+                                <button class="geo-boundary-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="boundaryPanel" data-boundary="darat">BATAS DARAT</button>
+                                <button class="geo-boundary-tab" type="button" role="tab" aria-selected="false" aria-controls="boundaryPanel" data-boundary="laut">BATAS LAUT</button>
+                                <button class="geo-boundary-tab" type="button" role="tab" aria-selected="false" aria-controls="boundaryPanel" data-boundary="udara">BATAS UDARA</button>
+                            </div>
+
+                            <div class="geo-boundary-content" id="boundaryPanel" role="tabpanel" tabindex="0">
+                                <h2 class="geo-popup-title geo-popup-title-boundary" id="boundaryTitle">BATAS WILAYAH</h2>
+                                <p class="geo-boundary-text" id="boundaryText">
+                                    Uzbekistan memiliki panjang total perbatasan darat sekitar 6.221 kilometer. Negara ini berbatasan dengan Kazakhstan 2.203 km di utara dan barat laut, Kirgizstan 1.099 km di timur laut, Tajikistan 1.161 km di timur dan tenggara, Turkmenistan 1.621 km di barat daya, serta Afghanistan 137 km di selatan.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="stripe-green"></div>
+                </section>
+
+        <section class="location-section">
+            <div class="location-overlay">
+                <h2 class="location-title">LETAK WILAYAH</h2>
+                <article class="location-card">
+                    <div class="location-map-frame">
+                        <img src="assets/img/peta/letakwilayah.png" alt="Peta letak wilayah Uzbekistan" class="location-map">
+                    </div>
+                    <p class="location-description">
+                        Uzbekistan terletak di antara garis lintang 37° dan 46° LU, dan garis bujur 56° dan 74° BT.
+                        Negara ini membentang sejauh 1,425 kilometer (885 mil) dari barat ke timur dan 930
+                        kilometer (580 mil) dari utara ke selatan. Berbatasan dengan Kazakhstan dan Gurun
+                        Aralkum (bekas Laut Aral) di utara dan barat laut, Turkmenistan dan Afghanistan di barat
+                        daya, Tajikistan di tenggara, dan Kirgistan di timur laut, Uzbekistan merupakan salah satu
+                        negara Asia Tengah terbesar dan satu-satunya negara Asia Tengah yang berbatasan
+                        dengan keempat negara lainnya. Uzbekistan juga berbatasan pendek (kurang dari 150 km
+                        atau 93 mil) dengan Afghanistan di selatan.
+                    </p>
+                </article>
+            </div>
+                </section>
+
+        <section class="landform-section" aria-labelledby="landformHeading">
+            <div class="landform-overlay">
+                <h2 class="landform-heading" id="landformHeading">BENTANG ALAM</h2>
+
+                <div class="landform-layout">
+                    <div class="landform-deck" id="landformDeck" role="list" aria-label="Pilihan bentang alam Uzbekistan">
+                        <button class="landform-card" type="button" role="listitem"
+                            data-title="Dataran Tinggi"
+                            data-image="assets/img/card/Datarantinggiustyurt.png"
+                            data-caption="Dataran Tinggi Ustyurt"
+                            data-description="Uzbekistan tidak hanya memiliki bukit dan perbukitan, tetapi juga dataran tinggi yang khas. Salah satu yang paling terkenal adalah Dataran Tinggi Ustyurt, sebuah formasi geologi kuno yang membentang lebih dari 200.000 kilometer persegi meliputi Uzbekistan, Kazakhstan, dan Turkmenistan. Dataran tinggi ini dulunya merupakan dasar laut purba, sehingga lapisan batu kapur dan gamping yang terbentuk jutaan tahun lalu kini menjadi tebing-tebing dramatis setinggi hingga 100 meter, dikenal secara lokal sebagai chinks. Lanskapnya berupa semi-gurun dengan tebing terjal yang dipahat oleh angin dan air, menjadikannya wilayah dengan nilai geologis dan sejarah alam yang sangat signifikan.">
+                            <span class="landform-image-wrap">
+                                <img src="assets/img/card/Datarantinggiustyurt.png" alt="Dataran Tinggi Ustyurt" class="landform-image">
+                                <span class="landform-caption">Dataran Tinggi Ustyurt</span>
+                            </span>
+                        </button>
+
+                        <button class="landform-card" type="button" role="listitem"
+                            data-title="Bukit &amp; Perbukitan"
+                            data-image="assets/img/card/Perbukitanchimgan.png"
+                            data-caption="Perbukitan chimgan"
+                            data-description="Bentang alam Uzbekistan memiliki ciri khas berupa dataran luas yang berpadu dengan bukit dan perbukitan yang menjadi transisi menuju pegunungan besar seperti Tien Shan dan Pamir. Bukit-bukit di negara ini memiliki variasi ketinggian, mulai dari sekitar 500 meter hingga ribuan meter, dengan lanskap yang beragam mulai dari lereng mulus, ngarai, hingga lembah yang dibentuk oleh aliran sungai pegunungan. Vegetasi di perbukitan bagian tengah dan timur biasanya berupa padang rumput serta hutan juniper, sementara di bagian barat lebih gersang. Selain fungsi ekologis, bukit dan perbukitan Uzbekistan juga memiliki nilai budaya dan wisata, sering dijadikan lokasi trekking, olahraga musim dingin, maupun tempat bersejarah.">
+                            <span class="landform-image-wrap">
+                                <img src="assets/img/card/Perbukitanchimgan.png" alt="Perbukitan Chimgan" class="landform-image">
+                                <span class="landform-caption">Perbukitan chimgan</span>
+                            </span>
+                        </button>
+
+                        <button class="landform-card" type="button" role="listitem"
+                            data-title="Gunung &amp; Pegunungan"
+                            data-image="assets/img/card/Khazretsultan.png"
+                            data-caption="Khazret Sultan"
+                            data-description="Uzbekistan memiliki bentang alam pegunungan yang cukup luas meskipun sebagian besar wilayahnya berupa dataran. Gunung tertinggi adalah Khazret Sultan (4.643 m) di Jalur Gissar, diikuti Adelung (4.301 m), Beshtor (4.299 m), dan Chimgan Besar (3.309 m) yang populer untuk wisata alam. Rangkaian pegunungan utama meliputi Gissar, Zeravshan, Chatkal-Ugam bagian dari Tien Shan, Turkestan, serta Nurata yang lebih rendah namun bersejarah. Kombinasi ini membuat Uzbekistan memiliki lanskap pegunungan yang indah sekaligus penting bagi ekologi, sejarah, dan pariwisata.">
+                            <span class="landform-image-wrap">
+                                <img src="assets/img/card/Khazretsultan.png" alt="Khazret Sultan" class="landform-image">
+                                <span class="landform-caption">Khazret Sultan</span>
+                            </span>
+                        </button>
+
+                        <button class="landform-card is-active" type="button" role="listitem"
+                            data-title="Dataran Rendah"
+                            data-image="assets/img/card/gurunkyzylkum.png"
+                            data-caption="gurun kyzylkum"
+                            data-description="Dataran rendah Uzbekistan merupakan wilayah geografis yang mendominasi sebagian besar negara ini, terutama di bagian barat dan tengah. Wilayah ini ditandai oleh bentang alam yang relatif datar hingga bergelombang ringan, dengan karakteristik utama berupa padang pasir, padang rumput, dan lembah sungai. Gurun Kyzylkum, yang berarti Pasir Merah, adalah gurun terbesar di Asia Tengah dan mencakup area luas di Uzbekistan. Tanahnya berpasir dan berbatu, dengan vegetasi yang sangat jarang, menciptakan lanskap yang gersang dan tandus.">
+                            <span class="landform-image-wrap">
+                                <img src="assets/img/card/gurunkyzylkum.png" alt="Gurun Kyzylkum" class="landform-image">
+                                <span class="landform-caption">gurun kyzylkum</span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <article class="landform-detail" id="landformDetail" aria-live="polite">
+                        <h3 class="landform-detail-title" id="landformDetailTitle">DATARAN RENDAH</h3>
+                        <p class="landform-detail-text" id="landformDetailText">
+                            Dataran rendah Uzbekistan merupakan wilayah geografis yang mendominasi sebagian besar
+                            negara ini, terutama di bagian barat dan tengah. Wilayah ini ditandai oleh bentang alam
+                            yang relatif datar hingga bergelombang ringan, dengan karakteristik utama berupa padang
+                            pasir, padang rumput, dan lembah sungai. Gurun Kyzylkum, yang berarti "Pasir Merah,"
+                            adalah gurun terbesar di Asia Tengah dan mencakup area luas di Uzbekistan. Tanahnya
+                            berpasir dan berbatu, dengan vegetasi yang sangat jarang, menciptakan lanskap yang
+                            gersang dan tandus.
+                        </p>
+                    </article>
+                </div>
+            </div>
+                </section>
+
+        <section class="climate-poster-section" aria-labelledby="climatePosterHeading">
+            <div class="climate-poster-overlay">
+                <h2 class="climate-poster-title" id="climatePosterHeading">KARAKTERISTIK WILAYAH DARATAN &amp; PERAIRAN</h2>
+                <figure class="climate-poster-frame">
+                    <img src="assets/img/event/posterevent.png" alt="Poster karakteristik wilayah daratan dan perairan Uzbekistan" class="climate-poster-image">
+                </figure>
+            </div>
+                </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-shell">
+            <div class="footer-grid">
+                <section class="footer-col">
+                    <h3 class="footer-heading">Tentang kami</h3>
+                    <ul class="footer-list">
+                        <li><a href="#">PPLG</a></li>
+                        <li><a href="#">Perhotelan</a></li>
+                        <li><a href="#">Kuliner</a></li>
+                        <li><a href="#">DKV</a></li>
+                        <li><a href="#">Akuntansi</a></li>
+                    </ul>
+                    <div class="footer-logo-block">
+                        <img src="assets/img/logo/metland.png" alt="Logo Metland School" class="footer-logo footer-logo-metland">
+                    </div>
+                </section>
+
+                <section class="footer-col">
+                    <h3 class="footer-heading">Uzbekistan info</h3>
+                    <div class="footer-links-grid">
+                        <ul class="footer-list">
+                            <li><a href="beranda/index.html">Beranda</a></li>
+                            <li><a href="kondisi.html">Kondisi geografis</a></li>
+                            <li><a href="destinasi.html">Destinasi wisata</a></li>
+                            <li><a href="tokoh.html">Tokoh inspiratif</a></li>
+                            <li><a href="paketwisata.html">Paket wisata</a></li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li><a href="citarasa.html">Cita rasa</a></li>
+                            <li><a href="nilaiglobal.html">Nilai global</a></li>
+                            <li><a href="#">Galeri</a></li>
+                            <li><a href="tentangkami.html">Tentang kami</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="footer-col footer-col-right">
+                    <div class="footer-logo-block footer-logo-right">
+                        <img src="assets/img/logo/uzbekistan.png" alt="Lambang Uzbekistan" class="footer-logo footer-logo-uzbek">
+                    </div>
+                    
+                                        <p class="footer-description">
+                        Website ini dibuat sebagai media informasi dan promosi digital yang menghadirkan keindahan serta kekayaan budaya Uzbekistan secara lebih dekat dan interaktif. Melalui tampilan visual yang menarik dan navigasi yang mudah, pengunjung dapat menjelajahi berbagai destinasi populer seperti Tashkent, Samarkand, dan Bukhara.
+                    </p>
+                    <div class="footer-contact">
+                        <h3 class="footer-heading">Hubungi kami</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Kota Taman Metropolitan, Cileungsi Kidul, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820</p>
+                        <p><i class="fa-solid fa-globe"></i> www.smkmetland.net</p>
+                        <div class="footer-socials" aria-label="Media sosial">
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Menjelajahi keindahan Uzbekistan dari Asia Tengah</p>
+                <p>&copy; 2026 website wisata uzbekistan | dibuat oleh kelompok 4</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/navbar.js"></script>
+    <script>
+        const geoInteractiveStage = document.getElementById('geoInteractiveStage');
+        const mountainTrigger = document.getElementById('mountainTrigger');
+        const boundaryTabs = document.querySelectorAll('.geo-boundary-tab');
+        const boundaryText = document.getElementById('boundaryText');
+        const landformDeck = document.getElementById('landformDeck');
+        const landformCards = document.querySelectorAll('.landform-card');
+        const landformDetail = document.getElementById('landformDetail');
+        const landformDetailTitle = document.getElementById('landformDetailTitle');
+        const landformDetailText = document.getElementById('landformDetailText');
+
+        const boundaryCopy = {
+            darat: 'Uzbekistan memiliki panjang total perbatasan darat sekitar 6.221 kilometer. Negara ini berbatasan dengan Kazakhstan 2.203 km di utara dan barat laut, Kirgizstan 1.099 km di timur laut, Tajikistan 1.161 km di timur dan tenggara, Turkmenistan 1.621 km di barat daya, serta Afghanistan 137 km di selatan.',
+            laut: 'Sebagai negara terkurung daratan, Uzbekistan secara geografis hanya menyentuh kawasan Laut Aral yang sebagian besar telah menyusut. Karena itu, negara ini tidak memiliki akses ke laut lepas yang terbuka, dan pembahasan batas laut lebih relevan pada perairan internal di sekitar Laut Aral serta pengelolaan sumber daya air regional.',
+            udara: 'Ruang udara Uzbekistan berada di atas seluruh wilayah daratan dan perairan internalnya, termasuk kawasan Laut Aral. Secara internasional, ruang udara ini diakui sebagai bagian dari kedaulatan nasional, sehingga pesawat negara lain tidak dapat melintasinya tanpa izin sesuai ketentuan penerbangan sipil dan perjanjian internasional.'
+        };
+
+        function setGeoStageState(isOpen) {
+            geoInteractiveStage.classList.toggle('is-active', isOpen);
+            mountainTrigger.setAttribute('aria-expanded', String(isOpen));
+        }
+
+        function setBoundary(boundaryKey) {
+            boundaryTabs.forEach((tab) => {
+                const isActive = tab.dataset.boundary === boundaryKey;
+                tab.classList.toggle('is-active', isActive);
+                tab.setAttribute('aria-selected', String(isActive));
+            });
+
+            boundaryText.textContent = boundaryCopy[boundaryKey];
+        }
+
+        mountainTrigger.addEventListener('mouseenter', () => setGeoStageState(true));
+        geoInteractiveStage.addEventListener('mouseenter', () => setGeoStageState(true));
+        geoInteractiveStage.addEventListener('mouseleave', () => setGeoStageState(false));
+        mountainTrigger.addEventListener('focus', () => setGeoStageState(true));
+        mountainTrigger.addEventListener('click', () => {
+            setGeoStageState(!geoInteractiveStage.classList.contains('is-active'));
+        });
+
+        boundaryTabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                setBoundary(tab.dataset.boundary);
+                setGeoStageState(true);
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                setGeoStageState(false);
+            }
+        });
+
+        function syncActiveLandform(activeCard) {
+            landformCards.forEach((card) => card.classList.remove('is-active'));
+            activeCard.classList.add('is-active');
+        }
+
+        function updateLandformStack(cards) {
+            cards.forEach((card, index) => {
+                card.style.setProperty('--stack-index', String(index));
+                card.style.zIndex = String(index + 1);
+            });
+        }
+
+        function applyLandformContent(card) {
+            landformDetailTitle.textContent = card.dataset.title.toUpperCase();
+            landformDetailText.textContent = card.dataset.description;
+
+            const image = card.querySelector('.landform-image');
+            const caption = card.querySelector('.landform-caption');
+            image.src = card.dataset.image;
+            image.alt = card.dataset.caption;
+            caption.textContent = card.dataset.caption;
+        }
+
+        function animateLandformSelection(cardToFeature) {
+            const cardsBefore = Array.from(landformDeck.children);
+            const firstRects = new Map(cardsBefore.map((card) => [card, card.getBoundingClientRect()]));
+
+            const reorderedCards = cardsBefore.filter((card) => card !== cardToFeature);
+            reorderedCards.push(cardToFeature);
+            reorderedCards.forEach((card) => landformDeck.appendChild(card));
+            updateLandformStack(reorderedCards);
+
+            const cardsAfter = Array.from(landformDeck.children);
+            const lastRects = new Map(cardsAfter.map((card) => [card, card.getBoundingClientRect()]));
+
+            cardsAfter.forEach((card) => {
+                const firstRect = firstRects.get(card);
+                const lastRect = lastRects.get(card);
+
+                if (!firstRect || !lastRect) {
+                    return;
+                }
+
+                const deltaX = firstRect.left - lastRect.left;
+                const deltaY = firstRect.top - lastRect.top;
+                const scaleX = firstRect.width / lastRect.width;
+                const scaleY = firstRect.height / lastRect.height;
+
+                card.getAnimations().forEach((animation) => animation.cancel());
+                card.animate(
+                    [
+                        {
+                            transformOrigin: 'top center',
+                            transform: `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`
+                        },
+                        {
+                            transformOrigin: 'top center',
+                            transform: 'translate(0, 0) scale(1, 1)'
+                        }
+                    ],
+                    {
+                        duration: 560,
+                        easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                        fill: 'both'
+                    }
+                );
+            });
+
+            syncActiveLandform(cardToFeature);
+        }
+
+        let landformTransitionTimer;
+
+        function setActiveLandform(card) {
+            window.clearTimeout(landformTransitionTimer);
+            animateLandformSelection(card);
+            landformDetail.classList.add('is-transitioning');
+
+            landformTransitionTimer = window.setTimeout(() => {
+                applyLandformContent(card);
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        landformDetail.classList.remove('is-transitioning');
+                    });
+                });
+            }, 170);
+        }
+
+        landformCards.forEach((card) => {
+            card.addEventListener('click', () => setActiveLandform(card));
+        });
+
+        updateLandformStack(Array.from(landformDeck.children));
+    </script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,1683 @@
+/* ============================================================
+   Kondisi Geografis — Stylesheet
+   ============================================================ */
+
+:root {
+    --page-bg: #ece9e6;
+    --text-light: #f7f7f5;
+    --title-light: #f5f3ef;
+    --hero-shadow: rgba(6, 17, 24, 0.5);
+    --nav-bg-top: rgba(180, 196, 200, 0.36);
+    --nav-bg-bottom: rgba(92, 122, 132, 0.42);
+    --panel-border: rgba(255, 255, 255, 0.55);
+    --dropdown-top: rgba(168, 204, 184, 0.97);
+    --dropdown-bottom: rgba(141, 188, 164, 0.95);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--page-bg);
+    color: #1f1f1f;
+    overflow-x: hidden;
+}
+
+/* -------  Navbar  ------- */
+
+.navbar {
+    position: fixed;
+    top: 16px;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    padding: 0 22px;
+}
+
+.nav-content {
+    max-width: 1120px;
+    margin: 0 auto;
+    border-radius: 999px;
+    border: 1px solid var(--panel-border);
+    background: linear-gradient(180deg, var(--nav-bg-top) 0%, var(--nav-bg-bottom) 100%);
+    box-shadow: 0 14px 26px rgba(10, 20, 26, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.58);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-height: 56px;
+    padding: 12px 24px;
+    overflow: visible;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.nav-mobile-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.nav-mobile-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-mobile-icon {
+    transition: transform 0.2s ease;
+}
+
+.nav-link {
+    flex: 0 0 auto;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 999px;
+    padding: 5px 9px;
+    transition: background-color 0.22s ease, box-shadow 0.22s ease,
+                color 0.22s ease, transform 0.18s ease;
+}
+
+.nav-link:hover {
+    color: #f5fffb;
+    background: linear-gradient(180deg, rgba(178, 215, 193, 0.94) 0%, rgba(129, 183, 157, 0.9) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46),
+                0 5px 14px rgba(14, 31, 27, 0.36);
+    transform: translateY(-1px);
+}
+
+.nav-arrow {
+    font-size: 0.67em;
+    transition: transform 0.2s ease;
+}
+
+.nav-item-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-dropdown-toggle {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 8px 14px;
+}
+
+.nav-dropdown-toggle:hover {
+    color: #f5fffb;
+    background: linear-gradient(180deg, rgba(178, 215, 193, 0.94) 0%, rgba(129, 183, 157, 0.9) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46),
+                0 5px 14px rgba(14, 31, 27, 0.36);
+    transform: translateY(-1px);
+}
+
+.nav-item-dropdown.open .nav-dropdown-toggle {
+    background: linear-gradient(180deg, rgba(182, 216, 195, 0.88) 0%, rgba(133, 184, 158, 0.82) 100%);
+    color: #f9fffc;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.48),
+                0 3px 10px rgba(13, 26, 23, 0.34);
+}
+
+.nav-item-dropdown.open .nav-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    opacity: 0;
+    pointer-events: none;
+    display: grid;
+    gap: 6px;
+    min-width: 214px;
+    z-index: 30;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-item-dropdown.open .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+    text-decoration: none;
+    text-align: center;
+    color: #eaf8f2;
+    font-size: clamp(14px, 1vw, 16px);
+    line-height: 1.2;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(222, 244, 233, 0.88);
+    background: linear-gradient(180deg, var(--dropdown-top) 0%, var(--dropdown-bottom) 100%);
+    text-shadow: 0 1px 2px rgba(23, 36, 33, 0.22);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45),
+                0 7px 14px rgba(10, 24, 20, 0.25);
+}
+
+.dropdown-item:hover {
+    filter: brightness(1.04);
+}
+
+/* -------  Hero Section  ------- */
+
+.hero {
+    position: relative;
+    min-height: 580px;
+    background: url("../img/background/mountain.png") center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 100px;
+    overflow: visible;
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: min(1180px, 100%);
+}
+
+.hero-title {
+    font-family: "Cinzel", serif;
+    font-style: normal;
+    color: var(--title-light);
+    font-size: clamp(48px, 5.8vw, 86px);
+    font-weight: 700;
+    line-height: 0.95;
+    text-shadow: 0 4px 14px var(--hero-shadow);
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    margin: 22px auto 0;
+    max-width: 680px;
+    color: rgba(245, 244, 241, 0.95);
+    font-size: clamp(15px, 1.25vw, 20px);
+    line-height: 1.55;
+    text-shadow: 0 2px 8px var(--hero-shadow);
+}
+
+/* -------  Mountain Section  ------- */
+
+.mountain-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+}
+
+.stripe-blue {
+    width: 100%;
+    height: 14px;
+    background: linear-gradient(90deg, #7caedb 0%, #90bee9 100%);
+}
+
+.mountain-container {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    background: #f6f3f1;
+    display: flex;
+    justify-content: center;
+    padding: 118px 16px 28px;
+    overflow: visible;
+}
+
+.geo-interactive-stage {
+    position: relative;
+    width: min(1180px, 100%);
+    min-height: 620px;
+}
+
+.mountain-trigger {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.mountain-img {
+    display: block;
+    width: min(1080px, 90vw);
+    height: auto;
+    object-fit: contain;
+    margin-top: 0;
+    filter: drop-shadow(0 22px 36px rgba(16, 28, 19, 0.28));
+}
+
+.geo-popup {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(80px) scale(0.96);
+    transition: opacity 0.45s ease, transform 0.56s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.geo-interactive-stage.is-active .geo-popup,
+.geo-interactive-stage:hover .geo-popup,
+.geo-interactive-stage:focus-within .geo-popup {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.geo-popup-area {
+    top: -110px;
+    left: 50%;
+    width: min(100%, 560px);
+    transform: translate(-50%, 80px) scale(0.96);
+    z-index: 2;
+}
+
+.geo-popup-boundary {
+    left: 50%;
+    bottom: 22px;
+    width: min(100%, 1000px);
+    transform: translate(-50%, 100px) scale(0.96);
+    z-index: 4;
+}
+
+.geo-interactive-stage.is-active .geo-popup-area,
+.geo-interactive-stage:hover .geo-popup-area,
+.geo-interactive-stage:focus-within .geo-popup-area {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.geo-interactive-stage.is-active .geo-popup-boundary,
+.geo-interactive-stage:hover .geo-popup-boundary,
+.geo-interactive-stage:focus-within .geo-popup-boundary {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.geo-popup-shell {
+    position: relative;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    background: linear-gradient(90deg, rgba(248, 246, 243, 0.82) 0%, rgba(204, 210, 191, 0.52) 36%, rgba(189, 195, 200, 0.52) 100%);
+    box-shadow: 0 18px 32px rgba(20, 27, 21, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    overflow: hidden;
+}
+
+.geo-popup-shell-area {
+    padding: 22px 30px 20px;
+}
+
+.geo-popup-area .geo-popup-title {
+    max-width: 12ch;
+    margin-inline: auto;
+    text-wrap: balance;
+}
+
+.geo-popup-shell-area::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 54px 54px;
+    border-color: transparent transparent rgba(210, 210, 195, 0.92) transparent;
+    filter: drop-shadow(-4px 0 0 rgba(255, 255, 255, 0.58));
+}
+
+.geo-popup-shell-boundary {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 305px;
+}
+
+.geo-popup-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(28px, 3.8vw, 46px);
+    line-height: 1.02;
+    letter-spacing: 0.02em;
+    color: #080808;
+    text-align: center;
+}
+
+.geo-popup-title-boundary {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.geo-area-primary {
+    margin-top: 18px;
+    font-family: "Cinzel", serif;
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1;
+    color: #123f97;
+    text-align: center;
+}
+
+.geo-area-secondary {
+    margin-top: 10px;
+    font-family: "Cinzel", serif;
+    font-size: clamp(26px, 3.2vw, 42px);
+    line-height: 1;
+    color: #111;
+    text-align: center;
+}
+
+.geo-boundary-tabs {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 44px 28px 44px 42px;
+    background: linear-gradient(90deg, rgba(248, 246, 243, 0.28) 0%, rgba(171, 176, 153, 0.26) 100%);
+}
+
+.geo-boundary-tabs::after {
+    content: "";
+    position: absolute;
+    left: 44px;
+    top: 48px;
+    width: 1px;
+    height: calc(100% - 96px);
+    border-left: 1px dashed rgba(105, 110, 106, 0.34);
+    transform: skewX(-42deg);
+    transform-origin: top;
+}
+
+.geo-boundary-tab {
+    position: relative;
+    z-index: 1;
+    border: none;
+    background: transparent;
+    color: #0e0e0e;
+    font-family: "Cinzel", serif;
+    font-size: clamp(20px, 2vw, 32px);
+    line-height: 1.12;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.22s ease, transform 0.22s ease, text-shadow 0.22s ease;
+}
+
+.geo-boundary-tab:hover,
+.geo-boundary-tab.is-active {
+    color: #073d2f;
+    text-shadow: 0 4px 16px rgba(51, 55, 49, 0.36);
+}
+
+.geo-boundary-tab.is-active {
+    transform: translateX(10px);
+}
+
+.geo-boundary-content {
+    padding: 30px 34px 30px 24px;
+}
+
+.geo-boundary-text {
+    font-size: clamp(16px, 1.45vw, 22px);
+    line-height: 1.55;
+    color: #0c0c0c;
+    text-wrap: pretty;
+}
+
+.stripe-green {
+    width: 100%;
+    height: 12px;
+    background: #5d6f2f;
+}
+
+/* -------  Location Section  ------- */
+
+.location-section {
+    position: relative;
+    min-height: 860px;
+    background: url("../img/background/kondisigeo.png") center / cover no-repeat;
+    display: flex;
+    justify-content: center;
+    padding: 44px 24px 86px;
+}
+
+.location-overlay {
+    width: min(1180px, 100%);
+}
+
+.location-title {
+    text-align: center;
+    font-family: "Cinzel", serif;
+    color: #0d0d0d;
+    font-size: clamp(50px, 5.8vw, 72px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.location-card {
+    width: min(100%, 980px);
+    margin: 28px auto 0;
+    padding: 28px 32px 34px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: rgba(165, 181, 197, 0.34);
+    box-shadow: 0 2px 10px rgba(21, 24, 28, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.location-map-frame {
+    width: min(100%, 692px);
+    margin: 0 auto 18px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.74);
+}
+
+.location-map {
+    width: 100%;
+    display: block;
+}
+
+.location-description {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: clamp(16px, 1.15vw, 18px);
+    line-height: 1.45;
+    text-align: left;
+}
+
+/* -------  Landform Section  ------- */
+
+.landform-section {
+    position: relative;
+    padding: 26px 24px 40px;
+    background:
+        linear-gradient(180deg, rgba(239, 236, 233, 0.98) 0%, rgba(239, 236, 233, 0.98) 52%, rgba(239, 236, 233, 0.18) 64%, rgba(239, 236, 233, 0) 100%),
+        url("../img/background/latarbelakang2.png") center bottom / cover no-repeat;
+}
+
+.landform-overlay {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+}
+
+.landform-heading {
+    text-align: center;
+    font-family: "Cinzel", serif;
+    font-size: clamp(50px, 6.2vw, 76px);
+    color: #070707;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.18);
+}
+
+.landform-layout {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: minmax(320px, 420px) minmax(420px, 1fr);
+    gap: 34px;
+    align-items: start;
+}
+
+.landform-deck {
+    position: relative;
+    height: 640px;
+}
+
+.landform-card {
+    position: absolute;
+    inset-inline: 0;
+    top: calc(var(--stack-index, 0) * 54px);
+    height: 164px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: top 0.42s ease, height 0.42s ease, filter 0.34s ease;
+}
+
+.landform-card .landform-image-wrap {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 13px;
+    overflow: hidden;
+    border: 10px solid rgba(245, 246, 248, 0.96);
+    box-shadow: 0 14px 24px rgba(17, 23, 19, 0.2);
+}
+
+.landform-card .landform-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.landform-caption {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    font-size: clamp(20px, 2vw, 34px);
+    font-family: "Cormorant Infant", serif;
+    color: #f8f8f8;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity 0.26s ease;
+    text-transform: none;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.landform-card.is-active {
+    height: 322px;
+    filter: none;
+}
+
+.landform-card.is-active .landform-caption {
+    opacity: 1;
+}
+
+.landform-detail {
+    position: relative;
+    min-height: 438px;
+    border-radius: 10px;
+    padding: 44px 50px 36px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(235, 235, 235, 0.84);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    box-shadow: 0 10px 20px rgba(15, 20, 16, 0.12);
+    transition: opacity 0.28s ease, transform 0.34s ease, filter 0.34s ease;
+}
+
+.landform-detail.is-transitioning {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+    filter: blur(3px);
+}
+
+.landform-detail-title {
+    text-align: center;
+    font-family: "Cinzel", serif;
+    font-size: clamp(44px, 4.6vw, 62px);
+    line-height: 1;
+    color: #0f0f0f;
+    margin-bottom: 20px;
+}
+
+.landform-detail-text {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.46;
+    text-align: justify;
+    color: #171717;
+}
+
+/* -------  Climate Poster Section  ------- */
+
+.climate-poster-section {
+    position: relative;
+    padding: 30px 24px 26px;
+    background: #efece9;
+}
+
+.climate-poster-overlay {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+}
+
+.climate-poster-title {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    font-size: clamp(40px, 5vw, 66px);
+    line-height: 1.1;
+    color: #0f0f0f;
+    letter-spacing: 0.5px;
+}
+
+.climate-poster-frame {
+    width: min(100%, 960px);
+    margin: 24px auto 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(16, 20, 22, 0.16);
+}
+
+.climate-poster-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* -------  Footer  ------- */
+
+.site-footer {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: 0;
+    padding: 72px 0 26px;
+    color: #f5f5f5;
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../img/background/latarbelakang.png") center / cover no-repeat;
+    filter: brightness(0.28) grayscale(0.1);
+    z-index: -2;
+}
+
+.site-footer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(22, 22, 22, 0.68) 0%, rgba(18, 18, 18, 0.72) 100%);
+    z-index: -1;
+}
+
+.footer-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1.15fr;
+    background: rgba(20, 20, 20, 0.34);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 20px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+}
+
+.footer-col {
+    padding: 32px 30px 28px;
+}
+
+.footer-col + .footer-col {
+    border-left: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.footer-heading {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(28px, 2.6vw, 42px);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.footer-list {
+    list-style: none;
+    display: grid;
+    gap: 5px;
+}
+
+.footer-list a {
+    color: rgba(245, 245, 245, 0.93);
+    text-decoration: none;
+    font-size: clamp(15px, 1.1vw, 22px);
+    line-height: 1.42;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.footer-list a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.72);
+    text-underline-offset: 4px;
+}
+
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+    margin-bottom: 16px;
+}
+
+.footer-logo-block {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.footer-logo-metland {
+    max-width: 158px;
+}
+
+.footer-contact p {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: rgba(245, 245, 245, 0.93);
+    font-size: clamp(14px, 1vw, 19px);
+    line-height: 1.42;
+    margin-bottom: 8px;
+}
+
+.footer-contact p i {
+    width: 18px;
+    margin-top: 3px;
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.footer-socials a {
+    color: #fff;
+    font-size: 28px;
+    text-decoration: none;
+    opacity: 0.94;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-socials a:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.footer-col-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.footer-col-right .footer-contact {
+    width: 100%;
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.footer-logo-right {
+    margin-top: 0;
+    justify-content: center;
+}
+
+.footer-logo-uzbek {
+    max-width: 500px;
+}
+
+.footer-description {
+    color: rgba(245, 245, 245, 0.92);
+    font-size: clamp(15px, 1.04vw, 20px);
+    line-height: 1.48;
+    text-align: left;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    color: rgba(248, 248, 248, 0.95);
+}
+
+.footer-bottom p:first-child {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(27px, 2vw, 34px);
+    line-height: 1.1;
+}
+
+.footer-bottom p:last-child {
+    margin-top: 4px;
+    font-size: clamp(14px, 1vw, 17px);
+}
+
+/* -------  Responsive  ------- */
+
+@media (max-width: 980px) {
+    .navbar {
+        top: 10px;
+        padding: 0 10px;
+    }
+
+    .nav-content {
+        gap: 12px;
+        min-height: 58px;
+        padding: 9px 12px;
+    }
+
+    .nav-links {
+        justify-content: flex-start;
+        gap: 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hero {
+        min-height: 480px;
+        padding: 110px 20px 80px;
+    }
+
+    .hero-title {
+        font-size: clamp(42px, 8vw, 68px);
+    }
+
+    .mountain-container {
+        min-height: auto;
+        padding-top: 92px;
+        padding-bottom: 28px;
+    }
+
+    .geo-interactive-stage {
+        min-height: 560px;
+    }
+
+    .mountain-img {
+        width: min(900px, 96vw);
+    }
+
+    .geo-popup-area {
+        top: -72px;
+        width: min(100%, 500px);
+    }
+
+    .geo-popup-boundary {
+        bottom: 0;
+        width: min(100%, 860px);
+    }
+
+    .geo-popup-shell-boundary {
+        grid-template-columns: 1fr 1.8fr;
+    }
+
+    .geo-boundary-tabs {
+        padding: 36px 20px 36px 28px;
+    }
+
+    .geo-boundary-tabs::after {
+        left: 30px;
+        top: 40px;
+        height: calc(100% - 80px);
+    }
+
+    .geo-boundary-content {
+        padding: 24px 26px 26px 14px;
+    }
+
+    .geo-boundary-tab {
+        font-size: clamp(18px, 2vw, 26px);
+    }
+
+    .geo-boundary-text {
+        font-size: clamp(15px, 1.6vw, 18px);
+    }
+
+    .location-section {
+        min-height: 760px;
+        padding: 36px 18px 70px;
+    }
+
+    .location-title {
+        font-size: clamp(40px, 7vw, 58px);
+    }
+
+    .location-card {
+        width: min(100%, 860px);
+        padding: 24px 22px 26px;
+    }
+
+    .location-map-frame {
+        width: min(100%, 620px);
+    }
+
+    .location-description {
+        max-width: 690px;
+        font-size: 15px;
+    }
+
+    .landform-section {
+        padding: 20px 18px 34px;
+    }
+
+    .landform-layout {
+        margin-top: 20px;
+        grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+        gap: 24px;
+    }
+
+    .landform-deck {
+        height: 560px;
+    }
+
+    .landform-card {
+        top: calc(var(--stack-index, 0) * 48px);
+        height: 150px;
+    }
+
+    .landform-card.is-active {
+        height: 290px;
+    }
+
+    .landform-card .landform-image-wrap {
+        border-width: 8px;
+    }
+
+    .landform-caption {
+        font-size: clamp(17px, 2vw, 24px);
+        bottom: 16px;
+    }
+
+    .landform-detail {
+        min-height: 400px;
+        padding: 30px 28px 24px;
+    }
+
+    .landform-detail-title {
+        font-size: clamp(34px, 4.8vw, 50px);
+    }
+
+    .landform-detail-text {
+        font-size: clamp(16px, 1.95vw, 22px);
+        line-height: 1.5;
+    }
+
+    .climate-poster-section {
+        padding: 24px 18px 22px;
+    }
+
+    .climate-poster-title {
+        font-size: clamp(34px, 6.2vw, 50px);
+    }
+
+    .climate-poster-frame {
+        margin-top: 16px;
+        width: min(100%, 860px);
+    }
+
+    .site-footer {
+        padding-top: 50px;
+    }
+
+    .footer-shell {
+        padding: 0 16px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-col-right {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .footer-logo-right {
+        justify-content: flex-start;
+    }
+
+}
+
+@media (max-width: 680px) {
+    .site-footer {
+        padding-top: 42px;
+        padding-bottom: 18px;
+    }
+
+    .footer-grid {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        border-radius: 16px;
+    }
+
+    .footer-col {
+        padding: 20px 14px;
+    }
+
+    .footer-col + .footer-col {
+        border-left: 1px solid rgba(255, 255, 255, 0.24);
+        border-top: none;
+    }
+
+    .footer-col-right {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .footer-links-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .footer-col-right .footer-contact {
+        margin-top: 6px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        width: 100%;
+    }
+
+    .footer-col:first-child .footer-list {
+        grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+        column-gap: 8px;
+        row-gap: 2px;
+    }
+
+    .footer-heading {
+        font-size: clamp(26px, 7.8vw, 44px);
+        margin-bottom: 10px;
+    }
+
+    .footer-list a {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+    .footer-contact p {
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
+    .footer-logo-metland {
+        max-width: 132px;
+    }
+
+    .footer-logo-uzbek {
+        max-width: 150px;
+    }
+
+    .footer-bottom {
+        margin-top: 14px;
+    }
+
+    .footer-bottom p:first-child {
+        font-size: clamp(23px, 6.4vw, 28px);
+    }
+
+    .navbar {
+        top: 10px;
+        padding: 0 10px;
+    }
+
+    .nav-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 12px;
+        border-radius: 28px;
+        max-height: calc(100vh - 20px);
+        overflow: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .nav-content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-mobile-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, rgba(178, 215, 193, 0.28) 0%, rgba(129, 183, 157, 0.22) 100%);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .nav-content.is-open .nav-mobile-icon {
+        transform: rotate(180deg);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        overflow: visible;
+        padding-top: 10px;
+    }
+
+    .nav-content.is-open .nav-links {
+        display: flex;
+    }
+
+    .nav-link,
+    .nav-dropdown-toggle {
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .nav-item-dropdown {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .nav-dropdown-toggle {
+        justify-content: flex-start;
+    }
+
+    .nav-dropdown-toggle .nav-arrow {
+        margin-left: auto;
+    }
+
+    .dropdown-menu {
+        position: static;
+        left: auto;
+        top: auto;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+        display: none;
+        width: 100%;
+        min-width: 0;
+        gap: 8px;
+        padding-top: 6px;
+    }
+
+    .nav-item-dropdown.open .dropdown-menu {
+        display: grid;
+        transform: none;
+    }
+
+    .dropdown-item {
+        padding: 10px 12px;
+        border-radius: 18px;
+        font-size: 13px;
+    }
+
+    .mountain-container {
+        padding: 36px 14px 24px;
+    }
+
+    .geo-interactive-stage {
+        min-height: auto;
+        display: grid;
+        gap: 18px;
+    }
+
+    .mountain-trigger,
+    .geo-popup-area,
+    .geo-popup-boundary {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        transform: none;
+        width: 100%;
+    }
+
+    .geo-popup {
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+    }
+
+    .geo-interactive-stage.is-active .geo-popup-area,
+    .geo-interactive-stage:hover .geo-popup-area,
+    .geo-interactive-stage:focus-within .geo-popup-area,
+    .geo-interactive-stage.is-active .geo-popup-boundary,
+    .geo-interactive-stage:hover .geo-popup-boundary,
+    .geo-interactive-stage:focus-within .geo-popup-boundary {
+        transform: none;
+    }
+
+    .geo-popup-area {
+        order: 1;
+        max-width: min(100%, 520px);
+        justify-self: center;
+        z-index: auto;
+    }
+
+    .mountain-trigger {
+        order: 2;
+        justify-self: center;
+    }
+
+    .geo-popup-boundary {
+        order: 3;
+        z-index: auto;
+    }
+
+    .mountain-img {
+        width: min(700px, 100%);
+    }
+
+    .geo-popup-shell {
+        border-radius: 24px;
+    }
+
+    .geo-popup-shell-area {
+        padding: 20px 20px 18px;
+    }
+
+    .geo-popup-title {
+        font-size: clamp(24px, 5vw, 38px);
+    }
+
+    .geo-area-primary {
+        margin-top: 14px;
+        font-size: clamp(40px, 7vw, 62px);
+    }
+
+    .geo-area-secondary {
+        font-size: clamp(22px, 4.4vw, 34px);
+    }
+
+    .geo-popup-shell-boundary {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .geo-boundary-tabs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        padding: 16px 18px 10px;
+    }
+
+    .geo-boundary-tabs::after {
+        display: none;
+    }
+
+    .geo-boundary-tab {
+        width: 100%;
+        padding: 10px 14px;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.25;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.28);
+        font-size: 15px;
+    }
+
+    .geo-boundary-tab.is-active {
+        transform: none;
+        background: rgba(255, 255, 255, 0.48);
+        box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.3);
+    }
+
+    .geo-boundary-content {
+        padding: 18px 20px 22px;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        top: 6px;
+        padding: 0 6px;
+    }
+
+    .nav-content {
+        min-height: 52px;
+        padding: 8px 10px;
+        border-radius: 24px;
+        max-height: calc(100vh - 12px);
+    }
+
+    .nav-mobile-toggle {
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+
+    .nav-link,
+    .nav-dropdown-toggle {
+        font-size: 13px;
+        gap: 4px;
+        padding: 9px 12px;
+    }
+
+    .dropdown-menu {
+        gap: 6px;
+        padding-top: 4px;
+    }
+
+    .dropdown-item {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .hero {
+        min-height: 360px;
+        padding: 94px 12px 42px;
+    }
+
+    .hero-title {
+        font-size: clamp(32px, 10vw, 50px);
+    }
+
+    .hero-subtitle {
+        margin-top: 14px;
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    .stripe-blue {
+        height: 10px;
+    }
+
+    .mountain-container {
+        min-height: auto;
+        padding: 24px 10px 24px;
+    }
+
+    .geo-interactive-stage {
+        min-height: auto;
+        display: grid;
+        gap: 12px;
+    }
+
+    .mountain-trigger,
+    .geo-popup-area,
+    .geo-popup-boundary {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        transform: none;
+        width: 100%;
+    }
+
+    .mountain-trigger {
+        justify-self: center;
+    }
+
+    .mountain-img {
+        width: min(560px, 100%);
+    }
+
+    .geo-popup {
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+    }
+
+    .geo-popup-shell {
+        border-radius: 22px;
+    }
+
+    .geo-popup-shell-area {
+        padding: 18px 16px 16px;
+        max-width: 100%;
+    }
+
+    .geo-popup-shell-area::after {
+        border-width: 0 0 46px 46px;
+    }
+
+    .geo-popup-shell-boundary {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        border-radius: 16px;
+    }
+
+    .geo-popup-title {
+        font-size: clamp(22px, 7vw, 34px);
+    }
+
+    .geo-area-primary {
+        font-size: clamp(34px, 10vw, 54px);
+    }
+
+    .geo-area-secondary {
+        font-size: clamp(20px, 6vw, 30px);
+    }
+
+    .geo-boundary-tabs {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px 16px 8px;
+        width: 100%;
+    }
+
+    .geo-boundary-tabs::after {
+        display: none;
+    }
+
+    .geo-boundary-tab {
+        font-size: 14px;
+        text-align: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.28);
+    }
+
+    .geo-boundary-content {
+        padding: 12px 16px 18px;
+        width: 100%;
+        min-width: 0;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .geo-boundary-text {
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    .stripe-green {
+        height: 8px;
+    }
+
+    .location-section {
+        min-height: auto;
+        padding: 26px 10px 32px;
+    }
+
+    .location-title {
+        font-size: clamp(30px, 8.8vw, 42px);
+    }
+
+    .location-card {
+        margin-top: 18px;
+        padding: 14px 14px 18px;
+        border-radius: 6px;
+    }
+
+    .location-map-frame {
+        margin-bottom: 14px;
+        border-radius: 10px;
+    }
+
+    .location-description {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .landform-section {
+        padding: 12px 10px 20px;
+        background:
+            linear-gradient(180deg, rgba(239, 236, 233, 0.99) 0%, rgba(239, 236, 233, 0.99) 48%, rgba(239, 236, 233, 0.2) 62%, rgba(239, 236, 233, 0) 100%),
+            url("../img/background/latarbelakang2.png") center bottom / cover no-repeat;
+    }
+
+    .landform-heading {
+        font-size: clamp(40px, 10vw, 52px);
+    }
+
+    .landform-layout {
+        margin-top: 14px;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .landform-deck {
+        height: auto;
+        display: grid;
+        gap: 10px;
+    }
+
+    .landform-card {
+        position: relative;
+        inset: auto;
+        top: auto;
+        height: 122px;
+    }
+
+    .landform-card.is-active {
+        height: 220px;
+    }
+
+    .landform-card .landform-image-wrap {
+        border-width: 7px;
+        border-radius: 10px;
+    }
+
+    .landform-caption {
+        font-size: 14px;
+        bottom: 10px;
+        width: calc(100% - 20px);
+        text-align: center;
+        white-space: normal;
+    }
+
+    .landform-detail {
+        min-height: auto;
+        padding: 18px 16px 16px;
+        border-radius: 8px;
+    }
+
+    .landform-detail-title {
+        font-size: clamp(30px, 8vw, 40px);
+        margin-bottom: 10px;
+    }
+
+    .landform-detail-text {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .climate-poster-section {
+        padding: 16px 10px 14px;
+    }
+
+    .climate-poster-title {
+        font-size: clamp(24px, 8vw, 34px);
+        line-height: 1.15;
+    }
+
+    .climate-poster-frame {
+        margin-top: 12px;
+        border-radius: 6px;
+    }
+
+    .site-footer {
+        padding-top: 46px;
+    }
+
+    .footer-shell {
+        padding: 0 12px;
+    }
+
+    .footer-links-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .footer-socials a {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .hero-subtitle {
+        font-size: 13px;
+    }
+
+    .geo-popup-title {
+        font-size: clamp(20px, 8vw, 28px);
+    }
+
+    .geo-area-primary {
+        font-size: clamp(30px, 9vw, 42px);
+    }
+
+    .geo-area-secondary {
+        font-size: clamp(18px, 6vw, 24px);
+    }
+
+    .geo-boundary-tab {
+        font-size: 13px;
+        padding: 7px 10px;
+    }
+
+    .geo-boundary-tab.is-active {
+        background: rgba(255, 255, 255, 0.52);
+        box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.4);
+    }
+
+    .geo-boundary-text {
+        font-size: 13px;
+    }
+
+    .landform-detail-title {
+        font-size: clamp(24px, 7.4vw, 34px);
+    }
+
+    .landform-detail-text {
+        font-size: 13px;
+    }
+}

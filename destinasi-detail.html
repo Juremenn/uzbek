@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzbekistan - Destinasi Detail</title>
+    <link rel="icon" type="image/png" href="assets/img/logo/metland.png">
+    <link rel="stylesheet" href="assets/css/destinasi-detail.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@400;700;900&family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body class="destination-detail-page">
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <button class="nav-mobile-toggle" id="navMobileToggle" type="button" aria-expanded="false" aria-controls="navPrimary">
+                <span class="nav-mobile-toggle-label"><i class="fas fa-bars"></i> Menu</span>
+                <i class="fas fa-chevron-down nav-mobile-icon" aria-hidden="true"></i>
+            </button>
+
+            <div class="nav-links" id="navPrimary">
+                <a href="beranda/index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a>
+                <div class="nav-item-dropdown" id="jelajahiDropdown">
+                    <button class="nav-link nav-dropdown-toggle nav-link-active" id="jelajahiDropdownToggle" type="button" aria-expanded="false" aria-controls="jelajahiDropdownMenu">
+                        <i class="fas fa-earth-asia"></i> Jelajahi Uzbekistan <i class="fas fa-chevron-down nav-arrow"></i>
+                    </button>
+                    <div class="dropdown-menu" id="jelajahiDropdownMenu" role="menu" aria-hidden="true">
+                        <a href="kondisi.html" class="dropdown-item" role="menuitem">Kondisi Geografis</a>
+                        <a href="destinasi.html" class="dropdown-item" role="menuitem" aria-current="page">Destinasi &amp; Wisata</a>
+                        <a href="tokoh.html" class="dropdown-item" role="menuitem">Tokoh Inspiratif</a>
+                        <a href="paketwisata.html" class="dropdown-item" role="menuitem">Paket Wisata</a>
+                    </div>
+                </div>
+                <a href="citarasa.html" class="nav-link"><i class="fas fa-utensils"></i> Cita Rasa</a>
+                <a href="nilaiglobal.html" class="nav-link"><i class="fas fa-earth-americas"></i> Nilai Global</a>
+                <a href="#" class="nav-link"><i class="fas fa-camera"></i> Galeri</a>
+                <a href="tentangkami.html" class="nav-link"><i class="fas fa-circle-info"></i> Tentang Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="detail-main">
+        <section class="destination-detail" id="destinationDetail" aria-label="Detail destinasi Samarkand">
+            <div class="destination-detail-shell">
+                <article class="destination-feature">
+                    <div class="destination-feature-image destination-feature-image-left" role="img" aria-label="Arsitektur ikonik Samarkand sisi kiri"></div>
+                    <div class="destination-feature-image destination-feature-image-right" role="img" aria-label="Arsitektur ikonik Samarkand sisi kanan"></div>
+                    <h2>SAMARKAND</h2>
+                </article>
+
+                <div class="destination-detail-grid">
+                    <article class="destination-info-card destination-info-card-culture">
+                        <h3>SENI BUDAYA</h3>
+                        <p>
+                            Uzbekistan memiliki kekayaan seni budaya yang terlihat dari arsitektur megah di Samarkand dan Bukhara.
+                            Bangunan seperti Registan menampilkan mozaik biru khas dan ukiran islami yang indah.
+                        </p>
+                        <div class="culture-photo" role="img" aria-label="Motif interior bangunan bersejarah Samarkand"></div>
+                    </article>
+
+                    <article class="destination-info-card destination-info-card-customs">
+                        <h3>ADAT &amp; UPACARA</h3>
+                        <div class="customs-list">
+                            <article class="customs-item">
+                                <div class="customs-thumb customs-thumb-one" role="img" aria-label="Foto upacara adat Uzbekistan"></div>
+                                <p>
+                                    Masyarakat Uzbekistan menjunjung tinggi sopan santun dan kekeluargaan. Tamu sangat
+                                    dihormati dan tradisi turun-temurun masih dijaga dalam kehidupan sehari-hari.
+                                </p>
+                            </article>
+                            <article class="customs-item">
+                                <div class="customs-thumb customs-thumb-two" role="img" aria-label="Foto perayaan Navruz"></div>
+                                <p>
+                                    Navruz dirayakan setiap 21 Maret dengan doa dan pertunjukan seni. Pernikahan tradisional
+                                    juga menjadi upacara penting yang melibatkan keluarga besar.
+                                </p>
+                            </article>
+                        </div>
+                    </article>
+                </div>
+
+                <section class="religion-section" aria-labelledby="religionTitle">
+                    <article class="religion-card">
+                        <img src="assets/img/circle/masjidremovebg.png" alt="" class="religion-decor religion-decor-bottom" aria-hidden="true">
+
+                        <h3 id="religionTitle">MAYORITAS AGAMA</h3>
+
+                        <div class="religion-content">
+                            <img src="assets/img/circle/ibadah.png" alt="Kegiatan ibadah umat Islam" class="religion-thumb">
+                            <p>
+                                Mayoritas agama di Uzbekistan adalah <strong>Islam</strong> dengan angka mencapai 88 persen.
+                                Agama berikutnya berupa Ortodoks Rusia (9 persen) dan lainnya 3 persen. Menurut data
+                                State Committee of the Republic of Uzbekistan for Statistic tahun 2021, jumlah penduduk
+                                Uzbekistan mencapai 34,5 juta jiwa.
+                            </p>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </section>
+
+        <section class="event-calendar-section" aria-labelledby="eventCalendarTitle">
+            <div class="event-calendar-shell">
+                <h2 id="eventCalendarTitle" class="event-calendar-title">Kalender Event</h2>
+                <figure class="event-calendar-figure">
+                    <img src="assets/img/event/kalender.png" alt="Kalender event Samarkand" class="event-calendar-poster">
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-shell">
+            <div class="footer-grid">
+                <section class="footer-col">
+                    <h3 class="footer-heading">Tentang kami</h3>
+                    <ul class="footer-list">
+                        <li><a href="#">PPLG</a></li>
+                        <li><a href="#">Perhotelan</a></li>
+                        <li><a href="#">Kuliner</a></li>
+                        <li><a href="#">DKV</a></li>
+                        <li><a href="#">Akuntansi</a></li>
+                    </ul>
+                    <div class="footer-logo-block">
+                        <img src="assets/img/logo/metland.png" alt="Logo Metland School" class="footer-logo footer-logo-metland">
+                    </div>
+                </section>
+
+                <section class="footer-col">
+                    <h3 class="footer-heading">Uzbekistan info</h3>
+                    <div class="footer-links-grid">
+                        <ul class="footer-list">
+                            <li><a href="beranda/index.html">Beranda</a></li>
+                            <li><a href="kondisi.html">Kondisi geografis</a></li>
+                            <li><a href="destinasi.html">Destinasi wisata</a></li>
+                            <li><a href="tokoh.html">Tokoh inspiratif</a></li>
+                            <li><a href="paketwisata.html">Paket wisata</a></li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li><a href="citarasa.html">Cita rasa</a></li>
+                            <li><a href="nilaiglobal.html">Nilai global</a></li>
+                            <li><a href="#">Galeri</a></li>
+                            <li><a href="tentangkami.html">Tentang kami</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="footer-col footer-col-right">
+                    <div class="footer-logo-block footer-logo-right">
+                        <img src="assets/img/logo/uzbekistan.png" alt="Lambang Uzbekistan" class="footer-logo footer-logo-uzbek">
+                    </div>
+                    <p class="footer-description">
+                        Website ini dibuat sebagai media informasi dan promosi digital yang menghadirkan keindahan serta kekayaan budaya Uzbekistan secara lebih dekat dan interaktif. Melalui tampilan visual yang menarik dan navigasi yang mudah, pengunjung dapat menjelajahi berbagai destinasi populer seperti Tashkent, Samarkand, dan Bukhara.
+                    </p>
+                    <div class="footer-contact">
+                        <h3 class="footer-heading">Hubungi kami</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Kota Taman Metropolitan, Cileungsi Kidul, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820</p>
+                        <p><i class="fa-solid fa-globe"></i> www.smkmetland.net</p>
+                        <div class="footer-socials" aria-label="Media sosial">
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Menjelajahi keindahan Uzbekistan dari Asia Tengah</p>
+                <p>&copy; 2026 website wisata uzbekistan | dibuat oleh kelompok 4</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/navbar.js"></script>
+</body>
+</html>
+
+

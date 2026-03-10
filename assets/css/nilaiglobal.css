@@ -1,0 +1,677 @@
+:root {
+    --global-bg: #f2ece7;
+    --global-card: #f6f4f2;
+    --global-border: rgba(95, 82, 67, 0.14);
+    --global-text: #191919;
+    --global-accent: #77b9c9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.global-page {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--global-bg);
+    color: var(--global-text);
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+.global-main {
+    overflow: hidden;
+}
+
+.global-hero {
+    padding: 118px 0 0;
+}
+
+.global-shell {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.global-grid-wrap {
+    position: relative;
+    padding-top: 22px;
+}
+
+.global-title {
+    margin: 0;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    font-size: clamp(56px, 8vw, 74px);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.global-subtitle {
+    margin: 10px 0 26px;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1;
+    font-weight: 400;
+}
+
+.global-money {
+    position: absolute;
+    top: -38px;
+    right: 8px;
+    width: min(18vw, 176px);
+    max-width: 176px;
+    object-fit: contain;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.global-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 44px;
+    align-items: start;
+}
+
+.global-card {
+    min-height: 394px;
+    padding: 26px 28px 30px;
+    border-radius: 18px;
+    background: var(--global-card);
+    border: 1px solid var(--global-border);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset;
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.card-head h2 {
+    margin: 0;
+    font-family: "Cinzel", serif;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.05;
+    font-weight: 700;
+}
+
+.card-head-government {
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.card-head-finance {
+    justify-content: center;
+    padding-right: 60px;
+}
+
+.global-card-finance {
+    padding-top: 34px;
+}
+
+.card-badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+}
+
+.global-card p {
+    margin: 0;
+    font-size: clamp(17px, 1.78vw, 19px);
+    line-height: 1.72;
+    text-align: justify;
+    letter-spacing: 0.01em;
+}
+
+.global-accent {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 28px;
+    height: 26px;
+    background: var(--global-accent);
+}
+
+.ethnicity-section {
+    width: 100%;
+    margin-left: 0;
+    position: relative;
+    padding: 34px 0 106px;
+    background: url("../img/background/rasdansuku.png") center / cover no-repeat;
+}
+
+.ethnicity-section::after {
+    content: "";
+    position: absolute;
+    left: -6%;
+    right: -6%;
+    bottom: -74px;
+    height: 146px;
+    background: var(--global-bg);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.ethnicity-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+    gap: 36px;
+    align-items: center;
+}
+
+.ethnicity-chart img {
+    width: min(100%, 430px);
+    display: block;
+    margin: 0 auto;
+}
+
+.ethnicity-copy {
+    max-width: 520px;
+}
+
+.ethnicity-title {
+    margin: 0 0 16px;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    font-size: clamp(44px, 5vw, 58px);
+    line-height: 1;
+    font-weight: 700;
+}
+
+.ethnicity-copy p {
+    margin: 0;
+    font-size: clamp(18px, 1.65vw, 21px);
+    line-height: 1.65;
+    text-align: justify;
+}
+
+.livelihood-section {
+    position: relative;
+    z-index: 2;
+    padding: 0 0 72px;
+}
+
+.livelihood-shell {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.livelihood-title {
+    margin: 0 0 36px;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    font-size: clamp(46px, 5.2vw, 62px);
+    line-height: 1;
+    font-weight: 700;
+}
+
+.livelihood-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 40px;
+    align-items: center;
+}
+
+.livelihood-copy p {
+    margin: 0;
+    font-size: clamp(18px, 1.65vw, 21px);
+    line-height: 1.68;
+}
+
+.livelihood-gallery {
+    display: grid;
+    grid-template-columns: minmax(96px, 0.58fr) minmax(0, 1fr);
+    grid-template-rows: repeat(2, minmax(140px, auto));
+    gap: 16px;
+}
+
+.livelihood-photo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 10px 22px rgba(56, 44, 32, 0.12);
+}
+
+.livelihood-photo-tall {
+    grid-row: 1 / span 2;
+}
+
+.livelihood-gallery img:not(.livelihood-photo-tall) {
+    aspect-ratio: 2.2 / 1;
+}
+
+.site-footer {
+    position: relative;
+    width: 100%;
+    margin-left: 0;
+    margin-top: -1px;
+    padding: 72px 0 26px;
+    color: #f5f5f5;
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../img/background/latarbelakang.png") center / cover no-repeat;
+    filter: brightness(0.28) grayscale(0.1);
+    z-index: -2;
+}
+
+.site-footer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(22, 22, 22, 0.68) 0%, rgba(18, 18, 18, 0.72) 100%);
+    z-index: -1;
+}
+
+.footer-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1.15fr;
+    background: rgba(20, 20, 20, 0.34);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 20px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+}
+
+.footer-col {
+    padding: 32px 30px 28px;
+}
+
+.footer-col + .footer-col {
+    border-left: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.footer-heading {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(28px, 2.6vw, 42px);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.footer-list {
+    list-style: none;
+    display: grid;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-list a {
+    color: rgba(245, 245, 245, 0.93);
+    text-decoration: none;
+    font-size: clamp(15px, 1.1vw, 22px);
+    line-height: 1.42;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.footer-list a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.72);
+    text-underline-offset: 4px;
+}
+
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+    margin-bottom: 16px;
+}
+
+.footer-logo-block {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.footer-logo-metland {
+    max-width: 158px;
+}
+
+.footer-contact p {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: rgba(245, 245, 245, 0.93);
+    font-size: clamp(14px, 1vw, 19px);
+    line-height: 1.42;
+    margin: 0 0 8px;
+}
+
+.footer-contact p i {
+    width: 18px;
+    margin-top: 3px;
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.footer-socials a {
+    color: #fff;
+    font-size: 28px;
+    text-decoration: none;
+    opacity: 0.94;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-socials a:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.footer-col-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.footer-logo-right {
+    margin-top: 0;
+    justify-content: center;
+}
+
+.footer-logo-uzbek {
+    max-width: 500px;
+}
+
+.footer-description {
+    color: rgba(245, 245, 245, 0.92);
+    font-size: clamp(15px, 1.04vw, 20px);
+    line-height: 1.48;
+    text-align: left;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    color: rgba(248, 248, 248, 0.95);
+}
+
+.footer-bottom p:first-child {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(27px, 2vw, 34px);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.footer-bottom p:last-child {
+    margin: 4px 0 0;
+    font-size: clamp(14px, 1vw, 17px);
+}
+
+@media (max-width: 960px) {
+    .global-hero {
+        padding-top: 110px;
+    }
+
+    .global-shell {
+        padding: 0 20px;
+    }
+
+    .global-grid-wrap {
+        padding-top: 18px;
+    }
+
+    .global-money {
+        width: 150px;
+        top: -26px;
+        right: 4px;
+    }
+
+    .global-grid {
+        gap: 26px;
+    }
+
+    .global-card {
+        min-height: 0;
+    }
+
+    .ethnicity-shell,
+    .livelihood-shell {
+        padding: 0 20px;
+    }
+
+    .ethnicity-shell {
+        gap: 24px;
+    }
+
+    .livelihood-grid {
+        gap: 26px;
+    }
+
+    .site-footer {
+        padding-top: 50px;
+    }
+
+    .footer-shell {
+        padding: 0 16px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-col-right {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .footer-logo-right {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 760px) {
+    .global-hero {
+        padding-top: 98px;
+    }
+
+    .global-shell {
+        padding: 0 14px;
+    }
+
+    .global-grid-wrap {
+        padding-top: 0;
+    }
+
+    .global-money {
+        position: static;
+        width: 132px;
+        margin: 4px 0 12px auto;
+    }
+
+    .global-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .global-card {
+        padding: 22px 18px 24px;
+    }
+
+    .card-head h2 {
+        font-size: clamp(24px, 7vw, 32px);
+    }
+
+    .card-head-finance {
+        padding-right: 0;
+    }
+
+    .global-card p {
+        font-size: 15px;
+        line-height: 1.66;
+    }
+
+    .global-accent {
+        margin-top: 22px;
+        height: 20px;
+    }
+
+    .ethnicity-section {
+        padding: 26px 0 72px;
+    }
+
+    .ethnicity-section::after {
+        bottom: -38px;
+        height: 76px;
+    }
+
+    .ethnicity-shell,
+    .livelihood-shell {
+        padding: 0 14px;
+        grid-template-columns: 1fr;
+    }
+
+    .ethnicity-shell {
+        gap: 18px;
+    }
+
+    .ethnicity-chart img {
+        max-width: 360px;
+    }
+
+    .ethnicity-copy {
+        max-width: none;
+    }
+
+    .ethnicity-title,
+    .livelihood-title {
+        font-size: clamp(34px, 9vw, 44px);
+    }
+
+    .ethnicity-copy p,
+    .livelihood-copy p {
+        font-size: 15px;
+        line-height: 1.54;
+    }
+
+    .livelihood-section {
+        padding-bottom: 46px;
+    }
+
+    .livelihood-title {
+        margin-bottom: 24px;
+    }
+
+    .livelihood-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .livelihood-gallery {
+        grid-template-columns: minmax(88px, 0.56fr) minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .site-footer {
+        padding-top: 42px;
+        padding-bottom: 18px;
+    }
+
+    .footer-grid {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        border-radius: 16px;
+    }
+
+    .footer-col {
+        padding: 20px 14px;
+    }
+
+    .footer-col + .footer-col {
+        border-left: 1px solid rgba(255, 255, 255, 0.24);
+        border-top: none;
+    }
+
+    .footer-col-right {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .footer-links-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .footer-col-right .footer-contact {
+        margin-top: 6px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        width: 100%;
+    }
+
+    .footer-col:first-child .footer-list {
+        grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+        column-gap: 8px;
+        row-gap: 2px;
+    }
+
+    .footer-heading {
+        font-size: clamp(26px, 7.8vw, 44px);
+        margin-bottom: 10px;
+    }
+
+    .footer-list a {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+    .footer-contact p {
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
+    .footer-logo-metland {
+        max-width: 132px;
+    }
+
+    .footer-logo-uzbek {
+        max-width: 150px;
+    }
+
+    .footer-bottom {
+        margin-top: 14px;
+    }
+
+    .footer-bottom p:first-child {
+        font-size: clamp(23px, 6.4vw, 28px);
+    }
+}

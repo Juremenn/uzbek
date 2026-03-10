@@ -1,0 +1,653 @@
+:root {
+    --destination-bg: #02040a;
+    --destination-panel: #03050b;
+    --destination-border: rgba(255, 255, 255, 0.12);
+    --destination-glow: rgba(255, 255, 255, 0.72);
+    --destination-text: #f7f7f7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.destination-page {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% -10%, #121929 0%, #070b14 42%, #04060d 100%);
+    color: var(--destination-text);
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+.destination-main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 94px 0 0;
+}
+
+.destination-hero {
+    width: 100%;
+    min-height: 0;
+    padding: 14px 0 0;
+}
+
+
+.destination-shell {
+    position: relative;
+    width: min(1224px, calc(100% - 56px));
+    height: min(80vh, 790px);
+    min-height: 700px;
+    margin: 0 auto;
+    border: 1px solid rgba(235, 245, 255, 0.14);
+    border-radius: 22px;
+    background: #02040a;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 0.98fr 1.02fr;
+    box-shadow:
+        0 24px 44px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.destination-visual {
+    position: relative;
+    background: url("../img/background/destinasi.png") 34% center / 112% auto no-repeat;
+}
+
+.destination-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(7, 16, 28, 0.16) 34%, rgba(7, 16, 28, 0.58) 100%),
+        linear-gradient(180deg, rgba(8, 18, 30, 0.14) 0%, rgba(8, 18, 30, 0.04) 44%, rgba(8, 18, 30, 0.44) 100%);
+}
+
+.destination-panel {
+    position: relative;
+    background:
+        radial-gradient(circle at 22% 14%, rgba(38, 88, 126, 0.12) 0%, rgba(38, 88, 126, 0) 48%),
+        linear-gradient(180deg, #03050c 0%, #010207 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.destination-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.93) 0%, rgba(0, 0, 0, 0.78) 18%, rgba(0, 0, 0, 0.5) 34%, rgba(0, 0, 0, 0.16) 50%, rgba(0, 0, 0, 0) 64%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.24) 100%);
+    pointer-events: none;
+}
+
+.destination-copy {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 14px;
+    padding: 54px 52px 150px;
+}
+
+.destination-title {
+    margin: 0;
+    font-family: "Cinzel", serif;
+    font-size: clamp(56px, 4.2vw, 70px);
+    line-height: 0.9;
+    letter-spacing: 0.018em;
+    font-weight: 700;
+    text-align: center;
+    text-shadow:
+        0 0 3px rgba(255, 255, 255, 0.9),
+        0 0 11px rgba(255, 255, 255, 0.56),
+        0 0 22px rgba(255, 255, 255, 0.26);
+}
+
+.destination-subtitle {
+    margin: -10px 0 14px;
+    font-family: "Cinzel", serif;
+    font-size: clamp(36px, 2.55vw, 46px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-shadow: 0 0 11px rgba(255, 255, 255, 0.45);
+}
+
+.destination-description {
+    margin: 0;
+    width: min(510px, 100%);
+    font-size: clamp(17px, 1.04vw, 20px);
+    line-height: 1.5;
+    color: rgba(245, 245, 245, 0.93);
+    letter-spacing: 0.002em;
+}
+
+.destination-cta {
+    width: fit-content;
+    margin-top: 12px;
+    padding: 13px 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(5, 66, 76, 0.95);
+    text-decoration: none;
+    color: #f6fcfd;
+    font-size: clamp(15px, 0.96vw, 17px);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    background: linear-gradient(180deg, rgba(5, 66, 76, 0.95) 0%, rgba(4, 43, 51, 0.95) 100%);
+    box-shadow:
+        0 0 0 1px rgba(29, 95, 102, 0.48) inset,
+        0 12px 20px rgba(0, 0, 0, 0.34),
+        0 0 22px rgba(54, 170, 184, 0.22);
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.destination-cta-mobile {
+    display: none;
+}
+
+.destination-cta:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+}
+
+.destination-cta:focus-visible {
+    outline: 2px solid rgba(129, 227, 239, 0.86);
+    outline-offset: 2px;
+}
+
+.destination-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 20px 26px 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.58) 42%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.destination-caption h2 {
+    margin: 0;
+    font-family: "Cinzel", serif;
+    font-size: clamp(56px, 4.2vw, 72px);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    margin-left: 34px;
+    text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 10px rgba(255, 255, 255, 0.45);
+}
+
+.destination-caption p {
+    margin: 8px 0 0 34px;
+    max-width: min(760px, calc(56% - 70px));
+    font-size: clamp(14px, 0.9vw, 16px);
+    line-height: 1.42;
+    color: rgba(245, 245, 245, 0.92);
+}
+.site-footer {
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    padding: 72px 0 26px;
+    color: #f5f5f5;
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../img/background/latarbelakang.png") center / cover no-repeat;
+    filter: brightness(0.28) grayscale(0.1);
+    z-index: -2;
+}
+
+.site-footer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(22, 22, 22, 0.68) 0%, rgba(18, 18, 18, 0.72) 100%);
+    z-index: -1;
+}
+
+.footer-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1.15fr;
+    background: rgba(20, 20, 20, 0.34);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 20px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+}
+
+.footer-col {
+    padding: 32px 30px 28px;
+}
+
+.footer-col + .footer-col {
+    border-left: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.footer-heading {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(28px, 2.6vw, 42px);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.footer-list {
+    list-style: none;
+    display: grid;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-list a {
+    color: rgba(245, 245, 245, 0.93);
+    text-decoration: none;
+    font-size: clamp(15px, 1.1vw, 22px);
+    line-height: 1.42;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.footer-list a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.72);
+    text-underline-offset: 4px;
+}
+
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+    margin-bottom: 16px;
+}
+
+.footer-logo-block {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.footer-logo-metland {
+    max-width: 158px;
+}
+
+.footer-contact p {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: rgba(245, 245, 245, 0.93);
+    font-size: clamp(14px, 1vw, 19px);
+    line-height: 1.42;
+    margin: 0 0 8px;
+}
+
+.footer-contact p i {
+    width: 18px;
+    margin-top: 3px;
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.footer-socials a {
+    color: #fff;
+    font-size: 28px;
+    text-decoration: none;
+    opacity: 0.94;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-socials a:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.footer-col-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.footer-logo-right {
+    margin-top: 0;
+    justify-content: center;
+}
+
+.footer-logo-uzbek {
+    max-width: 500px;
+}
+
+.footer-description {
+    color: rgba(245, 245, 245, 0.92);
+    font-size: clamp(15px, 1.04vw, 20px);
+    line-height: 1.48;
+    text-align: left;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    color: rgba(248, 248, 248, 0.95);
+}
+
+.footer-bottom p:first-child {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(27px, 2vw, 34px);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.footer-bottom p:last-child {
+    margin: 4px 0 0;
+    font-size: clamp(14px, 1vw, 17px);
+}
+
+@media (max-width: 1080px) {
+    .destination-main {
+        padding-top: 92px;
+    }
+
+    .destination-hero {
+        padding: 10px 0 0;
+    }
+
+    .destination-shell {
+        height: auto;
+        min-height: 0;
+        grid-template-columns: 1fr;
+        border-radius: 18px;
+    }
+
+    .destination-visual {
+        min-height: 460px;
+        background: url("../img/background/destinasi.png") 35% center / cover no-repeat;
+    }    .destination-panel::before {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.34) 48%, rgba(0, 0, 0, 0.2) 100%);
+    }
+
+    .destination-copy {
+        justify-items: start;
+        gap: 10px;
+        padding: 34px 20px 146px;
+    }
+
+    .destination-title,
+    .destination-subtitle {
+        text-align: left;
+    }
+
+    .destination-description,
+    .destination-caption p {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .destination-caption h2 {
+        margin-left: 0;
+        font-size: clamp(52px, 8vw, 78px);
+    }
+
+    .destination-caption p {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    .site-footer {
+        padding-top: 50px;
+    }
+
+    .footer-shell {
+        padding: 0 16px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-col-right {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .footer-logo-right {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 760px) {
+    .destination-main {
+        padding-top: 88px;
+    }
+
+    .destination-hero {
+        padding: 8px 0 0;
+    }
+
+    .destination-visual {
+        min-height: 360px;
+        background-position: 36% center;
+    }    .destination-copy {
+        gap: 12px;
+        padding: 28px 14px 140px;
+    }
+
+    .destination-title {
+        font-size: clamp(34px, 11vw, 44px);
+    }
+
+    .destination-subtitle {
+        margin: -2px 0 2px;
+        font-size: clamp(24px, 8vw, 34px);
+    }
+
+    .destination-description {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .destination-cta {
+        padding: 12px 22px;
+        font-size: 15px;
+    }
+
+    .destination-cta-desktop {
+        display: none;
+    }
+
+    .destination-cta-mobile {
+        display: inline-flex;
+        align-self: stretch;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .destination-caption {
+        padding: 18px 12px 20px;
+    }
+
+    .destination-caption h2 {
+        font-size: clamp(42px, 13vw, 60px);
+    }
+
+    .destination-caption p {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+    .site-footer {
+        padding-top: 42px;
+        padding-bottom: 18px;
+    }
+
+    .footer-grid {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        border-radius: 16px;
+    }
+
+    .footer-col {
+        padding: 20px 14px;
+    }
+
+    .footer-col + .footer-col {
+        border-left: 1px solid rgba(255, 255, 255, 0.24);
+        border-top: none;
+    }
+
+    .footer-col-right {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .footer-links-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .footer-col-right .footer-contact {
+        margin-top: 6px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        width: 100%;
+    }
+
+    .footer-col:first-child .footer-list {
+        grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+        column-gap: 8px;
+        row-gap: 2px;
+    }
+
+    .footer-heading {
+        font-size: clamp(26px, 7.8vw, 44px);
+        margin-bottom: 10px;
+    }
+
+    .footer-list a {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+    .footer-contact p {
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
+    .footer-logo-metland {
+        max-width: 132px;
+    }
+
+    .footer-logo-uzbek {
+        max-width: 150px;
+    }
+
+    .footer-bottom {
+        margin-top: 14px;
+    }
+
+    .footer-bottom p:first-child {
+        font-size: clamp(23px, 6.4vw, 28px);
+    }
+}
+
+@media (max-width: 520px) {
+    .destination-shell {
+        width: calc(100% - 24px);
+        border-radius: 14px;
+    }
+
+    .destination-visual {
+        min-height: 300px;
+        background-position: 42% center;
+    }
+
+    .destination-copy {
+        padding: 22px 12px 24px;
+        gap: 10px;
+    }
+
+    .destination-description {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+
+    .destination-cta {
+        width: 100%;
+        text-align: center;
+        padding: 12px 18px;
+    }
+
+    .destination-caption {
+        position: static;
+        padding: 14px 12px 18px;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.9) 100%);
+    }
+
+    .destination-caption h2 {
+        font-size: clamp(34px, 12vw, 46px);
+    }
+
+    .destination-caption p {
+        font-size: 12px;
+        line-height: 1.35;
+    }
+}
+
+@media (max-width: 420px) {
+    .destination-main {
+        padding-top: 82px;
+    }
+
+    .destination-visual {
+        min-height: 260px;
+        background-position: 44% center;
+    }
+
+    .destination-title {
+        font-size: clamp(30px, 10.5vw, 38px);
+    }
+
+    .destination-subtitle {
+        font-size: clamp(20px, 7.4vw, 28px);
+    }
+
+    .destination-cta {
+        font-size: 14px;
+    }
+}
+
+
+
