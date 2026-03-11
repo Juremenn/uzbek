@@ -192,8 +192,9 @@ body {
 
 .hero {
     position: relative;
-    min-height: 580px;
-    background: url("../img/background/mountain.png") center / cover no-repeat;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: url("../img/background/mountain.png") center bottom / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,6 +243,8 @@ body {
     width: 100%;
     height: 14px;
     background: linear-gradient(90deg, #7caedb 0%, #90bee9 100%);
+    position: relative;
+    z-index: 1;
 }
 
 .mountain-container {
@@ -251,35 +254,37 @@ body {
     background: #f6f3f1;
     display: flex;
     justify-content: center;
-    padding: 118px 16px 28px;
+    padding: 52px 16px 0;
     overflow: visible;
+    z-index: 2;
 }
 
 .geo-interactive-stage {
     position: relative;
     width: min(1180px, 100%);
-    min-height: 620px;
+    min-height: 540px;
 }
 
 .mountain-trigger {
     position: absolute;
     left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
+    bottom: -12px;
+    transform: translateX(-50%) scale(1.85);
+    transform-origin: center bottom;
     border: none;
     background: transparent;
     padding: 0;
     cursor: pointer;
-    z-index: 3;
+    z-index: 2;
 }
 
 .mountain-img {
     display: block;
-    width: min(1080px, 90vw);
+    width: min(1180px, 94vw);
     height: auto;
     object-fit: contain;
     margin-top: 0;
-    filter: drop-shadow(0 22px 36px rgba(16, 28, 19, 0.28));
+    filter: none;
 }
 
 .geo-popup {
@@ -299,11 +304,11 @@ body {
 }
 
 .geo-popup-area {
-    top: -110px;
+    top: -160px;
     left: 50%;
     width: min(100%, 560px);
     transform: translate(-50%, 80px) scale(0.96);
-    z-index: 2;
+    z-index: 5;
 }
 
 .geo-popup-boundary {
@@ -458,6 +463,8 @@ body {
     width: 100%;
     height: 12px;
     background: #5d6f2f;
+    position: relative;
+    z-index: 3;
 }
 
 /* -------  Location Section  ------- */
@@ -903,8 +910,9 @@ body {
     }
 
     .hero {
-        min-height: 480px;
-        padding: 110px 20px 80px;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 120px 20px 90px;
     }
 
     .hero-title {
@@ -913,20 +921,20 @@ body {
 
     .mountain-container {
         min-height: auto;
-        padding-top: 92px;
-        padding-bottom: 28px;
+        padding-top: 54px;
+        padding-bottom: 0;
     }
 
     .geo-interactive-stage {
-        min-height: 560px;
+        min-height: 500px;
     }
 
     .mountain-img {
-        width: min(900px, 96vw);
+        width: min(1080px, 96vw);
     }
 
     .geo-popup-area {
-        top: -72px;
+        top: -120px;
         width: min(100%, 500px);
     }
 
@@ -1395,8 +1403,9 @@ body {
     }
 
     .hero {
-        min-height: 360px;
-        padding: 94px 12px 42px;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 96px 12px 54px;
     }
 
     .hero-title {
@@ -1415,7 +1424,7 @@ body {
 
     .mountain-container {
         min-height: auto;
-        padding: 24px 10px 24px;
+        padding: 20px 10px 0;
     }
 
     .geo-interactive-stage {
@@ -1438,10 +1447,13 @@ body {
 
     .mountain-trigger {
         justify-self: center;
+        margin-bottom: 0;
     }
 
     .mountain-img {
-        width: min(560px, 100%);
+        width: min(680px, 112%);
+        max-width: 112%;
+        margin-top: -18px;
     }
 
     .geo-popup {
