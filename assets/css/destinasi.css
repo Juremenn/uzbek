@@ -204,7 +204,7 @@ body.destination-page {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../img/background/latarbelakang.png") center / cover no-repeat;
+    background: url("../img/background/latarbelakang.jpg") center / cover no-repeat;
     filter: brightness(0.28) grayscale(0.1);
     z-index: -2;
 }
@@ -648,6 +648,5 @@ body.destination-page {
         font-size: 14px;
     }
 }
-
 
 

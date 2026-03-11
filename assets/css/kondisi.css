@@ -194,7 +194,7 @@ body {
     position: relative;
     min-height: 100vh;
     min-height: 100svh;
-    background: url("../img/background/mountain.png") center bottom / cover no-repeat;
+    background: url("../img/background/mountain.jpg") center bottom / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -472,7 +472,7 @@ body {
 .location-section {
     position: relative;
     min-height: 860px;
-    background: url("../img/background/kondisigeo.png") center / cover no-repeat;
+    background: url("../img/background/kondisigeo.jpg") center / cover no-repeat;
     display: flex;
     justify-content: center;
     padding: 44px 24px 86px;
@@ -534,7 +534,7 @@ body {
     padding: 26px 24px 40px;
     background:
         linear-gradient(180deg, rgba(239, 236, 233, 0.98) 0%, rgba(239, 236, 233, 0.98) 52%, rgba(239, 236, 233, 0.18) 64%, rgba(239, 236, 233, 0) 100%),
-        url("../img/background/latarbelakang2.png") center bottom / cover no-repeat;
+        url("../img/background/latarbelakang2.jpg") center bottom / cover no-repeat;
 }
 
 .landform-overlay {
@@ -708,7 +708,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../img/background/latarbelakang.png") center / cover no-repeat;
+    background: url("../img/background/latarbelakang.jpg") center / cover no-repeat;
     filter: brightness(0.28) grayscale(0.1);
     z-index: -2;
 }
@@ -1559,7 +1559,7 @@ body {
         padding: 12px 10px 20px;
         background:
             linear-gradient(180deg, rgba(239, 236, 233, 0.99) 0%, rgba(239, 236, 233, 0.99) 48%, rgba(239, 236, 233, 0.2) 62%, rgba(239, 236, 233, 0) 100%),
-            url("../img/background/latarbelakang2.png") center bottom / cover no-repeat;
+            url("../img/background/latarbelakang2.jpg") center bottom / cover no-repeat;
     }
 
     .landform-heading {

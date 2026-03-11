@@ -195,7 +195,7 @@ html {
     position: relative;
     height: 720px;
     background: linear-gradient(180deg, rgba(22, 32, 40, 0.28) 0%, rgba(22, 32, 40, 0.18) 36%, rgba(22, 32, 40, 0.08) 100%),
-        url("../img/background/latarbelakang2.png") center / cover no-repeat;
+        url("../img/background/latarbelakang2.jpg") center / cover no-repeat;
     padding: 96px 0 0;
     overflow: visible;
 }
@@ -471,7 +471,7 @@ html {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../img/background/latarbelakang.png") center / cover no-repeat;
+    background: url("../img/background/latarbelakang.jpg") center / cover no-repeat;
     filter: brightness(0.75);
     z-index: -2;
 }
