@@ -12,9 +12,57 @@
     }
 
     const mobileNavQuery = window.matchMedia("(max-width: 820px)");
+    const prefersReducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let navTransitionTimer = null;
 
     function isMobileNavLayout() {
         return mobileNavQuery.matches;
+    }
+
+    function clearNavTransitionTimer() {
+        if (navTransitionTimer) {
+            window.clearTimeout(navTransitionTimer);
+            navTransitionTimer = null;
+        }
+    }
+
+    function animateNavPrimary(open) {
+        if (!isMobileNavLayout()) return;
+
+        clearNavTransitionTimer();
+
+        if (prefersReducedMotionQuery.matches) {
+            navPrimary.style.height = "";
+            return;
+        }
+
+        const node = navPrimary;
+
+        if (open) {
+            node.style.height = "0px";
+            void node.offsetHeight;
+            node.style.height = `${node.scrollHeight}px`;
+
+            const onEnd = (event) => {
+                if (event.target !== node || event.propertyName !== "height") return;
+                node.style.height = "";
+                node.removeEventListener("transitionend", onEnd);
+            };
+            node.addEventListener("transitionend", onEnd);
+
+            navTransitionTimer = window.setTimeout(() => {
+                node.style.height = "";
+                node.removeEventListener("transitionend", onEnd);
+                navTransitionTimer = null;
+            }, 360);
+
+            return;
+        }
+
+        const start = node.getBoundingClientRect().height;
+        node.style.height = `${Math.max(0, Math.round(start))}px`;
+        void node.offsetHeight;
+        node.style.height = "0px";
     }
 
     function setDropdownState(isOpen) {
@@ -25,8 +73,8 @@
 
     function setMobileNavState(isOpen) {
         const shouldOpen = isMobileNavLayout() && isOpen;
-        navContent.classList.toggle("is-open", shouldOpen);
-        navMobileToggle.setAttribute("aria-expanded", String(shouldOpen));
+        const wasOpen = navContent.classList.contains("is-open");
+        if (shouldOpen === wasOpen) return;
 
         if (isMobileNavLayout()) {
             navPrimary.setAttribute("aria-hidden", String(!shouldOpen));
@@ -34,9 +82,35 @@
             navPrimary.removeAttribute("aria-hidden");
         }
 
-        if (!shouldOpen) {
-            setDropdownState(false);
+        if (shouldOpen) {
+            navContent.classList.add("is-open");
+            navMobileToggle.setAttribute("aria-expanded", "true");
+            animateNavPrimary(true);
+            return;
         }
+
+        // Animate close, then remove the open class so layout work is minimized.
+        animateNavPrimary(false);
+        navMobileToggle.setAttribute("aria-expanded", "false");
+        setDropdownState(false);
+
+        const finish = () => {
+            navContent.classList.remove("is-open");
+            navPrimary.style.height = "";
+        };
+
+        const onEnd = (event) => {
+            if (event.target !== navPrimary || event.propertyName !== "height") return;
+            navPrimary.removeEventListener("transitionend", onEnd);
+            clearNavTransitionTimer();
+            finish();
+        };
+        navPrimary.addEventListener("transitionend", onEnd);
+        navTransitionTimer = window.setTimeout(() => {
+            navPrimary.removeEventListener("transitionend", onEnd);
+            finish();
+            navTransitionTimer = null;
+        }, 360);
     }
 
     function syncResponsiveNav() {
@@ -46,12 +120,14 @@
             }
 
             navPrimary.setAttribute("aria-hidden", String(!navContent.classList.contains("is-open")));
+            navPrimary.style.height = "";
             return;
         }
 
         navContent.classList.remove("is-open");
         navMobileToggle.setAttribute("aria-expanded", "false");
         navPrimary.removeAttribute("aria-hidden");
+        navPrimary.style.height = "";
         setDropdownState(false);
     }
 
