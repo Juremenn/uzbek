@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uzbekistan - Destinasi Populer</title>
+    <title>Uzbekistan - Destinasi Detail</title>
     <link rel="icon" type="image/png" href="assets/img/logo/metland.png">
-    <link rel="stylesheet" href="assets/css/destinasi.css">
+    <link rel="stylesheet" href="assets/css/destinasi-detail.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@400;700;900&family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
 </head>
-<body class="destination-page">
+<body class="destination-detail-page">
     <nav class="navbar">
         <div class="nav-content" id="navContent">
             <a class="nav-brand" href="beranda/index.html" aria-label="Beranda Uzbekistan">
@@ -51,33 +51,74 @@
         </div>
     </nav>
 
-    <main class="destination-main">
-        <section class="destination-hero" aria-labelledby="destinationTitle">
-            <div class="destination-shell">
-                <div class="destination-visual" role="img" aria-label="Pemandangan Samarkand, Uzbekistan"></div>
-
-                <div class="destination-panel">
-                    <div class="destination-copy">
-                        <h1 id="destinationTitle" class="destination-title">DESTINASI POPULER</h1>
-                        <p class="destination-subtitle">UZBEKISTAN</p>
-                        <p class="destination-description">
-                            Pesona Uzbekistan yang penuh sejarah, arsitektur megah,
-                            dan budaya yang masih terjaga hingga kini. dari kubah biru
-                            yang ikonik hingga sudut kota yang hangat dan berjiwa,
-                            setiap langkah membawa cerita baru yang tak terlupakan
-                        </p>
-                        <a href="destinasi-detail.html" class="destination-cta destination-cta-desktop">LIHAT SELENGKAPNYA</a>
-                    </div>
-                </div>
-
-                <div class="destination-caption">
+    <main class="detail-main">
+        <section class="destination-detail" id="destinationDetail" aria-label="Detail destinasi Samarkand">
+            <div class="destination-detail-shell">
+                <article class="destination-feature">
+                    <div class="destination-feature-image destination-feature-image-left" role="img" aria-label="Arsitektur ikonik Samarkand sisi kiri"></div>
+                    <div class="destination-feature-image destination-feature-image-right" role="img" aria-label="Arsitektur ikonik Samarkand sisi kanan"></div>
                     <h2>SAMARKAND</h2>
-                    <p>Kota legendaris di jalur sutra yang memancarkan keindahan islamic architecture dan nuansa klasik yang memikat hati</p>
-                    <a href="destinasi-detail.html" class="destination-cta destination-cta-mobile">LIHAT SELENGKAPNYA</a>
-                </div>
-            </div>
-                </section>
+                </article>
 
+                <div class="destination-detail-grid">
+                    <article class="destination-info-card destination-info-card-culture">
+                        <h3>SENI BUDAYA</h3>
+                        <p>
+                            Uzbekistan memiliki kekayaan seni budaya yang terlihat dari arsitektur megah di Samarkand dan Bukhara.
+                            Bangunan seperti Registan menampilkan mozaik biru khas dan ukiran islami yang indah.
+                        </p>
+                        <div class="culture-photo" role="img" aria-label="Motif interior bangunan bersejarah Samarkand"></div>
+                    </article>
+
+                    <article class="destination-info-card destination-info-card-customs">
+                        <h3>ADAT &amp; UPACARA</h3>
+                        <div class="customs-list">
+                            <article class="customs-item">
+                                <div class="customs-thumb customs-thumb-one" role="img" aria-label="Foto upacara adat Uzbekistan"></div>
+                                <p>
+                                    Masyarakat Uzbekistan menjunjung tinggi sopan santun dan kekeluargaan. Tamu sangat
+                                    dihormati dan tradisi turun-temurun masih dijaga dalam kehidupan sehari-hari.
+                                </p>
+                            </article>
+                            <article class="customs-item">
+                                <div class="customs-thumb customs-thumb-two" role="img" aria-label="Foto perayaan Navruz"></div>
+                                <p>
+                                    Navruz dirayakan setiap 21 Maret dengan doa dan pertunjukan seni. Pernikahan tradisional
+                                    juga menjadi upacara penting yang melibatkan keluarga besar.
+                                </p>
+                            </article>
+                        </div>
+                    </article>
+                </div>
+
+                <section class="religion-section" aria-labelledby="religionTitle">
+                    <article class="religion-card">
+                        <img src="assets/img/circle/masjidremovebg.png" alt="" class="religion-decor religion-decor-bottom" aria-hidden="true">
+
+                        <h3 id="religionTitle">MAYORITAS AGAMA</h3>
+
+                        <div class="religion-content">
+                            <img src="assets/img/circle/ibadah.png" alt="Kegiatan ibadah umat Islam" class="religion-thumb">
+                            <p>
+                                Mayoritas agama di Uzbekistan adalah <strong>Islam</strong> dengan angka mencapai 88 persen.
+                                Agama berikutnya berupa Ortodoks Rusia (9 persen) dan lainnya 3 persen. Menurut data
+                                State Committee of the Republic of Uzbekistan for Statistic tahun 2021, jumlah penduduk
+                                Uzbekistan mencapai 34,5 juta jiwa.
+                            </p>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </section>
+
+        <section class="event-calendar-section" aria-labelledby="eventCalendarTitle">
+            <div class="event-calendar-shell">
+                <h2 id="eventCalendarTitle" class="event-calendar-title">Kalender Event</h2>
+                <figure class="event-calendar-figure">
+                    <img src="assets/img/event/kalender.png" alt="Kalender event Samarkand" class="event-calendar-poster">
+                </figure>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -154,8 +195,3 @@
     <script src="JS/navbar.js"></script>
 </body>
 </html>
-
-
-
-
-

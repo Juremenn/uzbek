@@ -808,6 +808,7 @@ html {
     grid-template-columns: 64px minmax(0, 1fr) 64px;
     gap: 16px;
     align-items: center;
+    grid-template-areas: "prev stage next";
 }
 
 .flipbook-stage {
@@ -816,6 +817,7 @@ html {
     margin: 0 auto;
     aspect-ratio: 1 / 1.414;
     perspective: 1400px;
+    grid-area: stage;
 }
 
 .flipbook-canvas {
@@ -877,6 +879,16 @@ html {
     cursor: pointer;
     box-shadow: 0 10px 18px rgba(18, 29, 35, 0.28);
     transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#flipPrev {
+    grid-area: prev;
+    justify-self: start;
+}
+
+#flipNext {
+    grid-area: next;
+    justify-self: end;
 }
 
 .flipbook-nav-label {
@@ -1485,6 +1497,28 @@ html {
         font-size: 12px;
         padding: 7px 10px;
     }
+
+    .map-content {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .map-embed iframe {
+        height: 320px;
+    }
+
+    .map-description {
+        text-align: justify;
+    }
+
+    .city-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 18px;
+    }
+
+    .flipbook-stage {
+        width: min(100%, 90vw);
+    }
 }
 
 @media (max-width: 560px) {
@@ -1683,7 +1717,7 @@ html {
         grid-template-areas:
             "stage stage"
             "prev next";
-        align-items: stretch;
+        align-items: start;
         gap: 12px;
     }
 
@@ -1697,7 +1731,7 @@ html {
         min-height: 46px;
         height: auto;
         padding: 10px 14px;
-        border-radius: 999px;
+        border-radius: 12px;
         font-size: 15px;
         justify-self: stretch;
     }
@@ -1753,17 +1787,19 @@ html {
     }
 
     .footer-grid {
-        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        grid-template-columns: 1fr;
         border-radius: 16px;
+        background: rgba(0, 0, 0, 0.6);
     }
 
     .footer-col {
-        padding: 20px 14px;
+        padding: 20px 16px;
+        text-align: center;
     }
 
     .footer-col + .footer-col {
-        border-left: 1px solid rgba(255, 255, 255, 0.24);
-        border-top: none;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
     }
 
     .footer-col-right {
@@ -1773,9 +1809,9 @@ html {
     }
 
     .footer-links-grid {
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        gap: 8px;
-        margin-bottom: 10px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 12px;
     }
 
     .footer-col-right .footer-contact {
@@ -1786,24 +1822,24 @@ html {
     }
 
     .footer-col:first-child .footer-list {
-        grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
-        column-gap: 8px;
-        row-gap: 2px;
+        grid-template-columns: 1fr;
+        row-gap: 4px;
     }
 
     .footer-heading {
-        font-size: clamp(26px, 7.8vw, 44px);
+        font-size: clamp(24px, 6.5vw, 32px);
         margin-bottom: 10px;
+        text-align: center;
     }
 
     .footer-list a {
-        font-size: 13px;
-        line-height: 1.35;
+        font-size: 14px;
+        line-height: 1.45;
     }
 
     .footer-contact p {
-        font-size: 13px;
-        line-height: 1.4;
+        font-size: 14px;
+        line-height: 1.5;
         margin-bottom: 6px;
     }
 
@@ -1823,6 +1859,55 @@ html {
         font-size: clamp(23px, 6.4vw, 28px);
     }
 }
+
+@media (max-width: 540px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        border-radius: 14px;
+    }
+
+    .footer-col {
+        padding: 18px 14px;
+        text-align: center;
+    }
+
+    .footer-col + .footer-col {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .footer-links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-logo-block,
+    .footer-logo-right {
+        justify-content: center;
+    }
+}
+
 :root {
     scroll-behavior: smooth;
+}
+
+@media (max-width: 560px) {
+    .flipbook-wrap {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "stage stage"
+            "prev next";
+        gap: 10px;
+        align-items: start;
+    }
+
+    .flipbook-stage {
+        width: min(100%, 92vw);
+    }
+
+    .flipbook-nav {
+        width: 100%;
+        height: auto;
+        min-height: 46px;
+        border-radius: 12px;
+    }
 }

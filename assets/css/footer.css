@@ -285,44 +285,181 @@
 
 @media (max-width: 680px) {
     .site-footer {
-        padding-top: 42px;
-        padding-bottom: 18px;
+        padding-top: 40px;
+        padding-bottom: 16px;
+    }
+
+    .footer-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "about info"
+            "metland emblem"
+            "contact contact"
+            "desc desc";
+        column-gap: 28px;
+        row-gap: 20px;
+        background-image: linear-gradient(
+            to right,
+            transparent 49.6%,
+            rgba(255, 255, 255, 0.35) 50%,
+            rgba(255, 255, 255, 0.35) 50.6%,
+            transparent 51%
+        );
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: 100% 420px;
+    }
+
+    .footer-block {
+        padding: 0 12px;
+    }
+
+    .footer-about {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .footer-about .footer-heading {
+        margin-left: -6px;
     }
 
     .footer-links-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+        gap: 12px 18px;
     }
 
     .footer-heading {
-        margin-bottom: 12px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        letter-spacing: 0.2px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
     }
 
     .footer-list a {
-        font-size: 15px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: rgba(245, 245, 245, 0.98);
+        font-weight: 600;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
     }
 
     .footer-contact-item {
-        font-size: 15px;
+        font-size: 16px;
         margin-bottom: 10px;
+        color: rgba(245, 245, 245, 0.98);
+        font-weight: 600;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
     }
 
     .footer-logo-metland {
-        max-width: 220px;
+        max-width: 200px;
+        justify-content: flex-start;
     }
 
     .footer-logo-uzbek {
-        max-width: 220px;
+        max-width: none;
+    }
+
+    .footer-metland {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .footer-emblem {
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .footer-metland,
+    .footer-emblem {
+        min-height: 230px;
+    }
+
+    .footer-metland .footer-logo-metland {
+        transform: translateY(-10px);
+    }
+
+    .footer-emblem .footer-logo-uzbek {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        object-position: 50% 45%;
     }
 }
 
 @media (max-width: 520px) {
-    .footer-links-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+    .footer-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "about info"
+            "metland emblem"
+            "contact contact"
+            "desc desc";
+        column-gap: 20px;
+        row-gap: 18px;
+        background-image: linear-gradient(
+            to right,
+            transparent 49.2%,
+            rgba(255, 255, 255, 0.32) 50%,
+            rgba(255, 255, 255, 0.32) 50.8%,
+            transparent 51%
+        );
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: 100% 380px;
+    }
+
+    .footer-block {
+        padding: 0 10px;
+    }
+
+    .footer-about {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .footer-about .footer-heading {
+        margin-left: -6px;
+    }
+
+    .footer-heading {
+        font-size: 18px;
+    }
+
+    .footer-list a,
+    .footer-contact-item {
+        font-size: 14.5px;
+        font-weight: 600;
+    }
+
+    .footer-logo-metland {
+        max-width: 170px;
+    }
+
+    .footer-logo-uzbek {
+        max-width: none;
+    }
+
+    .footer-metland .footer-logo-metland {
+        transform: translateY(-8px);
+    }
+
+    .footer-metland,
+    .footer-emblem {
+        min-height: 210px;
+    }
+
+    .footer-emblem .footer-logo-uzbek {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: 50% 45%;
     }
 
     .footer-social {
         font-size: 26px;
     }
 }
+
+/* Keep two-column layout down to very small widths for side-by-side About / Uzbekistan info */
