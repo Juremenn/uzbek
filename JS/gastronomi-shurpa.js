@@ -6,6 +6,7 @@
     const prevBtn = document.getElementById("dishPrevBtn");
     const nextBtn = document.getElementById("dishNextBtn");
     const cardsNode = document.getElementById("gastroCards");
+
     const giziModal = document.getElementById("giziModal");
     const giziModalContent = document.getElementById("giziModalContent");
     const giziModalImg = document.getElementById("giziModalImg");
@@ -54,10 +55,12 @@
             introImage: "assets/img/card/FruitKompot.png",
             introPosition: "50% 0%",
             nutritionImage: "assets/img/gastronomi/nilaigizisup.png",
+            nutritionThumb: "button",
+            gastroTemplate: "default",
             gastronomy: {
                 method: {
                     title: "Metode Masak Tradisional",
-                    text: "Kompot dibuat dengan merebus buah-buahan (segar atau kering) bersama air dan sedikit gula hingga sarinya keluar. Setelah itu didinginkan dan disajikan hangat atau dingin sesuai musim."
+                    text: "Buah direbus dengan api kecil hingga sari keluar, lalu didinginkan. Kompot bisa disajikan hangat atau dingin sesuai musim."
                 },
                 social: {
                     title: "Simbol Sosial",
@@ -87,6 +90,8 @@
             introImage: "assets/img/card/SupUzbekShurpa.png",
             introPosition: "50% 22%",
             nutritionImage: "assets/img/gastronomi/nilaigizisup.png",
+            nutritionThumb: "button",
+            gastroTemplate: "default",
             gastronomy: {
                 method: {
                     title: "Metode Masak Tradisional",
@@ -131,34 +136,28 @@
         },
         {
             key: "plov",
-            title: "Plov Uzbekistan",
+            title: "Plov Uzbek",
             image: "assets/img/card/PlovUzbekistan.png",
             imagePosition: "50% 55%",
             intro:
-                "Plov adalah hidangan nasi khas Asia Tengah yang dimasak bersama daging, wortel, bawang, dan rempah. Di Uzbekistan, plov sering dimasak dalam porsi besar untuk acara keluarga dan perayaan. Setiap daerah punya variasi, namun tujuannya sama: menciptakan nasi yang harum, gurih, dan kaya rasa.",
-            introImage: "assets/img/card/PlovUzbekistan.png",
-            introPosition: "50% 55%",
-            nutritionImage: "assets/img/gastronomi/nilaigizisup.png",
+                "Uzbek Plov adalah hidangan nasi yang berasal dari Uzbekistan sejak abad ke 11 atau 12, dimana nasi di tumis dan di rebus bersama daging kambing, wortel, dan bawang dalam kuali besar. Meskipun sering dikaitkan dengan penaklukan Alexander Agung di Sogdia pada abad ke 4 SM, plov lebih akurat dari tradisi kuliner persia dan Asia Tengah. Dikedikawan abad ke 10, Abu Ali Ibn Sina, tercatat mendokumentasikan metode persiapan hidangan sejenis Palov.",
+            introImage: "assets/img/card/nasigoreng.png",
+            introPosition: "50% 45%",
+            nutritionImage: "assets/img/gastronomi/nilaigiziplov.png",
+            nutritionThumb: "image",
+            gastroTemplate: "plov",
             gastronomy: {
                 method: {
                     title: "Metode Masak Tradisional",
-                    text: "Plov biasanya dimasak di kazan (kuali besar). Prosesnya berlapis: menumis bawang, memasak daging, menambahkan wortel, lalu nasi dimasak sampai meresap dan matang merata."
+                    text: "Tidak seperti nasi kukus biasa, Plov Uzbek dibuat dengan menumis bahan-bahan (daging, wortel, rempah) yang disebut zirvak, lalu nasi ditambahkan keatasnya dan dimasak hingga semua kaldu terserap sempurna."
                 },
                 social: {
                     title: "Simbol Sosial",
-                    text: "Plov sering hadir di pernikahan, syukuran, dan kumpul keluarga—menjadi simbol berbagi rezeki dan kebersamaan."
-                },
-                habit: {
-                    title: "Kebiasaan Masyarakat",
-                    text: "Plov kerap dimasak oleh orang yang dianggap ahli di komunitas. Tradisinya menjaga rasa tetap konsisten dan menjadi kebanggaan daerah."
+                    text: "Di Uzbekistan, Plov bukan sekedar makanan, melainkan tradisi sosial yang dimasak sejumlah besar oleh seorang (juru masak plov) untuk pernikahan dan perayaan."
                 },
                 variations: {
                     title: "Variasi",
-                    items: ["Plov daging sapi", "Plov domba", "Plov kismis", "Plov kacang almond"]
-                },
-                enjoy: {
-                    title: "Cara Menikmati",
-                    text: "Disajikan hangat sebagai hidangan utama. Umumnya dinikmati bersama acar, salad sayur, atau minuman kompot."
+                    text: "Setiap wilayah di Uzbekistan memiliki versi Plov sendiri."
                 }
             }
         }
@@ -178,35 +177,71 @@
             .replaceAll("'", "&#039;");
 
     const renderGastronomy = (dish) => {
-        const gastro = dish.gastronomy;
-        const card = (title, bodyHtml) =>
-            `<article class="gastro-card"><h3>${escapeHtml(title)}</h3>${bodyHtml}</article>`;
+        const gastro = dish.gastronomy || {};
+
+        const card = (title, bodyHtml, extraClass = "") =>
+            `<article class="gastro-card${extraClass ? ` ${extraClass}` : ""}"><h3>${escapeHtml(title)}</h3>${bodyHtml}</article>`;
 
         const paragraph = (text) => `<p>${escapeHtml(text)}</p>`;
 
-        const lines = (items) => `<p class="gastro-lines">${items.map((item) => escapeHtml(item)).join("<br>")}</p>`;
+        const lines = (items) =>
+            `<p class="gastro-lines">${items.map((item) => escapeHtml(item)).join("<br>")}</p>`;
 
-        const body = (section) => (Array.isArray(section.lines) ? lines(section.lines) : paragraph(section.text));
+        const body = (section) => (Array.isArray(section?.lines) ? lines(section.lines) : paragraph(section?.text || ""));
 
         const list = (items) =>
             `<ul class="gastro-variations">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 
+        const variationsBody = () => {
+            if (Array.isArray(gastro?.variations?.items)) return list(gastro.variations.items);
+            return paragraph(gastro?.variations?.text || "");
+        };
+
+        const giziControl = () => {
+            const src = escapeHtml(dish.nutritionImage || "assets/img/gastronomi/nilaigizisup.png");
+            if (dish.nutritionThumb === "image") {
+                return `<button class="gastro-gizi-thumb" type="button" data-open-gizi data-gizi-src="${src}" aria-label="Lihat informasi nilai gizi">
+                            <img src="${src}" alt="Lihat informasi nilai gizi" loading="lazy" decoding="async">
+                        </button>`;
+            }
+            return `<button class="gastro-cta" type="button" data-open-gizi data-gizi-src="${src}">Lihat informasi nilai gizi</button>`;
+        };
+
+        const template = dish.gastroTemplate || "default";
+
+        if (template === "plov") {
+            cardsNode.innerHTML = `
+                <div class="gastro-layout" data-template="plov" aria-label="Gastronomi layout">
+                    <div class="gastro-col gastro-col--left">
+                        ${card(gastro.method?.title || "", body(gastro.method))}
+                        <img class="gastro-dapur" src="assets/img/gastronomi/dapur.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gastro-col gastro-col--mid">
+                        ${card(gastro.social?.title || "", body(gastro.social))}
+                        ${card(gastro.variations?.title || "", variationsBody(), "gastro-card--small")}
+                    </div>
+                    <div class="gastro-col gastro-col--right">
+                        ${giziControl()}
+                    </div>
+                </div>
+            `;
+            return;
+        }
+
         cardsNode.innerHTML = `
-            <div class="gastro-layout" aria-label="Gastronomi layout">
+            <div class="gastro-layout" data-template="default" aria-label="Gastronomi layout">
                 <div class="gastro-col gastro-col--left">
-                    ${card(gastro.method.title, body(gastro.method))}
+                    ${card(gastro.method?.title || "", body(gastro.method))}
                     <img class="gastro-dapur" src="assets/img/gastronomi/dapur.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
                 </div>
                 <div class="gastro-col gastro-col--mid">
-                    ${card(gastro.social.title, body(gastro.social))}
-                    ${card(gastro.variations.title, list(gastro.variations.items))}
-                    <button class="gastro-cta" type="button" data-open-gizi data-gizi-src="${escapeHtml(dish.nutritionImage || "")}">
-                        Lihat informasi nilai gizi
-                    </button>
+                    ${card(gastro.social?.title || "", body(gastro.social))}
+                    ${card(gastro.variations?.title || "", variationsBody())}
+                    ${giziControl()}
                 </div>
                 <div class="gastro-col gastro-col--right">
-                    ${card(gastro.habit.title, body(gastro.habit))}
-                    ${card(gastro.enjoy.title, body(gastro.enjoy))}
+                    ${card(gastro.habit?.title || "", body(gastro.habit))}
+                    ${card(gastro.enjoy?.title || "", body(gastro.enjoy))}
                 </div>
             </div>
         `;
@@ -226,44 +261,6 @@
         introImg.style.objectPosition = dish.introPosition || dish.imagePosition || "";
         renderGastronomy(dish);
     };
-
-    let lastFocusEl = null;
-
-    const openGiziModal = (src) => {
-        if (!src) return;
-        lastFocusEl = document.activeElement;
-        giziModalImg.src = src;
-        giziModal.classList.add("is-open");
-        giziModal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("is-modal-open");
-        giziModalContent.focus();
-    };
-
-    const closeGiziModal = () => {
-        if (!giziModal.classList.contains("is-open")) return;
-        giziModal.classList.remove("is-open");
-        giziModal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("is-modal-open");
-        if (lastFocusEl && typeof lastFocusEl.focus === "function") lastFocusEl.focus();
-        lastFocusEl = null;
-    };
-
-    cardsNode.addEventListener("click", (event) => {
-        const button = event.target.closest("[data-open-gizi]");
-        if (!button) return;
-        const src = button.getAttribute("data-gizi-src") || "assets/img/gastronomi/nilaigizisup.png";
-        openGiziModal(src);
-    });
-
-    giziModal.addEventListener("click", (event) => {
-        if (event.target === giziModal) closeGiziModal();
-        const closeTarget = event.target.closest("[data-gizi-close]");
-        if (closeTarget) closeGiziModal();
-    });
-
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeGiziModal();
-    });
 
     const setPosInstant = (cardEl, pos) => {
         cardEl.classList.add("no-transition");
@@ -392,5 +389,44 @@
         if (event.key === "ArrowRight") animateTo("next");
     });
 
+    let lastFocusEl = null;
+
+    const openGiziModal = (src) => {
+        if (!src) return;
+        lastFocusEl = document.activeElement;
+        giziModalImg.src = src;
+        giziModal.classList.add("is-open");
+        giziModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("is-modal-open");
+        giziModalContent.focus();
+    };
+
+    const closeGiziModal = () => {
+        if (!giziModal.classList.contains("is-open")) return;
+        giziModal.classList.remove("is-open");
+        giziModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("is-modal-open");
+        if (lastFocusEl && typeof lastFocusEl.focus === "function") lastFocusEl.focus();
+        lastFocusEl = null;
+    };
+
+    cardsNode.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-open-gizi]");
+        if (!button) return;
+        const src = button.getAttribute("data-gizi-src") || "assets/img/gastronomi/nilaigizisup.png";
+        openGiziModal(src);
+    });
+
+    giziModal.addEventListener("click", (event) => {
+        if (event.target === giziModal) closeGiziModal();
+        const closeTarget = event.target.closest("[data-gizi-close]");
+        if (closeTarget) closeGiziModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeGiziModal();
+    });
+
     renderStatic();
 })();
+

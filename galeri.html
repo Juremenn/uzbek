@@ -134,6 +134,16 @@
 
             <img class="gallery-camera" src="assets/img/card/camera.png" alt="Kamera">
         </section>
+
+        <div class="gallery-lightbox" id="galleryLightbox" hidden aria-hidden="true" role="dialog" aria-label="Pratinjau gambar galeri">
+            <button class="gallery-lightbox-close" id="galleryLightboxClose" type="button" aria-label="Tutup pratinjau">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <figure class="gallery-lightbox-figure">
+                <img id="galleryLightboxImage" src="" alt="">
+                <figcaption id="galleryLightboxCaption"></figcaption>
+            </figure>
+        </div>
     </main>
 
     <footer class="site-footer">
@@ -208,6 +218,7 @@
     </footer>
 
     <script src="JS/navbar.js"></script>
+    <script src="JS/galeri.js"></script>
 </body>
 </html>
 

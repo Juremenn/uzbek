@@ -191,7 +191,10 @@ body.paket-page {
 }
 
 #tab-paket {
-    background: #f4f4f4;
+    background:
+        radial-gradient(900px 240px at 10% 0%, rgba(181, 214, 226, 0.34) 0%, rgba(181, 214, 226, 0) 70%),
+        radial-gradient(860px 260px at 90% 0%, rgba(255, 220, 178, 0.3) 0%, rgba(255, 220, 178, 0) 72%),
+        #f4f4f4;
     padding: 34px 34px 40px;
 }
 
@@ -200,6 +203,42 @@ body.paket-page {
     margin: 0 auto;
     display: grid;
     gap: 18px;
+}
+
+.package-wrap p {
+    text-align: justify;
+}
+
+.package-promo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 999px;
+    background: linear-gradient(145deg, rgba(31, 57, 72, 0.92) 0%, rgba(57, 86, 102, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #f8fbff;
+}
+
+.package-promo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 132px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: linear-gradient(160deg, #ffd871 0%, #ffb738 100%);
+    color: #2f2100;
+    font-size: clamp(14px, 1vw, 16px);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.package-promo-text {
+    margin: 0;
+    font-size: clamp(13px, 1vw, 15px);
 }
 
 .package-lead {
@@ -213,7 +252,7 @@ body.paket-page {
     margin: 0;
     font-size: clamp(16px, 1.15vw, 20px);
     line-height: 1.55;
-    text-align: left;
+    text-align: justify;
 }
 
 .package-feature {
@@ -222,6 +261,8 @@ body.paket-page {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     border-radius: 18px;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 24px rgba(30, 36, 42, 0.14);
 }
 
 .package-feature-left,
@@ -231,6 +272,21 @@ body.paket-page {
     color: #f4f4f4;
     min-height: 190px;
     background: #5f6a6d;
+}
+
+.package-price-old {
+    text-decoration: line-through;
+    opacity: 0.74;
+}
+
+.package-price-discount {
+    margin-top: -2px;
+    color: #ffe38b;
+}
+
+.package-price-discount strong {
+    font-size: clamp(17px, 1.2vw, 22px);
+    color: #fff4ca;
 }
 
 .package-price,
@@ -271,10 +327,55 @@ body.paket-page {
     margin: 0;
     font-size: clamp(15px, 1.1vw, 19px);
     line-height: 1.5;
+    text-align: justify;
 }
 
 .package-closing {
     margin-top: 6px;
+}
+
+.package-extra {
+    margin-top: 6px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.package-extra-card {
+    background: #f6f1ec;
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid rgba(40, 40, 40, 0.08);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
+    display: grid;
+    gap: 10px;
+}
+
+.package-extra-card h4 {
+    margin: 0;
+    font-size: clamp(15px, 1.05vw, 18px);
+    font-weight: 700;
+    color: #1c1c1c;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.package-extra-card p {
+    margin: 0;
+    font-size: clamp(14px, 1vw, 16px);
+    line-height: 1.5;
+    color: #262626;
+}
+
+.package-extra-list {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 6px;
+    font-size: clamp(14px, 1vw, 16px);
+    line-height: 1.45;
+    color: #262626;
 }
 
 .package-details {
@@ -297,6 +398,12 @@ body.paket-page {
     overflow: hidden;
     background: #f6f1ec;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.package-detail-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
 }
 
 .package-detail-card-wide .package-detail-text h4 {
@@ -351,6 +458,12 @@ body.paket-page {
     overflow: hidden;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     display: grid;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.package-mini-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
 }
 
 .package-mini-card img {
@@ -375,6 +488,7 @@ body.paket-page {
     margin: 0;
     font-size: clamp(14px, 1.05vw, 18px);
     font-weight: 600;
+    text-align: justify;
 }
 
 .package-margin {
@@ -425,6 +539,32 @@ body.paket-page {
     margin: 0;
     font-size: clamp(14px, 1.05vw, 18px);
     line-height: 1.55;
+    text-align: justify;
+}
+
+.package-cta-wrap {
+    margin: 2px 0 0;
+    text-align: center;
+}
+
+.package-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: linear-gradient(150deg, #204b68 0%, #397697 100%);
+    color: #f4f9ff;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.package-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(24, 45, 61, 0.24);
 }
 
 .tab-panel {
@@ -1042,8 +1182,21 @@ body.paket-page {
         gap: 14px;
     }
 
+    .package-wrap p {
+        text-align: justify;
+    }
+
     .package-feature {
         grid-template-columns: 1fr;
+    }
+
+    .package-extra {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .package-extra-card {
+        padding: 14px;
     }
 
     .route-panel {
@@ -1266,6 +1419,30 @@ body.paket-page {
 
     .package-wrap {
         gap: 12px;
+    }
+
+    .package-extra {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .package-extra-card {
+        padding: 14px 12px;
+    }
+
+    .package-extra-card h4 {
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+    .package-extra-card p,
+    .package-extra-list {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .package-details-title {
+        font-size: 15px;
     }
 
     .package-lead {
@@ -1528,6 +1705,30 @@ body.paket-page {
 
     .package-list {
         font-size: 13px;
+    }
+
+    .package-extra {
+        gap: 8px;
+    }
+
+    .package-extra-card {
+        border-radius: 12px;
+        padding: 12px 10px;
+    }
+
+    .package-extra-card h4 {
+        font-size: 14px;
+        gap: 6px;
+    }
+
+    .package-extra-card p,
+    .package-extra-list {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .package-extra-list {
+        padding-left: 16px;
     }
 
     .package-detail-text h4 {

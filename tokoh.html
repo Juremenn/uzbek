@@ -98,7 +98,7 @@
                         </span>
                     </button>
 
-                    <button class="tokoh-card" type="button" data-name="Jamshid Kuchkarov" data-role="menteri ekonomi dan keuangan Uzbekistan" data-image="assets/img/tokoh/Jamshidkuchkarov.png" data-summary="Jamshid Kuchkarov dikenal sebagai pejabat publik yang berperan penting dalam arah kebijakan ekonomi Uzbekistan. Kiprahnya banyak terkait dengan reformasi fiskal, investasi, dan penguatan sistem keuangan negara." data-fact-one-title="Reformasi ekonomi" data-fact-one-text="Ia berkontribusi dalam kebijakan yang mendorong efisiensi pengelolaan anggaran dan peningkatan iklim investasi nasional." data-fact-two-title="Stabilitas fiskal" data-fact-two-text="Perannya di sektor keuangan membantu menjaga keseimbangan pembangunan dengan kebutuhan pertumbuhan ekonomi jangka panjang." data-fact-three-title="Arah pembangunan" data-fact-three-text="Kebijakan yang ia jalankan ikut membentuk fondasi bagi transformasi ekonomi Uzbekistan yang lebih modern dan terbuka." data-video-playlist="assets/video/1.mp4,assets/video/2.mp4,assets/video/3.mp4" data-video-subtitles="assets/video/subtitles/jamshid-1.id.vtt,assets/video/subtitles/jamshid-2.id.vtt,assets/video/subtitles/jamshid-3.id.vtt">
+                    <button class="tokoh-card" type="button" data-name="Jamshid Kuchkarov" data-role="menteri ekonomi dan keuangan Uzbekistan" data-image="assets/img/tokoh/Jamshidkuchkarov.png" data-summary="Jamshid Kuchkarov dikenal sebagai pejabat publik yang berperan penting dalam arah kebijakan ekonomi Uzbekistan. Kiprahnya banyak terkait dengan reformasi fiskal, investasi, dan penguatan sistem keuangan negara." data-fact-one-title="Reformasi ekonomi" data-fact-one-text="Ia berkontribusi dalam kebijakan yang mendorong efisiensi pengelolaan anggaran dan peningkatan iklim investasi nasional." data-fact-two-title="Stabilitas fiskal" data-fact-two-text="Perannya di sektor keuangan membantu menjaga keseimbangan pembangunan dengan kebutuhan pertumbuhan ekonomi jangka panjang." data-fact-three-title="Arah pembangunan" data-fact-three-text="Kebijakan yang ia jalankan ikut membentuk fondasi bagi transformasi ekonomi Uzbekistan yang lebih modern dan terbuka." data-video-embed="https://www.youtube.com/shorts/Yw0PUByRhpM?si=AiiEbqEu_rHq9AF5">
                         <span class="tokoh-card-image-wrap"><img src="assets/img/tokoh/Jamshidkuchkarov.png" alt="Jamshid Kuchkarov" class="tokoh-card-image"></span>
                         <span class="tokoh-card-body">
                             <span class="tokoh-card-name">Jamshid Kuchkarov</span>
@@ -144,15 +144,22 @@
 
                     <aside id="spotlightVideoWrap" class="spotlight-video-wrap" hidden aria-label="Video AI penjelasan tokoh">
                         <div class="spotlight-video-header">
-                            <p class="spotlight-video-label">AI Penjelasan</p>
+                            <p class="spotlight-video-label">AI Penjelasan (YouTube)</p>
                             <button id="spotlightVideoToggle" class="spotlight-video-toggle" type="button" aria-pressed="false">
-                                <span class="spotlight-video-toggle-icon" aria-hidden="true"><i class="fa-solid fa-pause"></i></span>
-                                <span id="spotlightVideoToggleText">Stop</span>
+                                <span class="spotlight-video-toggle-icon" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                                <span id="spotlightVideoToggleText">Play</span>
                             </button>
                         </div>
-                        <video id="spotlightVideo" class="spotlight-video" playsinline preload="metadata">
-                            <track id="spotlightVideoTrack" kind="subtitles" srclang="id" label="Bahasa Indonesia" default>
-                        </video>
+                        <iframe
+                            id="spotlightVideo"
+                            class="spotlight-video"
+                            title="Video AI Tokoh"
+                            src="about:blank"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
                     </aside>
                 </div>
             </div>
@@ -248,25 +255,62 @@
         const spotlightShell = document.querySelector('.spotlight-shell');
         const spotlightVideoWrap = document.getElementById('spotlightVideoWrap');
         const spotlightVideo = document.getElementById('spotlightVideo');
-        const spotlightVideoTrack = document.getElementById('spotlightVideoTrack');
         const spotlightVideoToggle = document.getElementById('spotlightVideoToggle');
         const spotlightVideoToggleText = document.getElementById('spotlightVideoToggleText');
-        const spotlightVideoToggleIcon = spotlightVideoToggle.querySelector('i');
-        let videoPlaylist = [];
-        let subtitlePlaylist = [];
-        let activeVideoIndex = 0;
+        const spotlightVideoToggleIcon = spotlightVideoToggle ? spotlightVideoToggle.querySelector('i') : null;
+        let currentVideoEmbedUrl = '';
+        let isVideoPlaying = false;
 
-        function updateActiveSubtitle(index) {
-            if (!spotlightVideoTrack) {
+        function getYouTubeEmbedUrl(url, autoplay = false) {
+            if (!url) {
+                return '';
+            }
+
+            try {
+                const parsed = new URL(url);
+                let videoId = '';
+
+                if (parsed.hostname.includes('youtu.be')) {
+                    videoId = parsed.pathname.replace('/', '').trim();
+                } else if (parsed.pathname.startsWith('/shorts/')) {
+                    videoId = parsed.pathname.split('/shorts/')[1].split('/')[0].trim();
+                } else if (parsed.pathname === '/watch') {
+                    videoId = parsed.searchParams.get('v') || '';
+                } else if (parsed.pathname.startsWith('/embed/')) {
+                    videoId = parsed.pathname.split('/embed/')[1].split('/')[0].trim();
+                }
+
+                if (!videoId) {
+                    return '';
+                }
+
+                const autoplayValue = autoplay ? '1' : '0';
+                return `https://www.youtube.com/embed/${videoId}?autoplay=${autoplayValue}&mute=0&controls=1&rel=0&modestbranding=1&playsinline=1`;
+            } catch (_) {
+                return '';
+            }
+        }
+
+        function setVideoToggleState(isPlaying) {
+            isVideoPlaying = isPlaying;
+            if (!spotlightVideoToggle || !spotlightVideoToggleText || !spotlightVideoToggleIcon) {
                 return;
             }
 
-            const subtitleUrl = subtitlePlaylist[index] || '';
-            spotlightVideoTrack.src = subtitleUrl;
+            spotlightVideoToggle.setAttribute('aria-pressed', String(isPlaying));
+            spotlightVideoToggle.classList.toggle('is-playing', isPlaying);
+            spotlightVideoToggleText.textContent = isPlaying ? 'Stop' : 'Play';
+            spotlightVideoToggleIcon.className = isPlaying ? 'fa-solid fa-stop' : 'fa-solid fa-play';
+        }
 
-            if (spotlightVideo.textTracks && spotlightVideo.textTracks[0]) {
-                spotlightVideo.textTracks[0].mode = subtitleUrl ? 'showing' : 'disabled';
+        function setVideoFrameSource(autoplay) {
+            if (!currentVideoEmbedUrl) {
+                spotlightVideo.src = 'about:blank';
+                return;
             }
+
+            const src = getYouTubeEmbedUrl(currentVideoEmbedUrl, autoplay);
+            spotlightVideo.src = src || 'about:blank';
         }
 
         function isCompactTokohLayout() {
@@ -302,100 +346,48 @@
             });
         }
 
-        function setVideoToggleState(isPlaying) {
-            spotlightVideoToggle.setAttribute('aria-pressed', String(isPlaying));
-            spotlightVideoToggle.classList.toggle('is-playing', isPlaying);
-            spotlightVideoToggleText.textContent = isPlaying ? 'Stop' : 'Start';
-            spotlightVideoToggleIcon.className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
-        }
-
         function stopSpotlightVideo(resetSource = false) {
-            spotlightVideo.pause();
-            spotlightVideo.currentTime = 0;
             spotlightVideoWrap.hidden = true;
-            videoPlaylist = [];
-            subtitlePlaylist = [];
-            activeVideoIndex = 0;
+            currentVideoEmbedUrl = '';
+            spotlightShell.classList.remove('has-video');
             setVideoToggleState(false);
-            updateActiveSubtitle(0);
 
             if (resetSource) {
                 spotlightVideo.removeAttribute('src');
-                spotlightVideo.load();
+                spotlightVideo.src = 'about:blank';
             }
         }
 
-        function playSpotlightVideo(index) {
-            if (!videoPlaylist.length) {
+        function showSpotlightVideo(embedUrl) {
+            currentVideoEmbedUrl = embedUrl || '';
+
+            if (!currentVideoEmbedUrl) {
                 stopSpotlightVideo(true);
                 return;
             }
 
-            activeVideoIndex = index % videoPlaylist.length;
-            spotlightVideo.src = videoPlaylist[activeVideoIndex];
-            updateActiveSubtitle(activeVideoIndex);
             spotlightVideoWrap.hidden = false;
-            setVideoToggleState(true);
-
-            const playPromise = spotlightVideo.play();
-
-            if (playPromise && typeof playPromise.catch === 'function') {
-                playPromise.catch(() => {
-                    setVideoToggleState(false);
-                });
-            }
-        }
-
-        function resumeSpotlightVideo() {
-            if (!videoPlaylist.length) {
-                return;
-            }
-
-            spotlightVideoWrap.hidden = false;
-            const playPromise = spotlightVideo.play();
-            setVideoToggleState(true);
-
-            if (playPromise && typeof playPromise.catch === 'function') {
-                playPromise.catch(() => {
-                    setVideoToggleState(false);
-                });
-            }
-        }
-
-        spotlightVideo.addEventListener('ended', () => {
-            if (!videoPlaylist.length) {
-                return;
-            }
-
-            const nextIndex = activeVideoIndex + 1;
-            if (nextIndex < videoPlaylist.length) {
-                playSpotlightVideo(nextIndex);
-                return;
-            }
-
+            spotlightShell.classList.add('has-video');
+            setVideoFrameSource(false);
             setVideoToggleState(false);
-        });
+        }
 
-        spotlightVideo.addEventListener('play', () => setVideoToggleState(true));
-        spotlightVideo.addEventListener('pause', () => setVideoToggleState(false));
+        if (spotlightVideoToggle) {
+            spotlightVideoToggle.addEventListener('click', () => {
+                if (!currentVideoEmbedUrl) {
+                    return;
+                }
 
-        spotlightVideoToggle.addEventListener('click', () => {
-            if (!videoPlaylist.length) {
-                return;
-            }
+                if (isVideoPlaying) {
+                    setVideoFrameSource(false);
+                    setVideoToggleState(false);
+                    return;
+                }
 
-            if (!spotlightVideo.src) {
-                playSpotlightVideo(activeVideoIndex);
-                return;
-            }
-
-            if (spotlightVideo.paused) {
-                resumeSpotlightVideo();
-                return;
-            }
-
-            spotlightVideo.pause();
-        });
+                setVideoFrameSource(true);
+                setVideoToggleState(true);
+            });
+        }
 
         function animateCardSelection(cardToCenter) {
             if (isCompactTokohLayout()) {
@@ -477,16 +469,8 @@
             factThreeTitle.textContent = card.dataset.factThreeTitle;
             factThreeText.textContent = card.dataset.factThreeText;
 
-            if (card.dataset.videoPlaylist) {
-                videoPlaylist = card.dataset.videoPlaylist.split(',').map((item) => item.trim()).filter(Boolean);
-
-                if (card.dataset.videoSubtitles) {
-                    subtitlePlaylist = card.dataset.videoSubtitles.split(',').map((item) => item.trim()).filter(Boolean);
-                } else {
-                    subtitlePlaylist = [];
-                }
-
-                playSpotlightVideo(0);
+            if (card.dataset.videoEmbed) {
+                showSpotlightVideo(card.dataset.videoEmbed);
                 return;
             }
 
