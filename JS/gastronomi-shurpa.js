@@ -856,11 +856,7 @@
         if (event.key === "Escape") closeGiziModal();
     });
 
-    langButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            window.setTimeout(applyPageLanguage, 0);
-        });
-    });
+    document.addEventListener("langchange", applyPageLanguage);
 
     window.addEventListener("storage", (event) => {
         if (event.key === "lang") applyPageLanguage();
@@ -868,4 +864,3 @@
 
     renderStatic();
 })();
-

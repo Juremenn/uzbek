@@ -193,13 +193,7 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-if (langButtons.length) {
-    langButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            window.setTimeout(applyPageLanguage, 0);
-        });
-    });
-}
+document.addEventListener("langchange", applyPageLanguage);
 
 window.addEventListener("storage", (event) => {
     if (event.key === "lang") applyPageLanguage();

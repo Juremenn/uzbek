@@ -7,9 +7,8 @@
     const jelajahiDropdownMenu = document.getElementById("jelajahiDropdownMenu");
     const langButtons = Array.from(document.querySelectorAll("[data-lang]"));
 
-    if (!navContent || !navMobileToggle || !navPrimary || !jelajahiDropdown || !jelajahiDropdownToggle || !jelajahiDropdownMenu) {
-        return;
-    }
+    const hasNavbar = Boolean(navContent && navMobileToggle && navPrimary);
+    const hasDropdown = Boolean(jelajahiDropdown && jelajahiDropdownToggle && jelajahiDropdownMenu);
 
     const mobileNavQuery = window.matchMedia("(max-width: 820px)");
 
@@ -18,12 +17,14 @@
     }
 
     function setDropdownState(isOpen) {
+        if (!hasDropdown) return;
         jelajahiDropdown.classList.toggle("open", isOpen);
         jelajahiDropdownToggle.setAttribute("aria-expanded", String(isOpen));
         jelajahiDropdownMenu.setAttribute("aria-hidden", String(!isOpen));
     }
 
     function setMobileNavState(isOpen) {
+        if (!hasNavbar) return;
         const shouldOpen = isMobileNavLayout() && isOpen;
         const wasOpen = navContent.classList.contains("is-open");
         if (shouldOpen === wasOpen) return;
@@ -192,54 +193,59 @@
         } catch (_) {
             // ignore
         }
+
+        // Let page-specific scripts react without duplicating storage logic.
+        document.dispatchEvent(new CustomEvent("langchange", { detail: { lang: normalized } }));
     }
 
-    navMobileToggle.addEventListener("click", () => {
-        setMobileNavState(!navContent.classList.contains("is-open"));
-    });
-
-    jelajahiDropdownToggle.addEventListener("click", () => {
-        const isOpen = jelajahiDropdown.classList.contains("open");
-        setDropdownState(!isOpen);
-    });
-
-    document.addEventListener("click", (event) => {
-        if (!jelajahiDropdown.contains(event.target)) {
-            setDropdownState(false);
-        }
-
-        if (isMobileNavLayout() && !navContent.contains(event.target)) {
-            setMobileNavState(false);
-        }
-    });
-
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-            setDropdownState(false);
-            setMobileNavState(false);
-        }
-    });
-
-    navPrimary.addEventListener("click", (event) => {
-        const clickedLink = event.target.closest("a");
-        if (clickedLink && isMobileNavLayout()) {
-            setMobileNavState(false);
-        }
-    });
-
-    window.addEventListener("resize", syncResponsiveNav);
-    syncResponsiveNav();
-
-    if (langButtons.length) {
-        langButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const nextLang = button.getAttribute("data-lang");
-                setLang(nextLang);
-            });
+    if (hasNavbar) {
+        navMobileToggle.addEventListener("click", () => {
+            setMobileNavState(!navContent.classList.contains("is-open"));
         });
 
-        setLang(getInitialLang());
+        if (hasDropdown) {
+            jelajahiDropdownToggle.addEventListener("click", () => {
+                const isOpen = jelajahiDropdown.classList.contains("open");
+                setDropdownState(!isOpen);
+            });
+        }
+
+        document.addEventListener("click", (event) => {
+            if (hasDropdown && !jelajahiDropdown.contains(event.target)) {
+                setDropdownState(false);
+            }
+
+            if (isMobileNavLayout() && !navContent.contains(event.target)) {
+                setMobileNavState(false);
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                setDropdownState(false);
+                setMobileNavState(false);
+            }
+        });
+
+        navPrimary.addEventListener("click", (event) => {
+            const clickedLink = event.target.closest("a");
+            if (clickedLink && isMobileNavLayout()) {
+                setMobileNavState(false);
+            }
+        });
+
+        window.addEventListener("resize", syncResponsiveNav);
+        syncResponsiveNav();
     }
+
+    langButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const nextLang = button.getAttribute("data-lang");
+            setLang(nextLang);
+        });
+    });
+
+    setLang(getInitialLang());
 
     // Lightweight perf tweak: prioritize above-the-fold images and lazy-load the rest.
     window.addEventListener("DOMContentLoaded", () => {
