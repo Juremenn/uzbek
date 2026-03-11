@@ -82,20 +82,45 @@
         <section class="cita-cards">
             <h2 class="section-title">MENU POPULER</h2>
             <div class="cards-grid">
-                <article class="food-card">
+                <article class="food-card" role="button" tabindex="0" aria-haspopup="dialog"
+                    data-title="Sup Uzbek Shurpa"
+                    data-image="assets/img/card/SupUzbekShurpa.png"
+                    data-desc="Shurpa adalah sup tradisional Uzbek yang dibuat dari daging dan sayuran dalam kuah yang kental dan gurih. Daging yang umum digunakan adalah daging kambing atau sapi, lalu dimasak bersama bawang, kentang, dan wortel. Shurpa sering disajikan sebagai hidangan pembuka atau utama, dan menjadi bagian penting dari budaya kuliner Uzbekistan.">
                     <img src="assets/img/card/SupUzbekShurpa.png" alt="Sup Uzbek Shurpa">
                     <h3>Sup Uzbek Shurpa</h3>
                 </article>
-                <article class="food-card">
+                <article class="food-card" role="button" tabindex="0" aria-haspopup="dialog"
+                    data-title="Plov Uzbekistan"
+                    data-image="assets/img/card/PlovUzbekistan.png"
+                    data-desc="Plov adalah hidangan nasi yang dimasak bersama daging (biasanya domba atau sapi), wortel, bawang, dan rempah pilihan. Rempah seperti jinten, ketumbar, bawang putih, dan kadang kunyit memberi warna dan kedalaman rasa yang khas.Selain daging dan sayuran, beberapa versi Plov juga menambahkan kismis, kacang almond, atau bawang goreng renyah untuk tekstur dan aroma yang lebih kompleks. Hal ini membuat Plov bukan sekadar makanan pokok, tapi hidangan lengkap yang memuaskan indera penciuman, penglihatan, dan rasa.">
                     <img src="assets/img/card/PlovUzbekistan.png" alt="Plov Uzbekistan">
                     <h3>Plov Uzbekistan</h3>
                 </article>
-                <article class="food-card">
+                <article class="food-card" role="button" tabindex="0" aria-haspopup="dialog"
+                    data-title="Fruit Kompot"
+                    data-image="assets/img/card/FruitKompot.png"
+                    data-desc="Kompot adalah minuman tradisional dari rebusan buah-buahan dalam air dengan tambahan gula sesuai selera. Berbeda dari jus yang diperas, kompot dimasak perlahan hingga buahnya empuk dan sarinya keluar, menghasilkan minuman yang segar dan aromatik.">
                     <img src="assets/img/card/FruitKompot.png" alt="Fruit Kompot">
                     <h3>Fruit Kompot</h3>
                 </article>
             </div>
         </section>
+
+        <div class="cita-modal" id="citaModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Detail menu populer">
+            <div class="cita-modal-backdrop" data-close="true" aria-hidden="true"></div>
+            <div class="cita-modal-card" role="document">
+                <div class="cita-modal-bg" id="citaModalBg" aria-hidden="true"></div>
+                <div class="cita-modal-content">
+                    <div class="cita-modal-text">
+                        <p id="citaModalDesc"></p>
+                    </div>
+                    <div class="cita-modal-image">
+                        <img id="citaModalImage" alt="">
+                    </div>
+                    <button class="cita-modal-btn" type="button">LIHAT CARA MEMBUAT</button>
+                </div>
+            </div>
+        </div>
 
     <footer class="site-footer">
         <div class="footer-shell">

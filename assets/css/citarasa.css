@@ -15,11 +15,21 @@
     padding: 0;
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
     font-family: "Poppins", sans-serif;
     background: #ece9e6;
     color: #1f1f1f;
     overflow-x: hidden;
+}
+
+body.modal-open {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
 }
 
 .navbar {
@@ -388,12 +398,18 @@ body {
 .cita-modal-text {
     font-size: clamp(18px, 1.45vw, 24px);
     line-height: 1.6;
-    text-align: left;
+    text-align: justify;
+    text-justify: inter-word;
     max-width: 520px;
+}
+
+.cita-modal.is-short-text .cita-modal-text {
+    padding-top: 32px;
 }
 
 .cita-modal-text p {
     margin: 0;
+    white-space: pre-line;
 }
 
 .cita-modal-image {
