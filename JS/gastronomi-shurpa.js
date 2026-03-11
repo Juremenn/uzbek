@@ -3,6 +3,10 @@
     const titleNode = document.getElementById("dishTitle");
     const introNode = document.getElementById("dishIntro");
     const introImg = document.getElementById("dishIntroImg");
+    const introGiziBtn = document.getElementById("dishIntroGiziBtn");
+    const introWrap = document.querySelector(".dish-intro");
+    const introActionsWrap = document.querySelector(".dish-intro-actions");
+    const cookSection = document.querySelector(".cook-section");
     const prevBtn = document.getElementById("dishPrevBtn");
     const nextBtn = document.getElementById("dishNextBtn");
     const cardsNode = document.getElementById("gastroCards");
@@ -26,6 +30,10 @@
         !titleNode ||
         !introNode ||
         !introImg ||
+        !introGiziBtn ||
+        !introWrap ||
+        !introActionsWrap ||
+        !cookSection ||
         !prevBtn ||
         !nextBtn ||
         !cardsNode ||
@@ -51,12 +59,23 @@
             image: "assets/img/card/FruitKompot.png",
             imagePosition: "50% 0%",
             intro:
-                "Kompot adalah minuman tradisional berupa rebusan buah-buahan (segar atau kering) yang dimasak perlahan bersama air dan sedikit gula. Minuman ini populer di Asia Tengah karena mudah dibuat, menyegarkan, dan cocok dinikmati bersama hidangan utama. Aroma buah yang lembut dan rasa manis alami membuat kompot sering hadir saat jamuan keluarga maupun acara kecil di rumah.",
-            introImage: "assets/img/card/FruitKompot.png",
+                "Salah satu minuman tradisional yang populer di Uzbekistan adalah fruit kompot, minuman berbasis rebusan buah yang ringan, segar, dan mudah dinikmati kapan saja. Kompot biasanya disajikan setelah makan, saat berkumpul bersama keluarga, atau ketika menerima tamu di rumah. Di Uzbekistan, kompot sering dibuat dari buah musiman seperti apel, aprikot, ceri, kismis, atau campuran buah kering yang direbus perlahan hingga sari buahnya keluar. Minuman ini bisa dinikmati dalam keadaan hangat saat cuaca dingin atau disajikan dingin saat musim panas. Selain rasanya yang manis alami dan menyegarkan, kompot juga dianggap sebagai cara tradisional untuk memanfaatkan buah agar tidak cepat rusak dan tetap tahan disimpan lebih lama. Karena mudah dibuat dan cocok untuk berbagai suasana, fruit kompot menjadi bagian dari kebiasaan kuliner rumahan yang tetap bertahan hingga sekarang.",
+            introImage: "assets/img/gastronomi/fruit.png",
             introPosition: "50% 0%",
-            nutritionImage: "assets/img/gastronomi/nilaigizisup.png",
+            nutritionImage: "assets/img/gastronomi/nilaigizifruitkompot.png",
             nutritionThumb: "button",
-            gastroTemplate: "default",
+            gastroTemplate: "kompot-direct",
+            directParagraphs: [
+                "Salah satu minuman tradisional di Uzbekistan adalah kompot. Minuman ini bisa diminum kapan saja, biasanya disajikan setelah makan, saat ada tamu, atau ketika berkumpul bersama keluarga. Di Uzbekistan, kompot sering dibuat saat musim panas karena buah sedang banyak dan mudah didapat. Minuman ini kemudian disimpan untuk musim dingin karena pada musim dingin buah segar sulit ditemukan. Dengan membuat kompot, orang tetap bisa menikmati rasa buah walaupun di luar sedang bersalju.",
+                "Cara membuat kompot cukup sederhana. Buah direbus dengan air dan gula sampai lunak. Cara ini membantu agar buah tidak terbuang dan bisa disimpan lebih lama. Kompot biasanya dimasukkan ke dalam botol kaca dan disimpan untuk diminum nanti. Minuman ini bukan hanya pelepas kehausan, tetapi juga bagian dari kebiasaan dan tradisi keluarga."
+            ],
+            funFacts: [
+                "Kompot bisa dibuat dari buah segar maupun buah kering.",
+                "Setiap keluarga bisa memiliki resep yang berbeda, tergantung buah yang tersedia.",
+                "Rasanya bisa diminum hangat saat musim dingin atau dingin saat musim panas.",
+                "Kompot sering dibuat dalam jumlah besar untuk persediaan beberapa hari atau minggu.",
+                "Minuman ini termasuk minuman rumahan yang sudah ada sejak lama di wilayah Asia Tengah dan Eropa Timur."
+            ],
             gastronomy: {
                 method: {
                     title: "Metode Masak Tradisional",
@@ -209,6 +228,98 @@
 
         const template = dish.gastroTemplate || "default";
 
+        if (template === "kompot-direct") {
+            const src = escapeHtml(dish.nutritionImage || "assets/img/gastronomi/nilaigizisup.png");
+            const paragraphs = Array.isArray(dish.directParagraphs) && dish.directParagraphs.length
+                ? dish.directParagraphs.map((text) => `<p>${escapeHtml(text)}</p>`).join("")
+                : `<p>${escapeHtml(dish.intro || "")}</p>`;
+            const funFacts = Array.isArray(dish.funFacts) && dish.funFacts.length
+                ? dish.funFacts.map((item, idx) => `<li>${idx + 1}. ${escapeHtml(item)}</li>`).join("")
+                : "";
+            cardsNode.innerHTML = `
+                <div class="gastro-direct" data-template="kompot-direct" aria-label="Gastronomi Fruit Kompot">
+                    <div class="gastro-direct-layout">
+                        <div class="gastro-direct-copy">
+                            ${paragraphs}
+                        </div>
+                        <figure class="gastro-direct-figure">
+                            <img src="${escapeHtml(dish.introImage || "assets/img/gastronomi/fruit.png")}" alt="Ilustrasi ${escapeHtml(dish.title)}" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                    <p class="gastro-direct-actions">
+                        <button class="gastro-cta" type="button" data-open-gizi data-gizi-src="${src}">Lihat informasi nilai gizi</button>
+                    </p>
+                    ${funFacts ? `
+                    <article class="gastro-funfact" aria-label="Funfact Kompot">
+                        <h3>Funfact Kompot</h3>
+                        <ol>
+                            ${funFacts}
+                        </ol>
+                    </article>` : ""}
+
+                    <section class="kompot-recipe" aria-label="Cara membuat Fruit Kompot">
+                        <h3 class="kompot-recipe-title">CARA MEMBUAT</h3>
+                        <div class="kompot-recipe-stage">
+                            <p class="kompot-note">(add-on: daun mint &amp; lemon slice untuk garnish)</p>
+
+                            <figure class="kompot-item kompot-item--lemon">
+                                <img src="assets/img/gastronomi/lemon.png" alt="Lemon" loading="lazy" decoding="async">
+                            </figure>
+
+                            <figure class="kompot-item kompot-item--apple">
+                                <img src="assets/img/gastronomi/apple.png" alt="Apel" loading="lazy" decoding="async">
+                                <figcaption>4 apel</figcaption>
+                            </figure>
+
+                            <figure class="kompot-item kompot-item--gula">
+                                <img src="assets/img/gastronomi/gula.png" alt="Gula" loading="lazy" decoding="async">
+                                <figcaption>200gr gula</figcaption>
+                            </figure>
+
+                            <figure class="kompot-item kompot-item--pir">
+                                <img src="assets/img/gastronomi/pir.png" alt="Pir" loading="lazy" decoding="async">
+                                <figcaption>2 pir</figcaption>
+                            </figure>
+
+                            <figure class="kompot-item kompot-item--air">
+                                <img src="assets/img/gastronomi/2literair.png" alt="Air" loading="lazy" decoding="async">
+                                <figcaption>2 liter air</figcaption>
+                            </figure>
+
+                            <figure class="kompot-item kompot-item--lemon-juice">
+                                <img src="assets/img/gastronomi/lemon.png" alt="Lemon juice" loading="lazy" decoding="async">
+                                <figcaption>5 ml lemon<br>juice/porsi</figcaption>
+                            </figure>
+
+                            <figure class="kompot-center">
+                                <img src="assets/img/gastronomi/fruitkompotremovebg.png" alt="Fruit Kompot" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+
+                        <article class="kompot-steps" aria-label="Langkah langkah membuat Fruit Kompot">
+                            <h4>LANGKAH LANGKAH MEMBUAT</h4>
+                            <ol>
+                                <li>cuci buah dengan air mengalir hingga bersih</li>
+                                <li>potong apel dan pir masing masing menjadi 4 bagian</li>
+                                <li>nyalakan kompor</li>
+                                <li>tuangkan 2 liter air ke dalam panci</li>
+                                <li>tunggu sampai air hampir mendidih dan masukkan 200gr gula</li>
+                                <li>setelah gula sudah dimasukkan, masukkan semua potongan buah ke dalam panci</li>
+                                <li>rebus selama 1 jam</li>
+                                <li>kompot sudah jadi jika warnanya sudah mulai kecoklatan dan potongan buah saat ditusuk sudah lunak</li>
+                                <li>tunggu sampai sudah tidak panas dan masukkan ke wadah beling</li>
+                                <li>masukkan ke dalam kulkas (maksimal 2 jam sudah masuk kulkas)</li>
+                                <li>tunggu beberapa hari dan siap diminum</li>
+                                <li>tuangkan ke gelas lalu tambahkan 5 ml lemon juice dan aduk</li>
+                                <li>kompot siap disajikan</li>
+                            </ol>
+                        </article>
+                    </section>
+                </div>
+            `;
+            return;
+        }
+
         if (template === "plov") {
             cardsNode.innerHTML = `
                 <div class="gastro-layout" data-template="plov" aria-label="Gastronomi layout">
@@ -254,11 +365,19 @@
     };
 
     const updateDetail = (dish) => {
+        document.body.dataset.dishKey = dish.key || "";
         titleNode.textContent = dish.title;
         introNode.textContent = dish.intro;
         introImg.src = dish.introImage;
         introImg.alt = `Ilustrasi ${dish.title}`;
         introImg.style.objectPosition = dish.introPosition || dish.imagePosition || "";
+        introGiziBtn.setAttribute("data-gizi-src", dish.nutritionImage || "assets/img/gastronomi/nilaigizisup.png");
+
+        const isKompotDirect = dish.gastroTemplate === "kompot-direct";
+        introWrap.hidden = isKompotDirect;
+        introActionsWrap.hidden = isKompotDirect;
+        cookSection.hidden = isKompotDirect;
+
         renderGastronomy(dish);
     };
 
@@ -414,6 +533,11 @@
         const button = event.target.closest("[data-open-gizi]");
         if (!button) return;
         const src = button.getAttribute("data-gizi-src") || "assets/img/gastronomi/nilaigizisup.png";
+        openGiziModal(src);
+    });
+
+    introGiziBtn.addEventListener("click", () => {
+        const src = introGiziBtn.getAttribute("data-gizi-src") || "assets/img/gastronomi/nilaigizisup.png";
         openGiziModal(src);
     });
 

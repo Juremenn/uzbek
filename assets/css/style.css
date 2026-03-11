@@ -193,11 +193,12 @@ html {
 
 .hero {
     position: relative;
-    height: 720px;
+    min-height: 740px;
+    height: auto;
     background: linear-gradient(180deg, rgba(22, 32, 40, 0.28) 0%, rgba(22, 32, 40, 0.18) 36%, rgba(22, 32, 40, 0.08) 100%),
         url("../img/background/latarbelakang2.jpg") center / cover no-repeat;
-    padding: 96px 0 0;
-    overflow: visible;
+    padding: 96px 0 34px;
+    overflow: hidden;
 }
 
 .hero::after {
@@ -239,15 +240,18 @@ html {
     border-radius: 28px;
     padding: 30px;
     background: linear-gradient(136deg, rgba(189, 179, 162, 0.35) 0%, rgba(112, 101, 87, 0.26) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.44);
-    box-shadow: 0 16px 38px rgba(12, 13, 15, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.26);
+    border: 1px solid rgba(255, 255, 255, 0.46);
+    box-shadow:
+        0 16px 38px rgba(12, 13, 15, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 0 0 1px rgba(206, 148, 92, 0.2);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 }
 
 .slide {
     position: relative;
-    min-height: clamp(620px, 58vw, 760px);
+    min-height: clamp(500px, 45vw, 640px);
     border-radius: 18px;
     background-position: center;
     background-size: cover;
@@ -255,10 +259,11 @@ html {
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 60px 32px 122px;
+    padding: 54px 32px 96px;
     overflow: hidden;
     max-width: 1200px;
     margin: 0 auto;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
 .slide::before {
@@ -359,7 +364,7 @@ html {
 
 .map-section {
     max-width: 1220px;
-    margin: 252px auto 0;
+    margin: 68px auto 0;
     padding: 0 26px;
 }
 
@@ -1198,15 +1203,17 @@ html {
 
 @media (max-width: 1100px) {
     .hero {
-        height: 550px;
+        min-height: 620px;
+        height: auto;
+        padding-bottom: 26px;
     }
 
     .slide {
-        min-height: 500px;
+        min-height: 460px;
     }
 
     .map-section {
-        margin-top: 198px;
+        margin-top: 54px;
     }
 
     .map-content {
@@ -1298,7 +1305,8 @@ html {
 
     .hero {
         height: auto;
-        padding: 72px 0 14px;
+        min-height: 0;
+        padding: 72px 0 18px;
     }
 
     .hero-overlay,
@@ -1362,7 +1370,7 @@ html {
     }
 
     .map-section {
-        margin-top: 58px;
+        margin-top: 30px;
     }
 
     .section-title {
