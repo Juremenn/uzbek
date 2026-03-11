@@ -1898,7 +1898,7 @@ html {
 }
 
 :root {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 @media (max-width: 560px) {

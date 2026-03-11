@@ -1,0 +1,567 @@
+:root {
+    --page-bg: #f4efe9;
+    --panel: rgba(255, 255, 255, 0.7);
+    --text: #1f1f1f;
+    --muted: rgba(31, 31, 31, 0.72);
+    --olive: #7f8456;
+    --banner: #b7dbe6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--page-bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+body.is-modal-open {
+    overflow: hidden;
+}
+
+.gastro-page {
+    padding-top: 120px;
+}
+
+/* -------  Hero Slider  ------- */
+
+.dish-hero {
+    padding: 0 18px;
+}
+
+.dish-slider {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 0 34px;
+    height: 360px;
+    overflow-x: hidden;
+    overflow-y: visible;
+    --offset: clamp(220px, 26vw, 380px);
+    --dur: 650ms;
+    --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.dish-slider-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 230px;
+    background: var(--olive);
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.dish-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+    background: rgba(255, 255, 255, 0.18);
+    will-change: transform, opacity;
+    transition: transform var(--dur) var(--ease), opacity var(--dur) ease;
+}
+
+.dish-card.no-transition {
+    transition: none !important;
+}
+
+.dish-card[data-pos="left"] {
+    width: min(420px, 36vw);
+    height: 230px;
+    opacity: 0.92;
+    z-index: 1;
+    transform: translate(-50%, -50%) translateX(calc(-1 * var(--offset))) translateY(16px) scale(0.96);
+}
+
+.dish-card[data-pos="center"] {
+    position: absolute;
+    width: min(640px, 68vw);
+    height: 320px;
+    opacity: 1;
+    z-index: 3;
+    transform: translate(-50%, -50%) translateY(-18px) scale(1);
+    box-shadow: 0 22px 42px rgba(0, 0, 0, 0.32);
+}
+
+.dish-card[data-pos="right"] {
+    width: min(420px, 36vw);
+    height: 230px;
+    opacity: 0.92;
+    z-index: 1;
+    transform: translate(-50%, -50%) translateX(var(--offset)) translateY(16px) scale(0.96);
+}
+
+.dish-card[data-pos="off-left"] {
+    width: min(420px, 36vw);
+    height: 230px;
+    opacity: 0;
+    z-index: 0;
+    transform: translate(-50%, -50%) translateX(calc(-1 * var(--offset) * 1.75)) translateY(16px) scale(0.92);
+    pointer-events: none;
+}
+
+.dish-card[data-pos="off-right"] {
+    width: min(420px, 36vw);
+    height: 230px;
+    opacity: 0;
+    z-index: 0;
+    transform: translate(-50%, -50%) translateX(calc(var(--offset) * 1.75)) translateY(16px) scale(0.92);
+    pointer-events: none;
+}
+
+.dish-photo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* -------  Detail  ------- */
+
+.dish-detail {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 10px 18px 70px;
+}
+
+.dish-title-row {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    justify-items: center;
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.dish-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(34px, 5vw, 58px);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+.dish-nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.62);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.dish-nav-btn:focus-visible {
+    outline: 3px solid rgba(111, 179, 160, 0.5);
+    outline-offset: 4px;
+}
+
+.dish-intro {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 26px;
+    align-items: start;
+}
+
+.dish-intro-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #111;
+    text-align: justify !important;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+.dish-intro-figure img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.dish-intro-figure {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
+    aspect-ratio: 16 / 9;
+    max-height: 360px;
+}
+
+.gastro-banner {
+    margin-top: 28px;
+    background: var(--banner);
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 14px;
+    text-align: center;
+}
+
+.gastro-banner h2 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(34px, 6vw, 60px);
+    letter-spacing: 1px;
+    color: #141414;
+}
+
+.gastro-cards {
+    margin-top: 26px;
+}
+
+.gastro-layout {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+    align-items: start;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.gastro-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.gastro-card {
+    background: rgba(233, 223, 203, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 10px;
+    padding: 18px 18px 18px;
+    width: 100%;
+    max-width: 290px;
+    margin: 0 auto;
+}
+
+.gastro-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.gastro-card p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #111;
+    text-align: justify !important;
+    text-justify: inter-word;
+    text-align-last: left;
+    hyphens: auto;
+}
+
+.gastro-lines {
+    text-align-last: justify;
+}
+
+.site-footer .footer-description {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+.gastro-variations {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #111;
+}
+
+.gastro-variations li {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: justify;
+    hyphens: auto;
+    margin: 6px 0;
+}
+
+.gastro-dapur {
+    width: 260px;
+    max-width: 100%;
+    height: auto;
+    margin: 8px auto 0;
+    filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.2));
+}
+
+.gastro-cta {
+    align-self: center;
+    border: 0;
+    border-radius: 8px;
+    padding: 6px 16px;
+    background: rgba(217, 217, 217, 0.9);
+    color: rgba(20, 20, 20, 0.86);
+    font-size: 12.5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.gastro-cta:active {
+    transform: translateY(1px);
+}
+
+.gizi-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    place-items: center;
+    padding: 26px 16px;
+}
+
+.gizi-modal.is-open {
+    display: grid;
+}
+
+.gizi-modal__overlay {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(0, 0, 0, 0.28);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    cursor: zoom-out;
+}
+
+.gizi-modal__content {
+    position: relative;
+    width: min(1100px, 94vw);
+    max-height: 82vh;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+    overflow: auto;
+    outline: none;
+}
+
+.gizi-modal__content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+}
+
+.cook-section {
+    margin-top: 34px;
+    padding-bottom: 6px;
+}
+
+.cook-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(34px, 5vw, 54px);
+    text-align: center;
+    letter-spacing: 0.6px;
+    margin: 12px 0 18px;
+}
+
+.cook-panel {
+    position: relative;
+    background: rgba(233, 223, 203, 0.62);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.14);
+    padding: 18px 18px 20px;
+    overflow: hidden;
+}
+
+.cook-subtitle {
+    font-family: "Cinzel", serif;
+    font-size: 20px;
+    letter-spacing: 0.9px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.cook-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.cook-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #111;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+.steps-section {
+    margin-top: 22px;
+}
+
+.steps-table {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 14px;
+}
+
+.steps-table th,
+.steps-table td {
+    background: rgba(199, 202, 152, 0.92);
+    border-radius: 10px;
+    padding: 14px 14px;
+    color: #111;
+    vertical-align: middle;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+}
+
+.steps-table th {
+    background: rgba(189, 194, 128, 0.96);
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.2px;
+    font-size: 13px;
+}
+
+.steps-table td {
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.steps-table td:nth-child(1),
+.steps-table td:nth-child(2),
+.steps-table td:nth-child(4),
+.steps-table td:nth-child(5) {
+    text-align: center;
+}
+
+.steps-table td:nth-child(3) {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+@media (max-width: 900px) {
+    .steps-section {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .steps-table {
+        min-width: 980px;
+    }
+}
+
+.cook-list li {
+    margin: 6px 0;
+}
+
+.cook-deco {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+}
+
+.cook-deco-meat {
+    width: 120px;
+    left: -14px;
+    top: -26px;
+    transform: rotate(-6deg);
+    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.16));
+    opacity: 0.95;
+}
+
+.cook-deco-onion {
+    width: 130px;
+    right: -18px;
+    bottom: -22px;
+    transform: rotate(5deg);
+    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.16));
+    opacity: 0.95;
+}
+
+@media (max-width: 980px) {
+    .gastro-page {
+        padding-top: 96px;
+    }
+
+    .dish-intro {
+        grid-template-columns: 1fr;
+    }
+
+    .dish-slider-bar {
+        height: 210px;
+    }
+}
+
+@media (max-width: 700px) {
+    .dish-slider {
+        height: 320px;
+        --offset: clamp(130px, 22vw, 210px);
+    }
+
+    .dish-card[data-pos="left"],
+    .dish-card[data-pos="right"],
+    .dish-card[data-pos="off-left"],
+    .dish-card[data-pos="off-right"] {
+        width: min(260px, 40vw);
+        height: 170px;
+    }
+
+    .dish-card[data-pos="center"] {
+        width: min(520px, 82vw);
+        height: 240px;
+    }
+
+    .dish-slider-bar {
+        height: 180px;
+        border-radius: 12px;
+    }
+
+    .gastro-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cook-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .cook-deco-meat {
+        width: 102px;
+    }
+
+    .cook-deco-onion {
+        width: 112px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}

@@ -1,9 +1,9 @@
 :root {
     --text-light: rgba(255, 255, 255, 0.96);
     --text-dark: #072a22;
-    --panel-border: rgba(255, 255, 255, 0.18);
-    --nav-bg-top: rgba(10, 18, 20, 0.46);
-    --nav-bg-bottom: rgba(10, 18, 20, 0.14);
+    --panel-border: rgba(255, 255, 255, 0.28);
+    --nav-bg-top: rgba(22, 33, 37, 0.78);
+    --nav-bg-bottom: rgba(28, 42, 47, 0.66);
     --dropdown-top: rgba(168, 204, 184, 0.97);
     --dropdown-bottom: rgba(141, 188, 164, 0.95);
     --nav-text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
@@ -425,14 +425,13 @@
         width: 100%;
         padding: 12px 14px;
         border-radius: 18px;
-        background: rgba(0, 0, 0, 0.16);
+        background: rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.14);
-        box-shadow: 0 8px 14px rgba(0, 0, 0, 0.22),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        box-shadow: none;
         font-size: 15px;
         font-weight: 700;
         color: rgba(255, 255, 255, 0.94);
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+        text-shadow: none;
     }
 
     .nav-mobile-toggle-label {
@@ -461,28 +460,28 @@
         padding: 0 12px;
         margin: 0;
         border-radius: 14px;
-        background: rgba(0, 0, 0, 0.12);
+        background: rgba(0, 0, 0, 0.1);
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow: 0 8px 14px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        box-shadow: none;
         order: 2;
         contain: layout paint;
-        will-change: height, opacity, transform;
-        height: 0;
+        will-change: max-height, opacity;
+        max-height: 0;
         opacity: 0;
         pointer-events: none;
-        transform: translate3d(0, -6px, 0);
-        transition: height 0.28s ease, opacity 0.18s ease, transform 0.22s ease;
+        transition: max-height 0.24s ease-out, opacity 0.16s ease-out, padding 0.16s ease-out, margin 0.16s ease-out;
     }
 
     .nav-content.is-open .nav-links {
         padding: 12px 12px 14px;
         margin: 6px 0 8px;
-        height: auto;
+        max-height: 70vh;
         opacity: 1;
         pointer-events: auto;
-        transform: translate3d(0, 0, 0);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-mobile-toggle {
@@ -507,7 +506,7 @@
         padding: 10px 6px;
         font-size: 14px;
         color: rgba(245, 245, 245, 0.96);
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.34);
+        text-shadow: none;
     }
 
     .nav-item-dropdown {
@@ -552,10 +551,10 @@
         padding: 10px 12px;
         border-radius: 18px;
         font-size: 13px;
-        background: rgba(0, 0, 0, 0.14);
+        background: rgba(0, 0, 0, 0.1);
         color: rgba(245, 245, 245, 0.96);
         border: 1px solid rgba(255, 255, 255, 0.14);
-        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.22);
+        text-shadow: none;
     }
 }
 
@@ -606,5 +605,57 @@
     .dropdown-menu {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
+    }
+
+    .nav-content,
+    .nav-mobile-toggle,
+    .nav-links,
+    .dropdown-item {
+        box-shadow: none !important;
+    }
+}
+
+@media (min-width: 821px) {
+    .nav-content {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .nav-content::before {
+        opacity: 0.28;
+    }
+
+    .nav-brand-logo {
+        filter: none;
+    }
+
+    .nav-brand-text,
+    .nav-link,
+    .nav-dropdown-toggle,
+    .lang-btn {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-link,
+    .nav-dropdown-toggle,
+    .dropdown-item {
+        transition: color 0.16s ease, background-color 0.16s ease, border-color 0.16s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link-active,
+    .nav-dropdown-toggle:hover,
+    .nav-dropdown-toggle.nav-link-active,
+    .dropdown-item:hover,
+    .dropdown-item[aria-current="page"],
+    .dropdown-item-active {
+        transform: none;
+    }
+
+    .dropdown-menu {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: 0 8px 14px rgba(0, 0, 0, 0.12);
     }
 }

@@ -12,57 +12,9 @@
     }
 
     const mobileNavQuery = window.matchMedia("(max-width: 820px)");
-    const prefersReducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let navTransitionTimer = null;
 
     function isMobileNavLayout() {
         return mobileNavQuery.matches;
-    }
-
-    function clearNavTransitionTimer() {
-        if (navTransitionTimer) {
-            window.clearTimeout(navTransitionTimer);
-            navTransitionTimer = null;
-        }
-    }
-
-    function animateNavPrimary(open) {
-        if (!isMobileNavLayout()) return;
-
-        clearNavTransitionTimer();
-
-        if (prefersReducedMotionQuery.matches) {
-            navPrimary.style.height = "";
-            return;
-        }
-
-        const node = navPrimary;
-
-        if (open) {
-            node.style.height = "0px";
-            void node.offsetHeight;
-            node.style.height = `${node.scrollHeight}px`;
-
-            const onEnd = (event) => {
-                if (event.target !== node || event.propertyName !== "height") return;
-                node.style.height = "";
-                node.removeEventListener("transitionend", onEnd);
-            };
-            node.addEventListener("transitionend", onEnd);
-
-            navTransitionTimer = window.setTimeout(() => {
-                node.style.height = "";
-                node.removeEventListener("transitionend", onEnd);
-                navTransitionTimer = null;
-            }, 360);
-
-            return;
-        }
-
-        const start = node.getBoundingClientRect().height;
-        node.style.height = `${Math.max(0, Math.round(start))}px`;
-        void node.offsetHeight;
-        node.style.height = "0px";
     }
 
     function setDropdownState(isOpen) {
@@ -82,35 +34,11 @@
             navPrimary.removeAttribute("aria-hidden");
         }
 
-        if (shouldOpen) {
-            navContent.classList.add("is-open");
-            navMobileToggle.setAttribute("aria-expanded", "true");
-            animateNavPrimary(true);
-            return;
+        navContent.classList.toggle("is-open", shouldOpen);
+        navMobileToggle.setAttribute("aria-expanded", String(shouldOpen));
+        if (!shouldOpen) {
+            setDropdownState(false);
         }
-
-        // Animate close, then remove the open class so layout work is minimized.
-        animateNavPrimary(false);
-        navMobileToggle.setAttribute("aria-expanded", "false");
-        setDropdownState(false);
-
-        const finish = () => {
-            navContent.classList.remove("is-open");
-            navPrimary.style.height = "";
-        };
-
-        const onEnd = (event) => {
-            if (event.target !== navPrimary || event.propertyName !== "height") return;
-            navPrimary.removeEventListener("transitionend", onEnd);
-            clearNavTransitionTimer();
-            finish();
-        };
-        navPrimary.addEventListener("transitionend", onEnd);
-        navTransitionTimer = window.setTimeout(() => {
-            navPrimary.removeEventListener("transitionend", onEnd);
-            finish();
-            navTransitionTimer = null;
-        }, 360);
     }
 
     function syncResponsiveNav() {
@@ -120,14 +48,12 @@
             }
 
             navPrimary.setAttribute("aria-hidden", String(!navContent.classList.contains("is-open")));
-            navPrimary.style.height = "";
             return;
         }
 
         navContent.classList.remove("is-open");
         navMobileToggle.setAttribute("aria-expanded", "false");
         navPrimary.removeAttribute("aria-hidden");
-        navPrimary.style.height = "";
         setDropdownState(false);
     }
 
@@ -315,14 +241,70 @@
         setLang(getInitialLang());
     }
 
-    // Lightweight perf tweak: lazy-load all images/iframes that aren't explicitly marked
+    // Lightweight perf tweak: prioritize above-the-fold images and lazy-load the rest.
     window.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll("img:not([loading])").forEach((img) => {
-            img.setAttribute("loading", "lazy");
-            img.setAttribute("decoding", "async");
+        const viewportPriorityLimit = Math.max(2, Math.min(6, window.innerWidth > 980 ? 5 : 3));
+        let eagerCount = 0;
+
+        document.querySelectorAll("img").forEach((img) => {
+            const rect = img.getBoundingClientRect();
+            const isLikelyVisibleSoon = rect.top < window.innerHeight * 1.3;
+            const isHeroAsset = Boolean(img.closest(".hero, .global-hero, .slide, .navbar"));
+            const shouldEagerLoad = (isLikelyVisibleSoon || isHeroAsset) && eagerCount < viewportPriorityLimit;
+
+            if (shouldEagerLoad) {
+                img.setAttribute("loading", "eager");
+                if (!img.hasAttribute("fetchpriority")) {
+                    img.setAttribute("fetchpriority", "high");
+                }
+                eagerCount += 1;
+            } else {
+                if (!img.hasAttribute("loading") || img.getAttribute("loading") !== "lazy") {
+                    img.setAttribute("loading", "lazy");
+                }
+                if (!img.hasAttribute("fetchpriority")) {
+                    img.setAttribute("fetchpriority", "low");
+                }
+            }
+
+            if (!img.hasAttribute("decoding")) {
+                img.setAttribute("decoding", "async");
+            }
         });
+
         document.querySelectorAll("iframe:not([loading])").forEach((frame) => {
             frame.setAttribute("loading", "lazy");
         });
+
+        const autoplayVideos = Array.from(document.querySelectorAll("video[autoplay]"));
+        if (!autoplayVideos.length || !("IntersectionObserver" in window)) {
+            return;
+        }
+
+        const visibilityObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const video = entry.target;
+                if (!(video instanceof HTMLVideoElement)) {
+                    return;
+                }
+
+                if (entry.isIntersecting && entry.intersectionRatio > 0.35) {
+                    if (video.paused) {
+                        video.play().catch(() => {
+                            // Ignore autoplay rejection.
+                        });
+                    }
+                    return;
+                }
+
+                if (!video.paused) {
+                    video.pause();
+                }
+            });
+        }, {
+            threshold: [0, 0.35, 0.6]
+        });
+
+        autoplayVideos.forEach((video) => visibilityObserver.observe(video));
     });
 })();

@@ -53,12 +53,19 @@ const unlockScroll = () => {
 const openModal = (card) => {
     const image = card.dataset.image;
     const desc = card.dataset.desc;
+    const primaryHref = card.dataset.primaryHref || "";
+    const primaryLabel = card.dataset.primaryLabel || "";
 
     modalBg.style.backgroundImage = `url("${image}")`;
     modalImage.src = image;
     modalImage.alt = card.dataset.title || "Menu Uzbekistan";
     modalDesc.textContent = (desc || "").replace(/\\n/g, "\n");
     setModalTextDensity(modalDesc.textContent);
+    if (modalPrimaryBtn) {
+        modalPrimaryBtn.textContent = primaryLabel || "LIHAT SELENGKAPNYA";
+        modalPrimaryBtn.dataset.href = primaryHref;
+        modalPrimaryBtn.toggleAttribute("hidden", !primaryHref);
+    }
 
     lastFocusedElement = document.activeElement;
     lockScroll();
@@ -89,6 +96,23 @@ document.querySelectorAll(".food-card").forEach((card) => {
         }
     });
 });
+
+if (modalPrimaryBtn) {
+    modalPrimaryBtn.addEventListener("click", () => {
+        const href = modalPrimaryBtn.dataset.href;
+        if (!href) return;
+
+        const isExternal = /^https?:\/\//i.test(href);
+        closeModal();
+
+        if (isExternal) {
+            window.open(href, "_blank", "noopener,noreferrer");
+            return;
+        }
+
+        window.location.href = href;
+    });
+}
 
 modal.addEventListener("click", (event) => {
     if (event.target.closest("[data-close='true']")) {

@@ -1,0 +1,59 @@
+/* Global performance pass for desktop and long pages */
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Render below-the-fold sections lazily when supported */
+@supports (content-visibility: auto) {
+    main > section,
+    body > section,
+    .site-footer {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 900px;
+    }
+}
+
+@media (min-width: 821px) {
+    html,
+    body {
+        scroll-behavior: auto !important;
+    }
+
+    /* Heavy blur/filter on big layered backgrounds is expensive during scroll */
+    .site-footer::before,
+    .site-footer::after {
+        filter: none !important;
+    }
+
+    .glass-card,
+    .nav-content,
+    .dropdown-menu,
+    .geo-popup-shell,
+    .geo-popup {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    .glass-card,
+    .dropdown-menu,
+    .geo-popup-shell,
+    .geo-popup,
+    .spotlight-card,
+    .tokoh-card,
+    .global-card,
+    .accordion-item,
+    .destination-card,
+    .paket-card,
+    .gallery-card {
+        box-shadow: none !important;
+    }
+}

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/nilaiglobal.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/performance.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@400;700;900&family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
 </head>
@@ -51,69 +52,108 @@
         </div>
     </nav>
 
-    <main class="global-main">
+    <main class="global-main" id="nilaiGlobalMain">
         <section class="global-hero">
             <div class="global-shell">
                 <h1 class="global-title">NILAI GLOBAL</h1>
                 <p class="global-subtitle">UZBEKISTAN</p>
+            </div>
+        </section>
 
-                <div class="global-grid-wrap">
-                    <img class="global-money" src="assets/img/circle/money.png" alt="Ilustrasi uang Uzbekistan">
-
-                    <div class="global-grid">
-                        <article class="global-card">
-                            <div class="card-head card-head-government">
-                                <img src="assets/img/circle/president.png" alt="Lambang pemerintahan Uzbekistan" class="card-badge">
-                                <h2>PEMERINTAHAN</h2>
+        <section class="global-accordion-wrap">
+            <div class="global-shell">
+                <div class="global-accordion" id="nilaiGlobalAccordion">
+                    <article class="accordion-item is-open" data-bg="assets/img/background/mountain.png">
+                        <h2 class="accordion-heading">
+                            <button class="accordion-toggle" type="button" aria-expanded="true">
+                                <span>Pemerintahan</span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </h2>
+                        <div class="accordion-panel">
+                            <div class="panel-copy">
+                                <p>Pemerintahan Uzbekistan adalah sistem pemerintahan yang terdiri dari tiga kewenangan utama, yaitu legislatif, eksekutif, dan yudikatif. Uzbekistan menganut republik presidensial di mana presiden berperan sebagai kepala negara sekaligus kepala pemerintahan. Presiden dipilih untuk masa jabatan maksimal dua kali tujuh tahun, dan membentuk kabinet dengan persetujuan Majelis Oliy.</p>
                             </div>
-
-                            <p>Pemerintahan Uzbekistan adalah sistem pemerintahan yang terdiri dari tiga kewenangan utama: legislatif, eksekutif, dan yudikatif. Pemerintahan Uzbekistan adalah republik presidensial, di mana Presiden Uzbekistan berfungsi sebagai kepala negara dan kepala pemerintahan. Presiden dipilih untuk masa jabatan maksimal dua kali tujuh tahun, meskipun masa jabatan dapat diperpanjang melalui referendum. Presiden memilih menteri dan kabinet, tetapi harus mendapatkan persetujuan dari Majelis Oliy.</p>
-                        </article>
-
-                        <article class="global-card global-card-finance">
-                            <div class="card-head card-head-finance">
-                                <h2>KEUANGAN</h2>
+                            <div class="panel-cards panel-cards-three">
+                                <img src="assets/img/card/taskhen.png" alt="Gedung pemerintah di Tashkent" class="panel-card-photo">
+                                <img src="assets/img/card/samarkand.png" alt="Arsitektur pemerintahan Samarkand" class="panel-card-photo">
+                                <img src="assets/img/card/bukhara.png" alt="Kawasan administrasi bersejarah Bukhara" class="panel-card-photo">
                             </div>
+                        </div>
+                    </article>
 
-                            <p>Mata uang resmi Uzbekistan adalah Som Uzbekistan (UZS). Nilai tukarnya terhadap Rupiah Indonesia saat ini sekitar 1 UZS = 1,38 IDR, sedangkan 1 IDR = 0,73 UZS. Kurs ini dapat berubah setiap hari sesuai dengan pergerakan pasar valuta asing global. Som Uzbekistan pertama kali diperkenalkan pada tahun 1994 untuk menggantikan Rubel Soviet setelah Uzbekistan merdeka. Mata uang ini digunakan secara luas dalam transaksi domestik, meskipun dolar AS juga cukup populer untuk perdagangan internasional dan simpanan.</p>
-                        </article>
-                    </div>
+                    <article class="accordion-item" data-bg="assets/img/background/latarbelakang2.png">
+                        <h2 class="accordion-heading">
+                            <button class="accordion-toggle" type="button" aria-expanded="false">
+                                <span>Keuangan</span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </h2>
+                        <div class="accordion-panel">
+                            <div class="panel-copy">
+                                <p>Mata uang resmi Uzbekistan adalah Som Uzbekistan (UZS). Nilai tukarnya terhadap Rupiah Indonesia saat ini sekitar 1 UZS ≈ 1,38 IDR, sedangkan 1 IDR ≈ 0,73 UZS. Kurs dapat berubah mengikuti pasar valuta asing global. Som diperkenalkan pada tahun 1994 setelah kemerdekaan dan hingga kini dipakai luas untuk transaksi domestik, sementara dolar AS juga digunakan untuk perdagangan internasional dan simpanan.</p>
+                            </div>
+                            <div class="panel-cards panel-cards-two">
+                                <img src="assets/img/card/rute6.png" alt="Aktivitas ekonomi Uzbekistan" class="panel-card-photo">
+                                <img src="assets/img/card/rute7.png" alt="Kegiatan pasar Uzbekistan" class="panel-card-photo">
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item" data-bg="assets/img/background/bahasa.png">
+                        <h2 class="accordion-heading">
+                            <button class="accordion-toggle" type="button" aria-expanded="false">
+                                <span>Bahasa</span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </h2>
+                        <div class="accordion-panel">
+                            <div class="panel-copy">
+                                <p>Bahasa Uzbekistan adalah bahasa resmi di Uzbekistan dan termasuk rumpun bahasa Turkik. Bahasa ini digunakan oleh lebih dari 30 juta penutur. Secara historis, sistem penulisannya pernah memakai huruf Arab, lalu Latin, kemudian Kiril pada masa Soviet, dan setelah kemerdekaan tahun 1991 kembali ditetapkan menggunakan huruf Latin sebagai sistem resmi.</p>
+                            </div>
+                            <div class="panel-cards panel-cards-two">
+                                <img src="assets/img/card/SeniBudaya.png" alt="Budaya dan bahasa Uzbekistan" class="panel-card-photo">
+                                <img src="assets/img/card/AdatDanUpacara1.png" alt="Tradisi masyarakat Uzbekistan" class="panel-card-photo">
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item" data-bg="assets/img/background/rasdansuku.png">
+                        <h2 class="accordion-heading">
+                            <button class="accordion-toggle" type="button" aria-expanded="false">
+                                <span>Ras &amp; suku</span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </h2>
+                        <div class="accordion-panel">
+                            <div class="panel-split">
+                                <img src="assets/img/circle/skala.png" alt="Skala persentase suku di Uzbekistan" class="panel-skala">
+                                <p>Uzbekistan adalah negara di Asia Tengah dengan mayoritas penduduk berasal dari suku Uzbek yang berbahasa Turkik. Selain itu, terdapat komunitas Tajik berbahasa Persia, komunitas Rusia di kota-kota besar, serta kelompok Kazakh, Karakalpak, Kyrgyz, dan Turkmen di beberapa wilayah. Keragaman etnis ini membentuk identitas sosial Uzbekistan yang kaya dan dinamis.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item" data-bg="assets/img/background/latarbelakang.jpg">
+                        <h2 class="accordion-heading">
+                            <button class="accordion-toggle" type="button" aria-expanded="false">
+                                <span>Mata pencaharian</span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </h2>
+                        <div class="accordion-panel">
+                            <div class="panel-copy">
+                                <p>Mata pencaharian masyarakat Uzbekistan didominasi sektor pertanian, perdagangan, serta kerajinan tangan. Komoditas seperti kapas masih menjadi andalan penting, disusul peternakan dan industri kecil menengah. Di sisi lain, kekayaan alam seperti emas, gas alam, dan uranium juga berkontribusi besar terhadap ekonomi nasional dan kesempatan kerja masyarakat.</p>
+                            </div>
+                            <div class="panel-cards panel-cards-three">
+                                <img src="assets/img/card/matapencaharian.png" alt="Aktivitas kerja industri di Uzbekistan" class="panel-card-photo">
+                                <img src="assets/img/card/matapencaharian1.png" alt="Petani kapas di Uzbekistan" class="panel-card-photo">
+                                <img src="assets/img/card/matapencaharian2.png" alt="Peternakan di Uzbekistan" class="panel-card-photo">
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
-                </section>
-
-        <div class="global-accent" aria-hidden="true"></div>
-
-        <section class="ethnicity-section">
-            <div class="ethnicity-shell">
-                <div class="ethnicity-chart">
-                    <img src="assets/img/circle/skala.png" alt="Persentase suku di Uzbekistan">
-                </div>
-
-                <div class="ethnicity-copy">
-                    <h2 class="ethnicity-title">RAS&amp;SUKU</h2>
-                    <p>Uzbekistan adalah negara di Asia Tengah dengan mayoritas penduduk berasal dari suku Uzbek yang berbahasa Turkik dan memiliki tradisi Islam yang kuat. Selain itu, terdapat komunitas Tajik yang berbahasa Persia, terutama di Samarkand dan Bukhara, serta kelompok Rusia yang banyak tinggal di kota besar seperti Tashkent. Di wilayah lain, terdapat suku-suku Turkik seperti Kazakh, Karakalpak, Kyrgyz, dan Turkmen, dengan Karakalpak memiliki daerah otonomi sendiri.</p>
-                </div>
-            </div>
-                </section>
-
-        <section class="livelihood-section">
-            <div class="livelihood-shell">
-                <h2 class="livelihood-title">MATA PENCAHARIAN</h2>
-
-                <div class="livelihood-grid">
-                    <div class="livelihood-copy">
-                        <p>Uzbekistan adalah negara di Asia Tengah yang memiliki sejarah panjang sebagai bagian dari Jalur Sutra. Letaknya yang strategis membuat masyarakatnya sejak dulu bergantung pada perdagangan, pertanian, dan kerajinan tangan. Hingga kini, ekonomi Uzbekistan masih sangat dipengaruhi oleh sektor tradisional, terutama pertanian kapas yang menjadi komoditas utama. Selain itu, kekayaan alam seperti emas, gas alam, dan uranium juga menjadi sumber devisa penting.</p>
-                    </div>
-
-                    <div class="livelihood-gallery">
-                        <img src="assets/img/card/matapencaharian.png" alt="Aktivitas kerja industri di Uzbekistan" class="livelihood-photo livelihood-photo-tall">
-                        <img src="assets/img/card/matapencaharian1.png" alt="Petani kapas di Uzbekistan" class="livelihood-photo">
-                        <img src="assets/img/card/matapencaharian2.png" alt="Peternakan di Uzbekistan" class="livelihood-photo">
-                    </div>
-                </div>
-            </div>
-                </section>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -188,6 +228,7 @@
     </footer>
 
     <script src="JS/navbar.js"></script>
+    <script src="JS/nilaiglobal.js"></script>
 </body>
 </html>
 

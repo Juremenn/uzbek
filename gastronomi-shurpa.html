@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzbekistan - Gastronomi</title>
+    <link rel="icon" type="image/png" href="assets/img/logo/metland.png">
+    <link rel="stylesheet" href="assets/css/gastronomi-shurpa.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/performance.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@400;700;900&family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content" id="navContent">
+            <a class="nav-brand" href="beranda/index.html" aria-label="Beranda Uzbekistan">
+                <img src="assets/img/logo/uzbekistan.png" alt="Uzbekistan" class="nav-brand-logo">
+                <span class="nav-brand-text">UZBEKISTAN</span>
+            </a>
+            <button class="nav-mobile-toggle" id="navMobileToggle" type="button" aria-expanded="false" aria-controls="navPrimary">
+                <span class="nav-mobile-toggle-label"><i class="fas fa-bars"></i> <span data-i18n="nav.menu">Menu</span></span>
+                <i class="fas fa-chevron-down nav-mobile-icon" aria-hidden="true"></i>
+            </button>
+
+            <div class="nav-links" id="navPrimary">
+                <a href="beranda/index.html" class="nav-link"><i class="fas fa-home"></i> <span data-i18n="nav.home">Beranda</span></a>
+                <div class="nav-item-dropdown" id="jelajahiDropdown">
+                    <button class="nav-link nav-dropdown-toggle" id="jelajahiDropdownToggle" type="button" aria-expanded="false" aria-controls="jelajahiDropdownMenu">
+                        <i class="fas fa-earth-asia"></i> <span data-i18n="nav.explore">Jelajahi Uzbekistan</span> <i class="fas fa-chevron-down nav-arrow"></i>
+                    </button>
+                    <div class="dropdown-menu" id="jelajahiDropdownMenu" role="menu" aria-hidden="true">
+                        <a href="kondisi.html" class="dropdown-item" role="menuitem" data-i18n="nav.geo">Kondisi Geografis</a>
+                        <a href="destinasi.html" class="dropdown-item" role="menuitem" data-i18n="nav.dest">Destinasi &amp; Wisata</a>
+                        <a href="tokoh.html" class="dropdown-item" role="menuitem" data-i18n="nav.figures">Tokoh Inspiratif</a>
+                        <a href="paketwisata.html" class="dropdown-item" role="menuitem" data-i18n="nav.packages">Paket Wisata</a>
+                    </div>
+                </div>
+                <a href="citarasa.html" class="nav-link"><i class="fas fa-utensils"></i> <span data-i18n="nav.cuisine">Cita Rasa</span></a>
+                <a href="nilaiglobal.html" class="nav-link"><i class="fas fa-earth-americas"></i> <span data-i18n="nav.values">Nilai Global</span></a>
+                <a href="galeri.html" class="nav-link"><i class="fas fa-camera"></i> <span data-i18n="nav.gallery">Galeri</span></a>
+                <a href="tentangkami.html" class="nav-link"><i class="fas fa-circle-info"></i> <span data-i18n="nav.about">Tentang Kami</span></a>
+            </div>
+
+            <div class="nav-actions" aria-label="Language switch">
+                <div class="lang-switch" role="group" aria-label="Switch language">
+                    <button class="lang-btn is-active" type="button" data-lang="id" aria-pressed="true">ID</button>
+                    <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="gastro-page">
+        <section class="dish-hero" aria-label="Galeri menu populer">
+            <div class="dish-slider" id="dishSlider" aria-live="polite">
+                <div class="dish-slider-bar" aria-hidden="true"></div>
+                <figure class="dish-card" id="dishCardLeft" data-pos="left">
+                    <img class="dish-photo" id="dishPhotoLeft" alt="" decoding="async">
+                </figure>
+                <figure class="dish-card" id="dishCardCenter" data-pos="center">
+                    <img class="dish-photo" id="dishPhotoCenter" alt="" decoding="async">
+                </figure>
+                <figure class="dish-card" id="dishCardRight" data-pos="right">
+                    <img class="dish-photo" id="dishPhotoRight" alt="" decoding="async">
+                </figure>
+                <figure class="dish-card dish-card-incoming" id="dishCardIncoming" data-pos="off-right" aria-hidden="true">
+                    <img class="dish-photo" id="dishPhotoIncoming" alt="" decoding="async">
+                </figure>
+            </div>
+        </section>
+
+        <section class="dish-detail" aria-label="Detail menu">
+            <div class="dish-title-row">
+                <button class="dish-nav-btn" id="dishPrevBtn" type="button" aria-label="Foto sebelumnya">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <h1 class="dish-title" id="dishTitle">Sup Uzbek Shurpa</h1>
+                <button class="dish-nav-btn" id="dishNextBtn" type="button" aria-label="Foto berikutnya">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="dish-intro">
+                <p class="dish-intro-text" id="dishIntro">
+                    Hidangan ini berasal dari Asia Tengah. Shurpa adalah sup tradisional dari Uzbekistan di wilayah Asia Tengah.
+                    Hidangan ini sudah ada sejak lama dan berkembang dari kebiasaan masyarakat nomaden yang memasak sup daging sederhana.
+                    Resepnya menyebar melalui jalur perdagangan Silk Road. Menurut cerita rakyat, para pedagang Jalur Sutra memasak daging,
+                    sayuran, dan air dalam satu panci saat perjalanan jauh. Sup hangat itu mengenyangkan dan kemudian dikenal sebagai shurpa.
+                </p>
+                <figure class="dish-intro-figure">
+                    <img id="dishIntroImg" src="assets/img/card/SupUzbekShurpa.png" alt="Ilustrasi bahan masakan" loading="lazy" decoding="async">
+                </figure>
+            </div>
+
+            <div class="gastro-banner" aria-hidden="true">
+                <h2>GASTRONOMI</h2>
+            </div>
+
+            <div class="gastro-cards" id="gastroCards" aria-label="Penjelasan gastronomi">
+                <!-- Filled by JS -->
+            </div>
+
+            <section class="cook-section" aria-label="Cara membuat">
+                <h2 class="cook-title">CARA MEMBUAT</h2>
+                <div class="cook-panel" role="region" aria-label="Bahan yang dibutuhkan">
+                    <img class="cook-deco cook-deco-meat" src="assets/img/gastronomi/daging.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                    <img class="cook-deco cook-deco-onion" src="assets/img/gastronomi/bawang.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                    <h3 class="cook-subtitle">BAHAN YANG DIBUTUHKAN</h3>
+                    <div class="cook-columns">
+                        <ul class="cook-list">
+                            <li>¼ kg daging (sapi/kambing/ayam)</li>
+                            <li>1 bawang besar</li>
+                            <li>Daun salam, biji ketumbar, merica, cabai kering (secukupnya)</li>
+                            <li>2 cangkir kacang garbanzo</li>
+                            <li>2 cangkir irisan wortel</li>
+                            <li>2 cangkir tomat</li>
+                        </ul>
+                        <ul class="cook-list">
+                            <li>2 cangkir paprika</li>
+                            <li>2 cangkir kentang emas</li>
+                            <li>1 sdm bawang putih cincang</li>
+                            <li>Herbal segar: dill, daun ketumbar, peterseli</li>
+                            <li>1 sdt biji jintan</li>
+                            <li>1 sdt lada hitam</li>
+                            <li>Garam secukupnya</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="steps-section" aria-label="Langkah langkah pembuatan">
+                    <table class="steps-table" aria-label="Tabel langkah langkah">
+                        <colgroup>
+                            <col style="width: 7%">
+                            <col style="width: 18%">
+                            <col style="width: 30%">
+                            <col style="width: 22%">
+                            <col style="width: 23%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>TAHAPAN</th>
+                                <th>LANGKAH LANGKAH</th>
+                                <th>COOKING METHOD</th>
+                                <th>UTENSIL&amp;EQUIPMENT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td>Merebus daging</td>
+                                <td>pertama rebus air hingga boiling setelah air boil masukkan daging daun salam+jahe geprek lalu tunggu selama 30 menit setelah 30 menit tutup panci dan jangan dibuka dan pastikan tidak ada udara yang masuk ataupun keluar</td>
+                                <td>Boiling dan Braising</td>
+                                <td>Kompor,panci, leadle,pisau</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Memasak daging</td>
+                                <td>pertama tama siapkan air rebusan, setelah itu masukan daging yang sudah di rebus, masukan juga bawang bombay, daun salam, ketumbar dan merica. setelah itu tunggu selama 90 menit</td>
+                                <td>Simmering</td>
+                                <td>Kompor,panci, leadle</td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>Penyaringan</td>
+                                <td>setelah 90 menit, angkat bawang bombay dan herbs, lalu biarkan daging dan air nya</td>
+                                <td>Straining</td>
+                                <td>Strainer</td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>Masukan<br>sayur</td>
+                                <td>setelah itu masukan wortel, kentang, kacang, tomat dan paprika, tunggu kembali selama 30 menit</td>
+                                <td>Simmering</td>
+                                <td>Kompor,panci, leadel</td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td>Pembumbuan</td>
+                                <td>setelah 30 menit lalu masukan garam, blackpepper, cumin powder</td>
+                                <td>Simmering</td>
+                                <td>Kompor, panci, leadel</td>
+                            </tr>
+                            <tr>
+                                <td>6.</td>
+                                <td>Tahap akhir</td>
+                                <td>jika di rasa sudah pas, soup siap di plating untuk di hidangkan</td>
+                                <td></td>
+                                <td>Kompor, panci, leadel</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-shell">
+            <div class="footer-layout" aria-label="Footer">
+                <section class="footer-block footer-about" aria-label="Tentang kami">
+                    <h3 class="footer-heading">Tentang kami</h3>
+                    <ul class="footer-list">
+                        <li><a href="#">PPLG</a></li>
+                        <li><a href="#">Perhotelan</a></li>
+                        <li><a href="#">Kuliner</a></li>
+                        <li><a href="#">DKV</a></li>
+                        <li><a href="#">Akuntansi</a></li>
+                    </ul>
+                </section>
+
+                <section class="footer-block footer-info" aria-label="Uzbekistan info">
+                    <h3 class="footer-heading">Uzbekistan info</h3>
+                    <div class="footer-links-grid">
+                        <ul class="footer-list">
+                            <li><a href="beranda/index.html">Beranda</a></li>
+                            <li><a href="kondisi.html">Kondisi geografis</a></li>
+                            <li><a href="destinasi.html">Destinasi wisata</a></li>
+                            <li><a href="tokoh.html">Tokoh inspiratif</a></li>
+                            <li><a href="paketwisata.html">Paket wisata</a></li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li><a href="citarasa.html">Cita rasa</a></li>
+                            <li><a href="nilaiglobal.html">Nilai global</a></li>
+                            <li><a href="galeri.html">Galeri</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <div class="footer-block footer-emblem" aria-label="Lambang Uzbekistan">
+                    <img src="assets/img/logo/uzbekistan.png" alt="Lambang Uzbekistan" class="footer-logo footer-logo-uzbek">
+                </div>
+
+                <div class="footer-block footer-metland" aria-label="Logo Metland School">
+                    <img src="assets/img/logo/metland.png" alt="Logo Metland School" class="footer-logo footer-logo-metland">
+                </div>
+
+                <section class="footer-block footer-contact" aria-label="Hubungi kami">
+                    <h3 class="footer-heading">Hubungi kami</h3>
+                    <p class="footer-contact-item">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <span>Jl. Kota Taman Metropolitan,<br>Cileungsi Kidul, Kec. Cileungsi,<br>Kabupaten Bogor, Jawa Barat 16820</span>
+                    </p>
+                    <p class="footer-contact-item">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                        <span>www.smkmetland.net</span>
+                    </p>
+                    <div class="footer-socials" aria-label="Media sosial">
+                        <a href="#" class="footer-social footer-social-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="footer-social footer-social-whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="#" class="footer-social footer-social-tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                    </div>
+                </section>
+
+                <section class="footer-block footer-desc" aria-label="Deskripsi website">
+                    <p class="footer-description">
+                        Website ini dibuat sebagai media informasi dan promosi digital yang menghadirkan keindahan serta kekayaan budaya Uzbekistan secara lebih dekat dan interaktif. Melalui tampilan visual yang menarik dan navigasi yang mudah, pengunjung dapat menjelajahi berbagai destinasi populer seperti Tashkent, Samarkand, dan Bukhara.
+                    </p>
+                </section>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Menjelajahi keindahan Uzbekistan dari Asia Tengah</p>
+                <p>&copy; 2026 website wisata uzbekistan | dibuat oleh kelompok 4</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="gizi-modal" id="giziModal" aria-hidden="true">
+        <button class="gizi-modal__overlay" type="button" data-gizi-close aria-label="Tutup pop up"></button>
+        <div class="gizi-modal__content" id="giziModalContent" role="dialog" aria-modal="true" aria-label="Informasi nilai gizi" tabindex="-1">
+            <img id="giziModalImg" src="assets/img/gastronomi/nilaigizisup.png" alt="Tabel informasi nilai gizi sup shurpa" loading="lazy" decoding="async">
+        </div>
+    </div>
+
+    <script src="JS/navbar.js"></script>
+    <script src="JS/gastronomi-shurpa.js"></script>
+</body>
+</html>
